@@ -1,8 +1,0 @@
-/* Scoped to the editor */
-.ProseMirror {
-  min-height: 100vh;
-}
-
-.ProseMirror p {
-  margin: 0 0;
-}
