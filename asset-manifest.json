@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Ishvel/static/css/main.cf742a43.css",
+    "main.js": "/Ishvel/static/js/main.b04d6b4a.js",
+    "static/js/787.70079b53.chunk.js": "/Ishvel/static/js/787.70079b53.chunk.js",
+    "index.html": "/Ishvel/index.html",
+    "main.cf742a43.css.map": "/Ishvel/static/css/main.cf742a43.css.map",
+    "main.b04d6b4a.js.map": "/Ishvel/static/js/main.b04d6b4a.js.map",
+    "787.70079b53.chunk.js.map": "/Ishvel/static/js/787.70079b53.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cf742a43.css",
+    "static/js/main.b04d6b4a.js"
+  ]
+}
