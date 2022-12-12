@@ -11,8 +11,10 @@ import FormatSizeIcon from '@mui/icons-material/FormatSize';
 import FormatItalicIcon from '@mui/icons-material/FormatItalic';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import StrikethroughS from '@mui/icons-material/StrikethroughS';
+import Code from '@mui/icons-material/Code';
 import ImageIcon from '@mui/icons-material/Image';
-import { FormatStrikethrough } from '@mui/icons-material';
+import Terminal from '@mui/icons-material/Terminal';
 import { useState } from 'react';
 import AddImageUrl from '../../organisms/AddImageUrl';
 import TextField from '@mui/material/TextField';
@@ -57,6 +59,7 @@ const EditorMenu = ({ editor }) => {
   return (
     <div>
       <ButtonGroup
+        fullWidth
         size='small'
         variant='contained'
         aria-label='outlined primary button group'
@@ -75,7 +78,10 @@ const EditorMenu = ({ editor }) => {
           <FormatItalicIcon />
         </Button>
         <Button onClick={() => editor.chain().focus().toggleStrike().run()}>
-          <FormatStrikethrough />
+          <StrikethroughS />
+        </Button>
+        <Button onClick={() => editor.chain().focus().toggleCode().run()}>
+          <Code />
         </Button>
         <Button onClick={() => editor.chain().focus().toggleBulletList().run()}>
           <FormatListBulletedIcon />

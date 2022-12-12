@@ -1,32 +1,31 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Typography,
-} from '@mui/material';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
-const Suggestion = () => {
+import { useBearStore } from '../../core/services';
+
+const Suggestion = ({ id, title, message, type, link }) => {
+  const { removeSuggestion } = useBearStore();
   return (
     <Card>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color='text.secondary' gutterBottom>
-          Tópicos de Actualidad
+          {title}
         </Typography>
-        <Typography variant='body2'>
-          Luis Mateucci share Quién es Luis Mateucci, músico y exchico reality
-          de "Doble ...
-          <br />
-          Huachipato Huachipato no se fía del colista: “No podemos relajarnos”
-          <br />
-          Europa League share Estreno goleador de Aritz en Europa MARCA.com •
-          <br />
-        </Typography>
+
+        <Typography variant='body2'>{message}</Typography>
       </CardContent>
       <CardActions>
-        <a href='https://trends.google.com/trends/trendingsearches/daily?geo=CL'>
-          <Button size='small'>Más</Button>
-        </a>
+        <Button size='small' onClick={() => removeSuggestion(id)}>
+          Cerrar
+        </Button>
+        {type === 'url' && (
+          <a href={link}>
+            <Button size='small'>Ver más</Button>
+          </a>
+        )}
       </CardActions>
     </Card>
   );

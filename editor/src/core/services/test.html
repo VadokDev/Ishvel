@@ -19,7 +19,17 @@
         pyodide.runPython('print(1 + 2)');
         await pyodide.loadPackage('micropip');
         const micropip = pyodide.pyimport('micropip');
-        await micropip.install('multimetric');
+        await micropip.install('multimetricprog-VadokDev');
+        console.log(
+          pyodide.runPython(`
+          from multimetricprog import calculator
+          xd = calculator.calculate('''
+          print("hola")
+          ''')
+          print(xd)
+
+        `)
+        );
       }
       main();
     </script>

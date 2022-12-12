@@ -4,19 +4,26 @@ import { mergeAttributes, Node } from '@tiptap/core';
 import StarterKit from '@tiptap/starter-kit';
 import { Grid, Container, Typography } from '@mui/material';
 import Metric from '../molecules/Metric';
+import { useBearStore } from '../../core/services';
 
 const metricsArray = [
+  /*
+  If time allows me...
   { name: 'Legibilidad', color: 'error', value: 45 },
   { name: 'Comprensibilidad', color: 'warning', value: 15 },
   { name: 'Coherencia', color: 'info', value: 34 },
+  */
 ];
 const programmingMetricsArray = [
-  { name: 'Esfuerzo', color: 'primary', value: 45 },
-  { name: 'Dificultad', color: 'secondary', value: 84 },
-  { name: 'Tiempo', color: 'success', value: 34 },
+  { name: 'Complejidad Ciclomática', metric: 'cc', color: 'primary' },
+  { name: 'Esfuerzo', metric: 'hEffort', color: 'primary' },
+  { name: 'Dificultad', metric: 'hDifficult', color: 'secondary' },
+  { name: 'Tiempo', metric: 'hTime', color: 'success' },
+  { name: 'Volumen', metric: 'hVolume', color: 'warning' },
 ];
 
 const MetricsArea = () => {
+  const metricValues = useBearStore((state) => state.metrics);
   return (
     <Grid container rowSpacing={{ xs: 1, sm: 2, md: 3 }}>
       <Grid item>
@@ -42,7 +49,7 @@ const MetricsArea = () => {
         <Grid item xs={12}>
           <Metric
             name={metric.name}
-            value={metric.value}
+            value={metricValues[metric.metric]}
             color={metric.color}
           ></Metric>
         </Grid>
