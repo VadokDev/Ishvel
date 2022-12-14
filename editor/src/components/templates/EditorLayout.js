@@ -45,8 +45,8 @@ const EditorLayout = ({
   };
 
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={6}>
+    <Grid container spacing={2}>
+      <Grid item xs={7}>
         <Paper
           sx={{
             display: 'flex',
@@ -61,7 +61,7 @@ const EditorLayout = ({
           </Main>
         </Paper>
       </Grid>
-      <Grid container item direction={'column'} xs={4}>
+      <Grid container item direction={'column'} xs={3}>
         <Grid item>
           <Coding />
         </Grid>

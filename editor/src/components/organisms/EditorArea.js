@@ -1,98 +1,65 @@
 import React from 'react';
-import BulletList from '@tiptap/extension-bullet-list';
-import { mergeAttributes, Node } from '@tiptap/core';
-import {
-  useEditor,
-  EditorContent,
-  NodeViewContent,
-  NodeViewWrapper,
-  ReactNodeViewRenderer,
-} from '@tiptap/react';
-import StarterKit from '@tiptap/starter-kit';
-import '../atoms/EditorArea.css';
-import EditorMenu from '../molecules/Editor/EditorMenu';
-import Image from '@tiptap/extension-image';
-const CustomBulletList = BulletList.extend({
-  addKeyboardShortcuts() {
-    return {
-      'Mod-l': () => this.editor.commands.toggleBulletList(),
-    };
-  },
-});
+import MDEditor from '@uiw/react-md-editor';
+import { getCodeString } from 'rehype-rewrite';
+import katex from 'katex';
+import 'katex/dist/katex.css';
 
-const node = Node.create({
-  name: 'reactComponent',
-  group: 'block',
-  content: 'inline*',
-  defining: true,
-  parseHTML() {
-    return [
-      {
-        tag: 'react-component',
-      },
-    ];
-  },
+const mdKaTeX = `This is to display the 
+\`\$\$\c = \\pm\\sqrt{a^2 + b^2}\$\$\`
+ in one line
 
-  renderHTML({ HTMLAttributes }) {
-    return ['react-component', mergeAttributes(HTMLAttributes), 0];
-  },
-
-  addNodeView() {
-    return ReactNodeViewRenderer(Component);
-  },
-});
-
-const Component = () => {
-  return (
-    <NodeViewWrapper className='react-component-with-content'>
-      <span className='label' contentEditable={false}>
-        Sección
-      </span>
-
-      <NodeViewContent className='content' />
-    </NodeViewWrapper>
-  );
-};
-
+\`\`\`KaTeX
+c = \\pm\\sqrt{a^2 + b^2}
+\`\`\`
+`;
 const EditorArea = () => {
-  const editor = useEditor({
-    extensions: [StarterKit, Image, node],
-    content: `
-    <h1>
-      Título de la tarea
-    </h1>
-    <p>
-      Bajada del título, una pequeña descripción (contexto breve)
-    </p>
-    <h1>
-      Descripción
-    </h1>
-    <p>
-      Qué es específicamente lo que se necesita que el programa haga
-    </p>
-    <h1>
-      Ejemplos
-    </h1>
-    <p>
-      Ejemplos autogenerados en base a lo que se ingresa en la segunda parte del editor
-    </p>
-    <h1>
-      Explicación de los ejemplos
-    </h1>
-    <p>
-      En caso de ser necesarios
-    </p>
-      `,
-    onUpdate({ editor }) {
-      console.log(editor.getJSON());
-    },
-  });
-
+  const [value, setValue] = React.useState(mdKaTeX);
   return (
-    <div>
-      <EditorMenu editor={editor}></EditorMenu>
-      <EditorContent editor={editor} />
-    </div>
+    <MDEditor
+      height={'100%'}
+      value={value}
+      onChange={setValue}
+      visibleDragbar={false}
+      previewOptions={{
+        components: {
+          code: ({ inline, children = [], className, ...props }) => {
+            const txt = children[0] || '';
+            if (inline) {
+              if (typeof txt === 'string' && /^\$\$(.*)\$\$/.test(txt)) {
+                const html = katex.renderToString(
+                  txt.replace(/^\$\$(.*)\$\$/, '$1'),
+                  {
+                    throwOnError: false,
+                  }
+                );
+                return <code dangerouslySetInnerHTML={{ __html: html }} />;
+              }
+              return <code>{txt}</code>;
+            }
+            const code =
+              props.node && props.node.children
+                ? getCodeString(props.node.children)
+                : txt;
+            if (
+              typeof code === 'string' &&
+              typeof className === 'string' &&
+              /^language-katex/.test(className.toLocaleLowerCase())
+            ) {
+              const html = katex.renderToString(code, {
+                throwOnError: false,
+              });
+              return (
+                <code
+                  style={{ fontSize: '150%' }}
+                  dangerouslySetInnerHTML={{ __html: html }}
+                />
+              );
+            }
+            return <code className={String(className)}>{txt}</code>;
+          },
+        },
+      }}
+    />
   );
 };
 
