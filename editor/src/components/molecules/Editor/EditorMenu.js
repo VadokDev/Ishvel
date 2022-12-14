@@ -16,7 +16,7 @@ import Code from '@mui/icons-material/Code';
 import ImageIcon from '@mui/icons-material/Image';
 import Terminal from '@mui/icons-material/Terminal';
 import { useState } from 'react';
-import AddImageUrl from '../../organisms/AddImageUrl';
+import AddImageUrl from '../AddImageUrl';
 import TextField from '@mui/material/TextField';
 
 const names = [

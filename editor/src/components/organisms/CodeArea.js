@@ -8,15 +8,23 @@ import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-import { useBearStore } from '../../core/services';
 import CodeEditor from '../molecules/CodeEditor';
 
 const CodeArea = () => {
-  const suggestions = useBearStore((state) => state.suggestions);
   return (
-    <Grid container rowSpacing={{ xs: 1, sm: 2, md: 3 }} pt={3}>
-      <CodeEditor />
-      <Button>Evaluar solución</Button>
+    <Grid direction={'column'}>
+      <Grid item>
+        <Typography variant='h5' mt={3}>
+          Programación
+        </Typography>
+      </Grid>
+
+      <Grid item>
+        <CodeEditor />
+      </Grid>
+      <Grid item>
+        <Button>Evaluar solución</Button>
+      </Grid>
     </Grid>
   );
 };

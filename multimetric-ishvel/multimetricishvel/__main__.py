@@ -5,24 +5,18 @@ import textwrap
 import multiprocessing as mp
 
 
-from multimetric.cls.importer.pick import importer_pick
-from multimetric.cls.modules import get_additional_parser_args
-from multimetric.cls.modules import get_modules_calculated
-from multimetric.cls.modules import get_modules_metrics
-from multimetric.cls.modules import get_modules_stats
-import sys
-import chardet
-from pygments import lexers
-
-from multimetric.cls.modules import get_modules_calculated
-from multimetric.cls.modules import get_modules_metrics
-from multimetric.cls.importer.filtered import FilteredImporter
+from multimetricishvel.cls.importer.pick import importer_pick
+from multimetricishvel.cls.modules import get_additional_parser_args
+from multimetricishvel.cls.modules import get_modules_calculated
+from multimetricishvel.cls.modules import get_modules_metrics
+from multimetricishvel.cls.modules import get_modules_stats
+from multimetricishvel.fp import file_process
 
 
 def ArgParser():
     parser = argparse.ArgumentParser(
         formatter_class=argparse.RawTextHelpFormatter,
-        prog="multimetric", description='Calculate code metrics in various languages',
+        prog="multimetricishvel", description='Calculate code metrics in various languages',
         epilog=textwrap.dedent("""
         Currently you could import files of the following types for --warn_* or --coverage
 
@@ -84,57 +78,18 @@ def ArgParser():
         "--ignore_lexer_errors",
         default=True,
         help="Ignore unparseable files")
-    get_additional_parser_args(parser)
-    parser.add_argument("files", default="test.py",
-                        help="Files to parse")
+
+    archivos = []
+    for root, _, files in os.walk("."):
+        for file in files:
+            if file.endswith(".py"):
+                archivos.append(os.path.join(root, file))
+
+    parser.add_argument("files", nargs='+', help="Files to parse")
     RUNARGS = parser.parse_args()
     # Turn all paths to abs-paths right here
-    RUNARGS.files = [os.path.abspath(x) for x in RUNARGS.files]
+    RUNARGS.files = [os.path.abspath(x) for x in archivos]
     return RUNARGS
-
-
-testCode = '''
-contador = int(input())
-
-while (contador > 5):
-    if (contador % 2 == 0):
-        print("par")
-    else:
-        print("impar")
-
-    contador -= 1
-'''
-
-fileName = "test.py"
-
-
-def file_process(_file, _args, _importer):
-    res = {}
-    store = {}
-    _lexer = lexers.get_lexer_for_filename(_file)
-    try:
-        _cnt = testCode
-        _enc = chardet.detect(_cnt)
-        _cnt = _cnt.decode(_enc["encoding"]).encode("utf-8")
-        _localImporter = {k: FilteredImporter(
-            v, _file) for k, v in _importer.items()}
-        tokens = list(_lexer.get_tokens(_cnt))
-        if _args.dump:
-            for x in tokens:
-                print("{}: {} -> {}".format(_file, x[0], str(x[1])))
-        else:
-            _localMetrics = get_modules_metrics(_args, **_localImporter)
-            _localCalc = get_modules_calculated(_args, **_localImporter)
-            for x in _localMetrics:
-                x.parse_tokens(_lexer.name, tokens)
-                res.update(x.get_results())
-                store.update(x.get_internal_store())
-            for x in _localCalc:
-                res.update(x.get_results(res))
-                store.update(x.get_internal_store())
-    except Exception:
-        tokens = []
-    return (res, _file, _lexer.name, tokens, store)
 
 
 def main():
@@ -177,4 +132,5 @@ def main():
         print(json.dumps(_result, indent=2, sort_keys=True))
 
 
-main()
+if __name__ == '__main__':
+    main()

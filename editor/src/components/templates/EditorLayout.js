@@ -29,9 +29,8 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 const EditorLayout = ({
   LeftSidebar,
   Editor,
-  Tools,
   Suggestions,
-  Testing,
+  Coding,
   Metrics,
 }) => {
   const theme = useTheme();
@@ -62,8 +61,13 @@ const EditorLayout = ({
           </Main>
         </Paper>
       </Grid>
-      <Grid item xs={4}>
-        <Tools SuggestionsArea={Suggestions} TestingArea={Testing} />
+      <Grid container item direction={'column'} xs={4}>
+        <Grid item>
+          <Coding />
+        </Grid>
+        <Grid item>
+          <Suggestions />
+        </Grid>
       </Grid>
       <Grid item xs={2}>
         <Metrics />
