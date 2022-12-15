@@ -55,7 +55,7 @@ const EditorArea = () => {
                 />
               );
             }
-            return <code className={String(className)}>{txt}</code>;
+            return <code className={String(className)}>{children}</code>;
           },
         },
       }}
