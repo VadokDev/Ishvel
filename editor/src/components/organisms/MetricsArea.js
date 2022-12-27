@@ -15,14 +15,14 @@ const programmingMetricsArray = [
 const MetricsArea = () => {
   const metricValues = useBearStore((state) => state.metrics);
   return (
-    <Grid container direction={'column'} rowSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    <Grid container direction={'column'} rowSpacing={{ xs: 1, sm: 2, md: 2 }}>
       <Grid item>
         <Typography variant='h5' mt={3}>
-          Programación
+          Métricas
         </Typography>
       </Grid>
-      {programmingMetricsArray.map((metric) => (
-        <Grid item>
+      {programmingMetricsArray.map((metric, i) => (
+        <Grid key={`metric-number-${i}`} item>
           <Metric
             name={metric.name}
             value={metricValues[metric.metric]}

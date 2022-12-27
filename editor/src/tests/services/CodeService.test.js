@@ -9,7 +9,6 @@ describe('CodeService Test Suite', () => {
             import sys
             sys.version
             `);
-    console.log(version);
     expect(version).toBeDefined();
   });
 });

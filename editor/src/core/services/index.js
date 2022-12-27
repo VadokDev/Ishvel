@@ -22,23 +22,35 @@ const defaultMetrics = {
 const useBearStore = create((set) => ({
   suggestions: suggestionsService.getInitialSuggestions(),
   metrics: defaultMetrics,
-  content: 'functions',
+  content: 'sequential',
+  semesters: metricsRepository.getSemesters(),
+  semester: metricsRepository.getSemesters().at(-1),
+  code: '',
+  metricsType: 'students',
+  showMetrics: false,
+  setShowMetrics: (showMetrics) => set((state) => ({ ...state, showMetrics })),
+  setCode: (code) => set((state) => ({ ...state, code })),
+  setSemester: (semester) => set((state) => ({ ...state, semester })),
+  setContent: (content) => set((state) => ({ ...state, content })),
   setMetrics: (metrics) => set((state) => ({ ...state, metrics })),
+  setMetricsType: (metricsType) => set((state) => ({ ...state, metricsType })),
   updateSuggestions: () =>
     set((state) => ({
       suggestions: suggestionsService.getCodeSuggestions(
+        state.semester,
         state.content,
-        state.metrics
+        state.metrics,
+        state.metricsType
       ),
     })),
   removeSuggestion: (idx) =>
     set((state) => {
       const newState = {
         ...state,
-        suggestions: suggestions.filter(({ id }) => id == idx),
+        suggestions: suggestions.filter(({ id }) => id === idx),
       };
       return newState;
     }),
 }));
 
-export { useBearStore, codeService };
+export { useBearStore, codeService, metricsRepository };

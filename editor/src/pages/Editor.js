@@ -4,6 +4,7 @@ import EditorArea from '../components/organisms/EditorArea';
 import MetricsArea from '../components/organisms/MetricsArea';
 import SuggestionsArea from '../components/organisms/SuggestionsArea';
 import CodeArea from '../components/organisms/CodeArea';
+import ConfigArea from '../components/organisms/ConfigArea';
 
 const Editor = () => {
   return (
@@ -13,6 +14,7 @@ const Editor = () => {
       Coding={CodeArea}
       Suggestions={SuggestionsArea}
       Metrics={MetricsArea}
+      Config={ConfigArea}
     ></EditorLayout>
   );
 };

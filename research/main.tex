@@ -185,6 +185,7 @@ Create assignments, framework, introductory programming course, education
     \item IWI-131: Sigla del curso de programación de la UTFSM.
     \item LMS: Sistema de Gestión del Aprendizaje (por sus siglas en inglés, Learning Management System)
     \item UTFSM: Universidad Técnica Federico Santa María.
+    \item S20XX-X: Semestre lectivo 20XX-X (Ejemplo: S2022-1 corresponde al primer semestre del 2022).
 \end{itemize}
 
 \newpage
@@ -217,7 +218,7 @@ En el fondo, que el lector al leer la Introducción pueda tener una síntesis de
 
 Los cursos introductorios de programación son, en general, el primer acercamiento de un estudiante a los conceptos fundamentales de la computación \cite{10.7717/peerj-cs.647}, y por lo tanto, se debe velar porque se desarrollen de la manera más prolija posible, considerando entre otras cosas, la elaboración y uso de tareas de calidad. Las tareas son parte importante del proceso de aprendizaje y enseñanza \cite{texasU}, pues permiten medir el aprendizaje de los estudiantes y proporcionarles una retroalimentación significativa \cite{NAP12636}. Además, los cursos introductorios de programación, son la principal actividad en donde los estudiantes ponen en práctica lo que han aprendido sobre programación, lo que hace que las tareas jueguen un rol importante en su interés por aprender, pudiendo llevar al estudiante tanto a querer sobresalir resolviendo las evaluaciones del curso, como a desertar debido a su percepción de la programación por tareas de mala calidad \cite{10.5555/1968521.1968545, 10.1145/2526968.2526982}, entre otros efectos como los mencionados en el Árbol del Problema (ver Figura \ref{arbolito}).
 
-En la Universidad Técnica Federico Santa María (UTFSM), se dicta un curso introductorio de programación a lo largo de todos sus campus. Este recibe de forma masiva a todos los estudiantes de primer año de ingeniería, y se dicta de igual forma independiente del campus o carrera del estudiante. El curso, que se lleva a cabo de forma online, está dividido en Unidades Virtuales de Aprendizaje (UVA), las cuales estructuran las actividades de cada semana (ver Figura \ref{modeloiwi}), y su diseño se basa en el alineamiento constructivista \cite{book}. Este último plantea la necesidad de que las evaluaciones del curso reflejen los objetivos de aprendizaje del mismo y, que a su vez, sean estos los que definan las actividades y tareas a realizar. Esto brinda a las tareas un rol tanto formativo como sumativo de evaluar, y requiere que estas cumplan ciertos estándares para justificar que cumplen con los objetivos de aprendizaje \cite{book}. 
+En la Universidad Técnica Federico Santa María (UTFSM), se dicta un curso introductorio de programación a lo largo de todos sus campus. Este recibe de forma masiva a todos los estudiantes de primer año de ingeniería, y se dicta de igual forma independiente del campus o carrera del estudiante. El curso, que se lleva a cabo de forma online, está dividido en Unidades Virtuales de Aprendizaje (UVA), las cuales estructuran las actividades de cada semana (ver Figura \ref{modeloiwi}), y su diseño se basa en el alineamiento constructivista \cite{book}. Este último plantea la necesidad de que las evaluaciones del curso reflejen los objetivos de aprendizaje del mismo y, que a su vez, sean estos los que definan las actividades y tareas a realizar. Esto brinda a las tareas un rol tanto formativo como sumativo de evaluar, y requiere que estas cumplan ciertos estándares para justificar que cumplen con los objetivos de aprendizaje \cite{book}.
 
 \begin{figure}[H]
     \centering
@@ -234,7 +235,7 @@ Entre los problemas que puede conllevar el uso de tareas que no son de calidad, 
     \item Pérdida del interés en aprender a programar \cite{10.1145/1227504.1227466}, de modo tal que el estudiante deje de ver el ramo como un curso de aprendizaje, y su actitud hacia él sea nétamente para aprobar.
     \item Frustración a lo largo del ramo, al punto en que el estudiante puede decidir desertar del curso y de la programación en general \cite{10.1145/2526968.2526982}.
     \item Aumentar las probabilidades de que los estudiantes realicen actos que falten a la honestidad académica para resolverla \cite{10.1145/3013499.3013507}.
-    \item Complicar la elaboración de la rúbrica con la cual la tarea será evaluada, lo que puede conllevar a entregar un feedback menos valioso al estudiante 
+    \item Complicar la elaboración de la rúbrica con la cual la tarea será evaluada, lo que puede conllevar a entregar un feedback menos valioso al estudiante
 \end{itemize}
 
 Es por esto que se requiere de un marco de trabajo que permita elaborar tareas de calidad, el cual brinde tanto una metodología como herramientas que faciliten a los profesores esta labor, ahorrándoles tiempo y garantizando a los estudiantes del curso una mejor experiencia de aprendizaje.
@@ -280,7 +281,7 @@ El dominio de un problema es un término de ingeniería para referirse a toda la
 
 En el contexto de apoyar la labor de enseñar, los frameworks de este dominio apuntan a mejorar la gestión del contenido educativo, siguiendo buenas prácticas rescatadas del área de la ingeniería de software, y aplicadas al dominio de la enseñanza. Estas prácticas permiten reutilizar aspectos prácticos de un curso previo, como lo es su organización, sus contenidos, etc... y mejorarlos en el tiempo para así ahorrar tiempo y poder aplicar patrones de diseño que faciliten la labor de educar. A diferencia de los frameworks de ingeniería de software, estos frameworks están orientados a ser utilizados por un profesor, y en vez de entregar código, brindan herramientas y metodologías con las cuales el usuario puede gestionar de mejor manera su curso \cite{elearn}.
 
-Por otro lado, al ser la enseñanza un dominio tan estudiado, existen muchos patrones que abordan diversas formas de resolver los problemas que ésta conlleva \cite{elearn}. Esta realidad ha impulsado enfoques que complementen los Sistemas de Gestión del Aprendizaje (LMS) con frameworks que recopilen patrones que apoyen la enseñanza, de este modo, si ya se cuenta con un curso cuya gestión es a través de un LMS como Moodle, entonces se puede implementar un framework sobre el LMS que permita integrar patrones adecuados para el desarrollo del curso (ver Figura \ref{patronlms}). 
+Por otro lado, al ser la enseñanza un dominio tan estudiado, existen muchos patrones que abordan diversas formas de resolver los problemas que ésta conlleva \cite{elearn}. Esta realidad ha impulsado enfoques que complementen los Sistemas de Gestión del Aprendizaje (LMS) con frameworks que recopilen patrones que apoyen la enseñanza, de este modo, si ya se cuenta con un curso cuya gestión es a través de un LMS como Moodle, entonces se puede implementar un framework sobre el LMS que permita integrar patrones adecuados para el desarrollo del curso (ver Figura \ref{patronlms}).
 
 \begin{figure}[H]
     \centering
@@ -298,15 +299,15 @@ Sin embargo, también existen enfoques donde el framework permite al profesor ad
     \label{ceweb}
 \end{figure}
 
-Este último es la clase de framework que se implementará a lo largo de esta memoria, adaptándolo para la implementación de patrones adecuados y una metodología para la elaboración de tareas, de modo tal que guíe al profesor durante su uso, y garantice que éste siga una metodología adecuada para la tarea que está elaborando en el curso. Brindándole métricas de utilidad a medida que redacta, como una validación de que los objetivos de aprendizaje esperados para esa tarea, se cumplan en base a diversas validaciones, como lo sería la revisión del código que resuelve el problema, entre otros. 
+Este último es la clase de framework que se implementará a lo largo de esta memoria, adaptándolo para la implementación de patrones adecuados y una metodología para la elaboración de tareas, de modo tal que guíe al profesor durante su uso, y garantice que éste siga una metodología adecuada para la tarea que está elaborando en el curso. Brindándole métricas de utilidad a medida que redacta, como una validación de que los objetivos de aprendizaje esperados para esa tarea, se cumplan en base a diversas validaciones, como lo sería la revisión del código que resuelve el problema, entre otros.
 
 \subsection{Curso Introductorio de Programación}
 
-Un cursos introductorio de programación es, en general, el primer acercamiento de un estudiante a los conceptos fundamentales de la computación \cite{10.7717/peerj-cs.647}, éstos tienen como enfoque entregar, a los estudiantes, los conceptos fundamentales de las ciencias de la computación, y son a su vez, cursos con altos niveles de reprobación, que pese a lo crucial que son en la formación del estudiante y de los futuros programadores, aún tienen muchos aspectos por mejorar en el tiempo, tanto en las tareas que tienen, como otros aspectos \cite{10.1145/2591708.2591749}. También son conocidos en la literatura y en diversos currículos universitarios como CS0 \cite{cs0} y CS1 \cite{cs1}, siendo CS2, CS3 y los que siguen,cursos que siguen la temática de las ciencias de la computación, pero que ya no tienen un caracter introductorio. 
+Un cursos introductorio de programación es, en general, el primer acercamiento de un estudiante a los conceptos fundamentales de la computación \cite{10.7717/peerj-cs.647}, éstos tienen como enfoque entregar, a los estudiantes, los conceptos fundamentales de las ciencias de la computación, y son a su vez, cursos con altos niveles de reprobación, que pese a lo crucial que son en la formación del estudiante y de los futuros programadores, aún tienen muchos aspectos por mejorar en el tiempo, tanto en las tareas que tienen, como otros aspectos \cite{10.1145/2591708.2591749}. También son conocidos en la literatura y en diversos currículos universitarios como CS0 \cite{cs0} y CS1 \cite{cs1}, siendo CS2, CS3 y los que siguen,cursos que siguen la temática de las ciencias de la computación, pero que ya no tienen un caracter introductorio.
 
 \subsection{Tarea de Programación}
 
-Las tareas de programación son uno de los instrumentos con los cuales se evalúa, tanto los aprendizajes adquiridos de los estudiantes a lo largo del curso, como la puesta en práctica de los mismos. Generalmente constan de programar, sin embargo existen diversas adaptaciones según la forma en la que esté organizado el curso \cite{cs1}. Estas son el principal objeto de estudio de esta memoria, pues se busca lograr la elaboración de las mejores tareas posibles, en base al entendimiento del impacto que estas pueden tener en el estudiante, y en los indicadores de si una tarea es apropiada o no para llevarse a cabo en un curso introductorio de programación. 
+Las tareas de programación son uno de los instrumentos con los cuales se evalúa, tanto los aprendizajes adquiridos de los estudiantes a lo largo del curso, como la puesta en práctica de los mismos. Generalmente constan de programar, sin embargo existen diversas adaptaciones según la forma en la que esté organizado el curso \cite{cs1}. Estas son el principal objeto de estudio de esta memoria, pues se busca lograr la elaboración de las mejores tareas posibles, en base al entendimiento del impacto que estas pueden tener en el estudiante, y en los indicadores de si una tarea es apropiada o no para llevarse a cabo en un curso introductorio de programación.
 
 Diversos autores han abordado la elaboración y medición de tareas de calidad, enfocándose tanto en factores emocionales del estudiante \cite{10.1145/1839594.1839609, 10.1145/1227504.1227466, 10.5555/1968521.1968545, 10.1145/2526968.2526982}, como en aspectos particulares de cualquier tarea en sí \cite{texasU, 10.1145/2676723.2677276, 10.1145/1140124.1140167}. Y en general, siempre se destacan 3 aspectos principales:
 
@@ -321,7 +322,7 @@ Diversos autores han abordado la elaboración y medición de tareas de calidad, 
 Un estudio acerca de los factores que despiertan el interés e impulsan la elección de un estudiante en el desarrollo de una tarea, indica que en el caso del interés, los factores que más interés generan de una tarea son (en orden decreciente de importancia):
 
 \begin{itemize}
-    \item Que tenga gráficos 
+    \item Que tenga gráficos
     \item Que tenga alguna utilidad en el mundo real
     \item Que sea entretenida
     \item Que sea desafiante
@@ -337,7 +338,7 @@ Mientras que en los factores que llevarían a un estudiante a elegir desarrollar
     \item Que sea entretenida
     \item Que sea desafiante
     \item Que se relacione con algún hobby
-    \item Que tenga gráficos 
+    \item Que tenga gráficos
 \end{itemize}
 
 Estos factores se resumen en el siguiente gráfico (ver Figura \ref{elecciones})
@@ -355,27 +356,48 @@ La imperante necesidad de tener tareas nuevas cada semestre para un curso (pese 
 
 Sin embargo, la idea de tener tareas base motiva a investigar acerca de si es buena idea re-utilizar tareas, generando un pequeño banco de tareas de calidad, pero teniendo en cuenta que éstas deben ser del tipo \textit{Tweakable assignments} \cite{10.1145/3477429}, es decir, la mayoría de sus partes pueden re-utilizarse, a excepción de algunas que, en base a ciertas especificaciones, deben modificarse en la nueva tarea de modo tal que una solución a la tarea original, simplemente no funcione con la tarea nueva que se está elaborando, manteniendo así la calidad de la tarea original, y evitando llegar a aumentar las probabilidades de actos fraudulentos por parte de los estudiantes, quienes pueden hacerse de las soluciones de tareas anteriores \cite{10.1145/3013499.3013507}.
 
+\subsection{Métricas de Software}
+
+\subsubsection{Complejidad Ciclomática}
+
+\subsubsection{Métricas de Complejidad de Halstead}
+
 \newpage
 
 \secnumbersection{PROPUESTA DE SOLUCIÓN}
 
-Se debe desarrollar la solución propuesta. Los subcapítulos por poner aquí son propios del autor. Se sugiere mencionar metodología usada. Es conveniente incorporar figuras y tablas para aclarar la solución, que deben indicar el número de la figura, su nombre y su autor o fuente (si las diseñas tú, la fuente es ``Elaboración propia''). Ver ejemplos en esta página y en la siguiente.
+\subsection{Historias de Usuario}
+\subsection{Herramientas y Tecnologías a Utilizar}
+\subsubsection{WebAssembly}
+\subsubsection{Javascript}
+\subsubsection{Markdown}
+\subsubsection{GitHub}
+\subsubsection{GitHub Pages}
+\subsubsection{Multimetrics}
+\subsubsection{Pyodide}
+\subsubsection{React}
+\subsubsection{MaterialUI}
+\subsection{Arquitectura de la Solución}
+\subsubsection{Sistema de Software Autocontenido}
 
-Cabe mencionar que aquí está la esencia del trabajo en lo que se refiere al aporte creativo del memorista, es el momento de demostrar que usted es un destacado profesional que creó, diseñó y/o llevó a cabo la solución propuesta.
-
-\subsection{EJEMPLO DE COMO CITAR FIGURAS E ILUSTRACIONES}
-
-Se colocó una imagen que se puede referenciar también desde el texto (Ver figura \ref{fig:malla}).
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{malla_ingenieria_informatica}
-\caption{\label{fig:malla} Malla Curricular Ingeniería Civil Informática.} Fuente: Departamento de Informática.
-\end{figure}
+\subsection{Framework}
+\subsubsection{Metodología}
+\subsubsection{Redacción de una Tarea}
+\subsubsection{Cálculo de Métricas de una Solución}
+\subsubsection{Sugerencias}
+\subsubsection{Actualización de Métricas Semestrales}
+\subsubsection{Análisis de Métricas entre Semestres}
+\subsubsection{Comparación de Métricas entre Tareas de IWI-131}
 
 \newpage
 
 \secnumbersection{VALIDACIÓN DE LA SOLUCIÓN}
+
+\subsection{Validación de la Plataforma}
+\subsection{Validación del Framework}
+\subsubsection{Redacción de una Tarea con sus Respectivas Métricas}
+\subsubsection{Cálculo de Métricas para Tareas de IWI-131 del S2022-1 y S2022-2}
+\subsubsection{Comparación de las Tareas de IWI-131 del S2022-1 y S2022-2}
 
 Se debe validar la solución propuesta. Esto significa probar o demostrar que la solución propuesta es válida para el entorno donde fue planteada.
 
@@ -390,15 +412,15 @@ Se colocó una tabla que se puede referenciar también desde el texto (Ver tabla
     \caption{\label{table:coloquios} Coloquios del Ciclo de Charlas Informática.} Fuente: Elaboración Propia.
     \begin{tabular}{|p{7cm}|p{7cm}|}
         \hline
-        Título Coloquio & Presentador, País \\
+        Título Coloquio                                                                                                                            & Presentador, País                  \\
         \hline
-        ``Sensible, invisible, sometimes tolerant, heterogeneous, decentralized and interoperable... and we still need to assure its quality...''' & Guilherme Horta Travassos, Brasil.\\
+        ``Sensible, invisible, sometimes tolerant, heterogeneous, decentralized and interoperable... and we still need to assure its quality...''' & Guilherme Horta Travassos, Brasil. \\
         \hline
-        ``Dispersed Multiphase Flow Modeling: From Environmental to Industrial Applications''' & Orlando Ayala, EE.UU.\\
+        ``Dispersed Multiphase Flow Modeling: From Environmental to Industrial Applications'''                                                     & Orlando Ayala, EE.UU.              \\
         \hline
-        ``Líneas de Producto Software Dinámicas para Sistemas atentos el Contexto''' & Rafael Capilla, España.\\
+        ``Líneas de Producto Software Dinámicas para Sistemas atentos el Contexto'''                                                               & Rafael Capilla, España.            \\
         \hline
-        ... & ... \\
+        ...                                                                                                                                        & ...                                \\
         \hline
     \end{tabular}
 \end{table}
@@ -422,23 +444,23 @@ En los Anexos se incluye todo aquel material complementario que no es parte del 
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|c|}
-        \hline 
-        \textbf{Actividad} & \textbf{Tiempo [hrs]}\\
         \hline
-        Planificación & 3\\
+        \textbf{Actividad}      & \textbf{Tiempo [hrs]} \\
         \hline
-        Búsqueda de información & 10\\
+        Planificación           & 3                     \\
         \hline
-        Análisis & 25\\
+        Búsqueda de información & 10                    \\
         \hline
-        Desarrollo & 20\\
+        Análisis                & 25                    \\
         \hline
-        Edición & 2\\
+        Desarrollo              & 20                    \\
         \hline
-        \textbf{Total} & \textbf{60}\\
+        Edición                 & 2                     \\
+        \hline
+        \textbf{Total}          & \textbf{60}           \\
         \hline
     \end{tabular}
-    \label{tab:actividades} 
+    \label{tab:actividades}
     \caption{Tabla de Tiempos SCT.}
 \end{table}
 

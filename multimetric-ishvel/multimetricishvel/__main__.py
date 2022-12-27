@@ -129,7 +129,16 @@ def main():
         _result = m.get_results(_result, "files", "overall")
     if not _args.dump:
         # Output
-        print(json.dumps(_result, indent=2, sort_keys=True))
+        del _result["stats"]["mean"]["comment_ratio"]
+        del _result["stats"]["mean"]["fanout_external"]
+        del _result["stats"]["mean"]["fanout_internal"]
+        del _result["stats"]["mean"]["halstead_bugprop"]
+        del _result["stats"]["mean"]["loc"]
+        del _result["stats"]["mean"]["operands_sum"]
+        del _result["stats"]["mean"]["operands_uniq"]
+        del _result["stats"]["mean"]["operators_sum"]
+        del _result["stats"]["mean"]["operators_uniq"]
+        print(json.dumps(_result["stats"]["mean"], indent=2, sort_keys=True))
 
 
 if __name__ == '__main__':

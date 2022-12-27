@@ -1,26 +1,20 @@
 import React from 'react';
-import BulletList from '@tiptap/extension-bullet-list';
-import { mergeAttributes, Node } from '@tiptap/core';
-import StarterKit from '@tiptap/starter-kit';
 import '../atoms/SuggestionsArea.css';
-import {
-  Grid,
-  Container,
-  Card,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-} from '@mui/material';
+import { Grid } from '@mui/material';
 import Suggestion from '../molecules/Suggestion';
 import { useBearStore } from '../../core/services';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import TitlePaper from '../molecules/TitlePaper';
 
 const SuggestionsArea = () => {
   const suggestions = useBearStore((state) => state.suggestions);
   return (
-    <Grid container rowSpacing={{ xs: 1, sm: 2, md: 3 }} pt={3}>
+    <Grid container direction={'column'} spacing={2}>
+      <Grid item>
+        <TitlePaper Icon={AddTaskIcon} content={'Sugerencias'} />
+      </Grid>
       {suggestions.map(({ title, message, type, link }, i) => (
-        <Grid key={`suggestion-area-${i}`} item xs={12}>
+        <Grid key={`suggestion-area-${i}`} item>
           <Suggestion title={title} message={message} type={type} link={link} />
         </Grid>
       ))}

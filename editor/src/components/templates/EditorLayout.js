@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import { Container } from '@mui/material';
+import { useBearStore } from '../../core/services';
+import ChartsArea from '../organisms/ChartsArea';
 
 const drawerWidth = 240;
 
@@ -26,14 +26,8 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   })
 );
 
-const EditorLayout = ({
-  LeftSidebar,
-  Editor,
-  Suggestions,
-  Coding,
-  Metrics,
-}) => {
-  const theme = useTheme();
+const EditorLayout = ({ Editor, Suggestions, Coding, Metrics, Config }) => {
+  const showMetrics = useBearStore((state) => state.showMetrics);
   const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
@@ -45,23 +39,25 @@ const EditorLayout = ({
   };
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} pl={2} mt={1}>
       <Grid item xs={7}>
-        <Paper
-          sx={{
-            display: 'flex',
-            p: 2,
-            backgroundColor: 'background.paper',
-            minHeight: '100vh',
-          }}
-        >
-          <LeftSidebar open={open} handleDrawerClose={handleDrawerClose} />
-          <Main open={open}>
-            <Editor />
-          </Main>
-        </Paper>
+        {showMetrics ? (
+          <ChartsArea />
+        ) : (
+          <Paper
+            sx={{
+              display: 'flex',
+              backgroundColor: 'background.paper',
+              minHeight: '100vh',
+            }}
+          >
+            <Main open={open}>
+              <Editor />
+            </Main>
+          </Paper>
+        )}
       </Grid>
-      <Grid container item direction={'column'} xs={3}>
+      <Grid container item direction={'column'} spacing={2} xs={3}>
         <Grid item>
           <Coding />
         </Grid>
@@ -69,8 +65,13 @@ const EditorLayout = ({
           <Suggestions />
         </Grid>
       </Grid>
-      <Grid item xs={2}>
-        <Metrics />
+      <Grid container item direction={'column'} xs={2} pr={2}>
+        <Grid item>
+          <Config />
+        </Grid>
+        <Grid item>
+          <Metrics />
+        </Grid>
       </Grid>
     </Grid>
   );

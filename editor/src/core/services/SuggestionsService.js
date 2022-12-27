@@ -1,15 +1,18 @@
 import suggestions from '../data/suggestions';
 
 const SuggestionsService = (MetricsRepository) => {
-  const modules = ['comments', 'legibility', 'code'];
   const metricsRepository = MetricsRepository;
 
   const getInitialSuggestions = () => {
     return suggestions;
   };
 
-  const getCodeSuggestions = (content, metrics) => {
-    const oldMetrics = metricsRepository.getLatestMetrics(content);
+  const getCodeSuggestions = (semester, content, metrics, metricsType) => {
+    const oldMetrics = metricsRepository.getMetrics(
+      semester,
+      metricsType,
+      content
+    );
     const metricNames = ['hEffort', 'hDifficult', 'hTime', 'hVolume', 'cc'];
 
     const suggestions = metricNames.reduce((conflicts, metricName) => {
@@ -31,7 +34,7 @@ const SuggestionsService = (MetricsRepository) => {
       metricsHandlers[metricName](
         metrics[metricName],
         oldMetrics[metricName],
-        metricsRepository.getHistoricalMean(content)[metricName]
+        metricsRepository.getHistoricalMean('students', content)[metricName]
       )
     );
   };
@@ -43,7 +46,7 @@ const SuggestionsService = (MetricsRepository) => {
 
     const suggestion = {
       id: 'hEffort',
-      title: 'Esfuerzo de la Tarea',
+      title: 'Esfuerzo de la tarea',
       message,
       type: 'message',
       link: '',

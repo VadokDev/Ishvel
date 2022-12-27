@@ -20,7 +20,13 @@ const CodeService = () => {
 
   const getMetrics = (code) => {
     if (!isReady) {
-      return null;
+      return {
+        cc: 0,
+        hDifficult: 0,
+        hEffort: 0,
+        hTime: 0,
+        hVolume: 0,
+      };
     }
     const raw = pyodide.runPython(`
 metrics = calculator.calculate('''
