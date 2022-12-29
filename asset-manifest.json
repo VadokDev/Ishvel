@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Ishvel/static/css/main.9a564fa0.css",
-    "main.js": "/Ishvel/static/js/main.7c559f14.js",
+    "main.js": "/Ishvel/static/js/main.bc199d65.js",
     "static/js/787.70079b53.chunk.js": "/Ishvel/static/js/787.70079b53.chunk.js",
     "static/media/KaTeX_AMS-Regular.ttf": "/Ishvel/static/media/KaTeX_AMS-Regular.853be92419a6c3766b9a.ttf",
     "static/media/KaTeX_Main-Regular.ttf": "/Ishvel/static/media/KaTeX_Main-Regular.9eba1d77abcf2aa6e94e.ttf",
@@ -65,11 +65,11 @@
     "static/media/KaTeX_Size3-Regular.woff2": "/Ishvel/static/media/KaTeX_Size3-Regular.e1951519f6f0596f7356.woff2",
     "index.html": "/Ishvel/index.html",
     "main.9a564fa0.css.map": "/Ishvel/static/css/main.9a564fa0.css.map",
-    "main.7c559f14.js.map": "/Ishvel/static/js/main.7c559f14.js.map",
+    "main.bc199d65.js.map": "/Ishvel/static/js/main.bc199d65.js.map",
     "787.70079b53.chunk.js.map": "/Ishvel/static/js/787.70079b53.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9a564fa0.css",
-    "static/js/main.7c559f14.js"
+    "static/js/main.bc199d65.js"
   ]
 }
