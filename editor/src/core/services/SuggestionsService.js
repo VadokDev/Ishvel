@@ -8,6 +8,14 @@ const SuggestionsService = (MetricsRepository) => {
   };
 
   const getCodeSuggestions = (semester, content, metrics, metricsType) => {
+    const metricsConfig = {
+      hEffort: {},
+      hDifficult: {},
+      hTime: {},
+      hVolume: {},
+      cc: {},
+    };
+
     const oldMetrics = metricsRepository.getMetrics(
       semester,
       metricsType,

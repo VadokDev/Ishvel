@@ -13,7 +13,6 @@ import TitlePaper from '../molecules/TitlePaper';
 const programmingMetricsArray = [
   { name: 'Complejidad Ciclomática', metric: 'cc', color: 'primary' },
   { name: 'Esfuerzo', metric: 'hEffort', color: 'primary' },
-  { name: 'Dificultad', metric: 'hDifficult', color: 'secondary' },
   { name: 'Tiempo', metric: 'hTime', color: 'success' },
   { name: 'Volumen', metric: 'hVolume', color: 'warning' },
 ];
@@ -45,8 +44,8 @@ const ChartsArea = () => {
     },
     grid: {
       row: {
-        colors: ['#f3f3f3', 'transparent'],
-        opacity: 0.5,
+        colors: ['#002762', 'transparent'],
+        opacity: 0.3,
       },
     },
     xaxis: {
@@ -64,74 +63,47 @@ const ChartsArea = () => {
     },
   };
 
-  const chartsDataMapper =
-    (metrics) =>
-    ({ name, metric }) => ({
-      options: {
-        ...defaultOptions,
-        title: {
-          text: name,
-          align: 'left',
-        },
+  const chartsDataMapper = ({ name, metric }) => ({
+    options: {
+      ...defaultOptions,
+      title: {
+        text: name,
+        align: 'left',
       },
-      series: [
-        {
-          name,
-          data: metrics.map((metrics) => metrics[metric]),
-        },
-      ],
-    });
+    },
+    series: [
+      chartsDataSeriesMapper(studentsMetrics, 'Estudiantes')(metric),
+      chartsDataSeriesMapper(teachersMetrics, 'Profesores')(metric),
+    ],
+  });
 
-  const studentsChartsData = programmingMetricsArray.map(
-    chartsDataMapper(studentsMetrics)
-  );
-  const teachersChartsData = programmingMetricsArray.map(
-    chartsDataMapper(teachersMetrics)
-  );
+  const chartsDataSeriesMapper = (metrics, name) => (metric) => ({
+    name,
+    data: metrics.map((metrics) => metrics[metric]),
+  });
+
+  const chartsData = programmingMetricsArray.map(chartsDataMapper);
 
   return (
-    <Grid container spacing={2}>
-      <Grid item md={6}>
-        <Grid container direction={'column'} spacing={2}>
-          <Grid item>
-            <TitlePaper
-              Icon={SupervisedUserCircleIcon}
-              content={'Métricas estudiantes'}
-            />
-          </Grid>
-          {studentsChartsData.map((chart, i) => (
-            <Grid key={`chart-students-${i}`} item>
-              <Paper>
-                <ReactApexChart
-                  options={chart.options}
-                  series={chart.series}
-                  type='line'
-                />
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
+    <Grid container direction={'column'}>
+      <Grid item mb={2}>
+        <TitlePaper
+          Icon={SupervisedUserCircleIcon}
+          content={'Métricas históricas de estudiantes y profesores'}
+        />
       </Grid>
-      <Grid item md={6}>
-        <Grid container direction={'column'} spacing={2}>
-          <Grid item>
-            <TitlePaper
-              Icon={AccountCircleIcon}
-              content={'Métricas profesores'}
-            />
+      <Grid container spacing={2}>
+        {chartsData.map((chart, i) => (
+          <Grid key={`chart-students-${i}`} item md={6}>
+            <Paper>
+              <ReactApexChart
+                options={chart.options}
+                series={chart.series}
+                type='line'
+              />
+            </Paper>
           </Grid>
-          {teachersChartsData.map((chart, i) => (
-            <Grid key={`chart-teachers-${i}`} item>
-              <Paper>
-                <ReactApexChart
-                  options={chart.options}
-                  series={chart.series}
-                  type='line'
-                />
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
+        ))}
       </Grid>
     </Grid>
   );

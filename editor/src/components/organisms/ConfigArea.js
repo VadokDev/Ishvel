@@ -22,20 +22,18 @@ const contentNamesArray = [
 ];
 
 const ConfigArea = () => {
-  const {
-    semesters,
-    semester,
-    content,
-    code,
-    setContent,
-    setSemester,
-    setMetrics,
-    updateSuggestions,
-    setShowMetrics,
-    showMetrics,
-    metricsType,
-    setMetricsType,
-  } = useBearStore();
+  const semesters = useBearStore((state) => state.semesters);
+  const semester = useBearStore((state) => state.semester);
+  const content = useBearStore((state) => state.content);
+  const code = useBearStore((state) => state.code);
+  const setContent = useBearStore((state) => state.setContent);
+  const setSemester = useBearStore((state) => state.setSemester);
+  const setMetrics = useBearStore((state) => state.setMetrics);
+  const updateSuggestions = useBearStore((state) => state.updateSuggestions);
+  const setShowMetrics = useBearStore((state) => state.setShowMetrics);
+  const showMetrics = useBearStore((state) => state.showMetrics);
+  const metricsType = useBearStore((state) => state.metricsType);
+  const setMetricsType = useBearStore((state) => state.setMetricsType);
   return (
     <Grid container direction={'column'} rowSpacing={2}>
       <Grid item>

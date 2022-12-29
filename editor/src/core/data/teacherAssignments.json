@@ -2,119 +2,119 @@
   {
     "semester": "2022-1",
     "dicts": {
-      "cyclomatic_complexity": 16.606382978723403,
-      "halstead_difficulty": 32.95327674271824,
-      "halstead_effort": 101549.82027463707,
-      "halstead_timerequired": 5641.656681924281,
-      "halstead_volume": 2807.0412150047996
+      "cyclomatic_complexity": 16,
+      "halstead_difficulty": 30.877192982456137,
+      "halstead_effort": 225599.15355022228,
+      "halstead_timerequired": 12533.286308345683,
+      "halstead_volume": 7306.336222933336
     },
     "files": {
-      "cyclomatic_complexity": 22.919129082426128,
-      "halstead_difficulty": 89.25,
-      "halstead_effort": 973506.0843204439,
-      "halstead_timerequired": 54083.671351135774,
-      "halstead_volume": 11025.32143246294
+      "cyclomatic_complexity": 24,
+      "halstead_difficulty": 41.9375,
+      "halstead_effort": 144722.2937667214,
+      "halstead_timerequired": 8040.127431484523,
+      "halstead_volume": 3450.9041732750266
     },
     "lists": {
-      "cyclomatic_complexity": 18.552188552188554,
-      "halstead_difficulty": 41.92943995121092,
-      "halstead_effort": 278051.49354847043,
-      "halstead_timerequired": 15447.305197137246,
-      "halstead_volume": 6026.268400242025
+      "cyclomatic_complexity": 11,
+      "halstead_difficulty": 28.783783783783782,
+      "halstead_effort": 54474.63447406291,
+      "halstead_timerequired": 3026.3685818923836,
+      "halstead_volume": 1892.5459864228428
     },
     "functions": {
-      "cyclomatic_complexity": 29.190039318479684,
-      "halstead_difficulty": 49.171890208591904,
-      "halstead_effort": 270791.6525932884,
-      "halstead_timerequired": 15043.980699627133,
-      "halstead_volume": 3844.902858105459
+      "cyclomatic_complexity": 14,
+      "halstead_difficulty": 31.68181818181818,
+      "halstead_effort": 123973.79147648772,
+      "halstead_timerequired": 6887.432859804873,
+      "halstead_volume": 3913.0895444515495
     },
     "strings": {
-      "cyclomatic_complexity": 41.42784810126582,
-      "halstead_difficulty": 52.6700189468286,
-      "halstead_effort": 209657.74036565886,
-      "halstead_timerequired": 11647.652242536602,
-      "halstead_volume": 3424.1670423631936
+      "cyclomatic_complexity": 20,
+      "halstead_difficulty": 50.857142857142854,
+      "halstead_effort": 112022.92944337582,
+      "halstead_timerequired": 6223.496080187546,
+      "halstead_volume": 2202.6980508528954
     },
     "loops": {
-      "cyclomatic_complexity": 11.103286384976526,
-      "halstead_difficulty": 20.12606070825687,
-      "halstead_effort": 26607.457184445877,
-      "halstead_timerequired": 1478.1920658025488,
-      "halstead_volume": 1234.9942853239418
+      "cyclomatic_complexity": 16,
+      "halstead_difficulty": 37.104166666666664,
+      "halstead_effort": 58760.89747983935,
+      "halstead_timerequired": 3264.494304435519,
+      "halstead_volume": 1583.6738231512008
     },
     "conditionals": {
-      "cyclomatic_complexity": 38.960244648318046,
-      "halstead_difficulty": 37.17530320627523,
-      "halstead_effort": 494754.3795573199,
-      "halstead_timerequired": 27486.354419851108,
-      "halstead_volume": 3467.841037522441
+      "cyclomatic_complexity": 19,
+      "halstead_difficulty": 20.32258064516129,
+      "halstead_effort": 32010.509106301983,
+      "halstead_timerequired": 1778.3616170167768,
+      "halstead_volume": 1575.1202893577167
     },
     "sequential": {
-      "cyclomatic_complexity": 2.0,
-      "halstead_difficulty": 36.24925768120358,
-      "halstead_effort": 245707.91024898444,
-      "halstead_timerequired": 13650.439458276913,
-      "halstead_volume": 3790.8910712734883
+      "cyclomatic_complexity": 2,
+      "halstead_difficulty": 30.11764705882353,
+      "halstead_effort": 92245.4225660487,
+      "halstead_timerequired": 5124.745698113817,
+      "halstead_volume": 3062.836296138336
     }
   },
   {
     "semester": "2022-2",
     "dicts": {
-      "cyclomatic_complexity": 31.261168384879724,
-      "halstead_difficulty": 46.575836781567055,
-      "halstead_effort": 306826.4541136017,
-      "halstead_timerequired": 17045.91411742232,
-      "halstead_volume": 5592.79471554058
+      "cyclomatic_complexity": 17,
+      "halstead_difficulty": 44.36666666666667,
+      "halstead_effort": 152032.16753603518,
+      "halstead_timerequired": 8446.231529779732,
+      "halstead_volume": 3426.720530489147
     },
     "files": {
-      "cyclomatic_complexity": 16.811678832116787,
-      "halstead_difficulty": 37.58372071397139,
-      "halstead_effort": 197953.06968863303,
-      "halstead_timerequired": 10997.392760479612,
-      "halstead_volume": 4975.158330264793
+      "cyclomatic_complexity": 15,
+      "halstead_difficulty": 40.73684210526316,
+      "halstead_effort": 97468.19980974238,
+      "halstead_timerequired": 5414.899989430132,
+      "halstead_volume": 2392.630227887733
     },
     "lists": {
-      "cyclomatic_complexity": 10.480176211453745,
-      "halstead_difficulty": 26.610752216323565,
-      "halstead_effort": 72847.46303594965,
-      "halstead_timerequired": 4047.0812797749804,
-      "halstead_volume": 2734.5977681140917
+      "cyclomatic_complexity": 17,
+      "halstead_difficulty": 47.894230769230774,
+      "halstead_effort": 335350.1161373378,
+      "halstead_timerequired": 18630.56200762988,
+      "halstead_volume": 7001.88959612189
     },
     "functions": {
-      "cyclomatic_complexity": 26.166862514688603,
-      "halstead_difficulty": 44.729768155637586,
-      "halstead_effort": 284999.80508389574,
-      "halstead_timerequired": 15833.322504660873,
-      "halstead_volume": 3494.620710409723
+      "cyclomatic_complexity": 21,
+      "halstead_difficulty": 56.89655172413793,
+      "halstead_effort": 121074.44141439466,
+      "halstead_timerequired": 6726.357856355259,
+      "halstead_volume": 2127.975030919664
     },
     "strings": {
-      "cyclomatic_complexity": 18.78311965811966,
-      "halstead_difficulty": 45.05129645040722,
-      "halstead_effort": 325106.8910240731,
-      "halstead_timerequired": 18061.49394578184,
-      "halstead_volume": 5052.312758768944
+      "cyclomatic_complexity": 28,
+      "halstead_difficulty": 52.82608695652174,
+      "halstead_effort": 95089.02398217596,
+      "halstead_timerequired": 5282.723554565331,
+      "halstead_volume": 1800.0391371111498
     },
     "loops": {
-      "cyclomatic_complexity": 16.742349457058243,
-      "halstead_difficulty": 31.2463404066822,
-      "halstead_effort": 96358.58185838822,
-      "halstead_timerequired": 5353.254547688234,
-      "halstead_volume": 2615.8777207336534
+      "cyclomatic_complexity": 13,
+      "halstead_difficulty": 17.045454545454547,
+      "halstead_effort": 13721.59090909091,
+      "halstead_timerequired": 762.3106060606061,
+      "halstead_volume": 805.0
     },
     "conditionals": {
-      "cyclomatic_complexity": 52.39217470427661,
-      "halstead_difficulty": 56.16791620205247,
-      "halstead_effort": 744979.503425737,
-      "halstead_timerequired": 41387.75019031872,
-      "halstead_volume": 7350.069573924124
+      "cyclomatic_complexity": 24,
+      "halstead_difficulty": 22.78571428571429,
+      "halstead_effort": 33118.707832120774,
+      "halstead_timerequired": 1839.9282128955986,
+      "halstead_volume": 1453.4856101871185
     },
     "sequential": {
-      "cyclomatic_complexity": 2.15702479338843,
-      "halstead_difficulty": 20.60487251285086,
-      "halstead_effort": 143413.15203907722,
-      "halstead_timerequired": 7967.39733550429,
-      "halstead_volume": 4252.063816367248
+      "cyclomatic_complexity": 2,
+      "halstead_difficulty": 23.653846153846153,
+      "halstead_effort": 59711.84138271026,
+      "halstead_timerequired": 3317.324521261681,
+      "halstead_volume": 2524.4030503259623
     }
   }
 ]
