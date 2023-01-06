@@ -35,6 +35,8 @@ const ChartsArea = () => {
       zoom: {
         enabled: true,
       },
+      fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+      foreColor: '#fff',
     },
     dataLabels: {
       enabled: false,
@@ -42,7 +44,12 @@ const ChartsArea = () => {
     stroke: {
       curve: 'straight',
     },
+    tooltip: {
+      enabled: true,
+      theme: 'dark',
+    },
     grid: {
+      borderColor: 'rgba(255,255,255,0.3)',
       row: {
         colors: ['#002762', 'transparent'],
         opacity: 0.3,
@@ -53,11 +60,6 @@ const ChartsArea = () => {
     },
     yaxis: {
       labels: {
-        style: {
-          colors: ['#fff'],
-          fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-          cssClass: 'MuiTypography-body1',
-        },
         formatter: (val) => val.toFixed(2),
       },
     },
@@ -69,6 +71,11 @@ const ChartsArea = () => {
       title: {
         text: name,
         align: 'left',
+        style: {
+          color: '#fff',
+          fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+          cssClass: 'MuiTypography-body2',
+        },
       },
     },
     series: [

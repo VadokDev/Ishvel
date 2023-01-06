@@ -27,7 +27,7 @@ const useBearStore = create((set) => ({
   semester: metricsRepository.getSemesters().at(-1),
   code: '',
   metricsType: 'students',
-  showMetrics: false,
+  showMetrics: true,
   setShowMetrics: (showMetrics) => set((state) => ({ ...state, showMetrics })),
   setCode: (code) => set((state) => ({ ...state, code })),
   setSemester: (semester) => set((state) => ({ ...state, semester })),

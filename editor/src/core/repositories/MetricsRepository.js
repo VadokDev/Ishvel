@@ -83,11 +83,11 @@ const MetricsRepository = () => {
   const getAllMetricsByContent = (type, content) => {
     return storage[type].map((metric) => ({
       semester: metric.semester,
-      cc: metric[content].cyclomatic_complexity,
-      hDifficult: metric[content].halstead_difficulty,
-      hEffort: metric[content].halstead_effort,
-      hTime: metric[content].halstead_timerequired,
-      hVolume: metric[content].halstead_volume,
+      cc: metric[content]?.cyclomatic_complexity ?? 0,
+      hDifficult: metric[content]?.halstead_difficulty ?? 0,
+      hEffort: metric[content]?.halstead_effort ?? 0,
+      hTime: metric[content]?.halstead_timerequired ?? 0,
+      hVolume: metric[content]?.halstead_volume ?? 0,
     }));
   };
 
