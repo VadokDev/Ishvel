@@ -6,34 +6,25 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
-    "@grammarly/editor-sdk-react": "^1.5.1",
     "@mui/icons-material": "^5.4.2",
     "@mui/material": "^5.4.1",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
-    "@tiptap/extension-heading": "^2.0.0-beta.199",
-    "@tiptap/extension-image": "^2.0.0-beta.207",
-    "@tiptap/react": "^2.0.0-beta.108",
-    "@tiptap/starter-kit": "^2.0.0-beta.183",
     "@uiw/react-md-editor": "^3.19.8",
     "apexcharts": "^3.36.3",
-    "google-trends-api": "^4.9.2",
     "katex": "^0.16.4",
     "react": "^17.0.2",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^17.0.2",
-    "react-scripts": "5.0.1",
-    "react-swipeable-views": "^0.14.0",
-    "suneditor": "^2.44.3",
-    "suneditor-react": "^3.4.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.0",
     "zustand": "^4.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint . --fix",
     "predeploy": "npm run build",
@@ -43,6 +34,11 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ]
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "!node_modules/"
     ]
   },
   "browserslist": {

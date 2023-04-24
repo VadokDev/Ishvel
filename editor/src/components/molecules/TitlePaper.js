@@ -10,7 +10,7 @@ const TitlePaper = ({ Icon, content }) => {
           <Icon />
         </Grid>
         <Grid item>
-          <Typography pl={1} variant={'h6'} lineHeight={1}>
+          <Typography pl={1} variant={'h6'} lineHeight={1.25}>
             {content}
           </Typography>
         </Grid>

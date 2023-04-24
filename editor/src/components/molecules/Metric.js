@@ -4,21 +4,45 @@ import {
   CardActions,
   CardContent,
   LinearProgress,
+  Grid,
   Typography,
 } from '@mui/material';
 
-const Metric = ({ name, value, color }) => {
+import WarningIcon from '@mui/icons-material/Warning';
+import DangerousIcon from '@mui/icons-material/Dangerous';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+
+const iconByStatus = {
+  similar: CheckCircleIcon,
+  warning: WarningIcon,
+  danger: DangerousIcon,
+};
+
+const colorByStatus = {
+  similar: 'success',
+  warning: 'warning',
+  danger: 'danger',
+};
+
+const Metric = ({ name, value, status }) => {
+  const Icon = iconByStatus[status];
   return (
-    <Card sx={{ boxShadow: 0 }}>
-      <CardContent>
-        <Typography variant='body1'>{name}</Typography>
-        <Typography variant='body1'>{Math.round(value)}</Typography>
-        <LinearProgress variant='determinate' value={value} color={color} />
-      </CardContent>
-      <CardActions>
-        <Button size='small'>Ayuda</Button>
-      </CardActions>
-    </Card>
+    <Grid item>
+      <Card sx={{ boxShadow: 0 }}>
+        <Grid container>
+          <Grid item md={2}>
+            <Icon color={colorByStatus[status]} />
+          </Grid>
+          <Grid item md={8}>
+            <Typography pl={1}>{name}</Typography>
+          </Grid>
+          <Grid item md={2}>
+            <HelpOutlineIcon />
+          </Grid>
+        </Grid>
+      </Card>
+    </Grid>
   );
 };
 

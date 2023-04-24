@@ -4,7 +4,7 @@ const CodeService = () => {
 
   const init = async () => {
     pyodide = await window.loadPyodide({
-      indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.21.3/full/',
+      indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.23.1/full/',
       stdout: () => {},
     });
 

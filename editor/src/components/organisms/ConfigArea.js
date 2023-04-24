@@ -34,6 +34,7 @@ const ConfigArea = () => {
   const showMetrics = useBearStore((state) => state.showMetrics);
   const metricsType = useBearStore((state) => state.metricsType);
   const setMetricsType = useBearStore((state) => state.setMetricsType);
+
   return (
     <Grid container direction={'column'} rowSpacing={2}>
       <Grid item>
@@ -67,7 +68,6 @@ const ConfigArea = () => {
               <FormHelperText>Semestre a comparar</FormHelperText>
               <Select
                 labelId='demo-simple-select-helper-label2'
-                id='demo-simple-select-helper2'
                 value={semester}
                 onChange={(e) => {
                   setSemester(e.target.value);

@@ -1,9 +1,11 @@
 import studentAssignments from '../data/studentAssignments.json';
 import teacherAssignments from '../data/teacherAssignments.json';
+import comparisionIntervals from '../data/comparisionIntervals.json';
 
 const storage = {
   students: studentAssignments,
   teachers: teacherAssignments,
+  intervals: comparisionIntervals,
 };
 
 const MetricsRepository = () => {
@@ -56,6 +58,10 @@ const MetricsRepository = () => {
     return semesters;
   };
 
+  const getComparisionIntervalsByMetric = (metric) => {
+    return storage.intervals[metric];
+  };
+
   const getMetrics = (semester, metricsType, content) => {
     const data = storage[metricsType]?.find(
       ({ semester: sem }) => semester === sem
@@ -97,6 +103,7 @@ const MetricsRepository = () => {
     getSemesters,
     getMetrics,
     getAllMetricsByContent,
+    getComparisionIntervalsByMetric,
   };
 };
 

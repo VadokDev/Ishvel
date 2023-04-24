@@ -41,21 +41,7 @@ const EditorLayout = ({ Editor, Suggestions, Coding, Metrics, Config }) => {
   return (
     <Grid container spacing={2} pl={2} mt={1}>
       <Grid item xs={7}>
-        {showMetrics ? (
-          <ChartsArea />
-        ) : (
-          <Paper
-            sx={{
-              display: 'flex',
-              backgroundColor: 'background.paper',
-              minHeight: '100vh',
-            }}
-          >
-            <Main open={open}>
-              <Editor />
-            </Main>
-          </Paper>
-        )}
+        {showMetrics ? <ChartsArea /> : <Editor />}
       </Grid>
       <Grid container item direction={'column'} spacing={2} xs={3}>
         <Grid item>

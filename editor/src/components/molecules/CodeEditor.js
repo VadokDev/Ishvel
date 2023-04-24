@@ -5,9 +5,12 @@ import { useBearStore, codeService } from '../../core/services';
 const CodeEditor = () => {
   const { setMetrics, updateSuggestions, code, setCode } = useBearStore();
   const handleChange = (e) => {
-    setCode(e.target.value);
-    setMetrics(codeService.getMetrics(e.target.value));
-    updateSuggestions();
+    const solutionCode = e.target.value;
+    const metrics = codeService.getMetrics(solutionCode);
+
+    setCode(solutionCode);
+    setMetrics(metrics);
+    //updateSuggestions();
   };
   return (
     <Card>
