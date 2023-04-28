@@ -109,6 +109,13 @@ describe('Complexity Service Test Suite', () => {
       },
     };
 
+    const expectedComplexities = {
+      cc: 2,
+      hDifficult: 2,
+      hEffort: 1,
+      hVolume: 2,
+      average: 2,
+    };
     const metricsRepositoryMock = {
       getComparisionIntervalsByMetric: (metric) =>
         comparisionIntervalsMock[metric],
@@ -119,6 +126,6 @@ describe('Complexity Service Test Suite', () => {
       metricsMock,
       oldMetricsMock
     );
-    expect(complexity).toBe(2);
+    expect(complexity).toStrictEqual(expectedComplexities);
   });
 });

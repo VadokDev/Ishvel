@@ -52,7 +52,12 @@ const EditorArea = () => {
   return (
     <Grid container direction={'column'} rowSpacing={{ xs: 1, sm: 2, md: 2 }}>
       <Grid item>
-        <TitlePaper Icon={CodeIcon} content={'Resolver tarea'} />
+        <TitlePaper
+          Icon={CodeIcon}
+          content={'Resolver tarea'}
+          showMetricsButton
+          showDownloadButton
+        />
       </Grid>
 
       <Grid item>

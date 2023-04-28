@@ -2,35 +2,32 @@ const ActionsService = (MetricsRepository, ComplexityService) => {
   const metricsRepository = MetricsRepository;
   const complexityService = ComplexityService;
 
-  const setSemester = (semester) => (state) => {
+  const updateWithComplexities = (attribute, value) => (state) => {
     if (state.code === '') {
-      return { ...state, semester };
+      return { ...state, [attribute]: value };
     }
 
     const metrics = state.metrics;
-    const oldMetrics = metricsRepository.getMetrics(
-      semester,
-      state.metricsType,
-      state.content
-    );
+    const paramsMapper = {
+      semester: [value, state.metricsType, state.content],
+      metricsType: [state.semester, value, state.content],
+      content: [state.semester, state.metricsType, value],
+    };
 
+    const oldMetrics = metricsRepository.getMetrics(...paramsMapper[attribute]);
     const complexities = complexityService.getSolutionComplexity(
       metrics,
       oldMetrics
     );
 
-    return { ...state, semester, complexities };
+    return { ...state, [attribute]: value, complexities };
   };
 
-  const setContent = (content) => (state) => {
-    if (state.code === '') {
-      return { ...state, content };
-    }
-
-    const metrics = state.metrics;
+  const updateSolution = (code, metrics) => (state) => {
+    const { semester, metricsType, content } = state;
     const oldMetrics = metricsRepository.getMetrics(
-      state.semester,
-      state.metricsType,
+      semester,
+      metricsType,
       content
     );
 
@@ -39,10 +36,10 @@ const ActionsService = (MetricsRepository, ComplexityService) => {
       oldMetrics
     );
 
-    return { ...state, content, complexities };
+    return { ...state, code, metrics, complexities };
   };
 
-  return { setSemester, setContent };
+  return { updateWithComplexities, updateSolution };
 };
 
 export { ActionsService };

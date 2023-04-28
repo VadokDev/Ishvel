@@ -36,13 +36,20 @@ const ComplexityService = (MetricsRepository) => {
 
   const getSolutionComplexity = (metrics, oldMetrics) => {
     const porcentualDifferences = getPorcentualDifferences(metrics, oldMetrics);
-    const complexity = Object.entries(porcentualDifferences).reduce(
-      (acc, [metric, value], _, arr) =>
-        acc + getSolutionComplexityByMetric(value, metric) / arr.length,
+    const complexities = Object.entries(porcentualDifferences).reduce(
+      (res, [metric, value]) => ({
+        ...res,
+        [metric]: getSolutionComplexityByMetric(value, metric),
+      }),
+      {}
+    );
+    const average = Object.values(complexities).reduce(
+      (acc, value, _, arr) => acc + value / arr.length,
       0
     );
 
-    return Math.round(complexity);
+    complexities.average = Math.round(average);
+    return complexities;
   };
 
   return {

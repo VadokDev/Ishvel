@@ -1,6 +1,5 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import { useBearStore, codeService } from '../../core/services';
 import MenuItem from '@mui/material/MenuItem';
 import FormHelperText from '@mui/material/FormHelperText';
@@ -30,8 +29,6 @@ const ConfigArea = () => {
   const setSemester = useBearStore((state) => state.setSemester);
   const setMetrics = useBearStore((state) => state.setMetrics);
   const updateSuggestions = useBearStore((state) => state.updateSuggestions);
-  const setShowMetrics = useBearStore((state) => state.setShowMetrics);
-  const showMetrics = useBearStore((state) => state.showMetrics);
   const metricsType = useBearStore((state) => state.metricsType);
   const setMetricsType = useBearStore((state) => state.setMetricsType);
 
@@ -100,20 +97,6 @@ const ConfigArea = () => {
             </FormControl>
           </Grid>
         </Grid>
-      </Grid>
-      <Grid item container justifyContent={'center'}>
-        <Button
-          variant='contained'
-          fullWidth
-          onClick={() => setShowMetrics(showMetrics ? false : true)}
-        >
-          {showMetrics ? 'Volver al editor' : 'Ver métricas históricas'}
-        </Button>
-      </Grid>
-      <Grid item container justifyContent={'center'}>
-        <Button variant='contained' fullWidth>
-          Descargar tarea
-        </Button>
       </Grid>
     </Grid>
   );

@@ -39,10 +39,16 @@ const useBearStore = create((set) => ({
     set((state) => ({ ...state, metrics, complexities })),
   setShowMetrics: (showMetrics) => set((state) => ({ ...state, showMetrics })),
   setCode: (code) => set((state) => ({ ...state, code })),
-  setSemester: (semester) => set(actionsService.setSemester(semester)),
-  setContent: (content) => set((state) => ({ ...state, content })),
+  updateSolution: (code, metrics) =>
+    set(actionsService.updateSolution(code, metrics)),
+  setSemester: (semester) =>
+    set(actionsService.updateWithComplexities('semester', semester)),
+  setContent: (content) =>
+    set(actionsService.updateWithComplexities('content', content)),
+  setMetricsType: (metricsType) =>
+    set(actionsService.updateWithComplexities('metricsType', metricsType)),
   setMetrics: (metrics) => set((state) => ({ ...state, metrics })),
-  setMetricsType: (metricsType) => set((state) => ({ ...state, metricsType })),
+
   updateSuggestions: () =>
     set((state) => ({
       suggestions: suggestionsService.getCodeSuggestions(

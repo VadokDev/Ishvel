@@ -3,14 +3,16 @@ import TextField from '@mui/material/TextField';
 import { useBearStore, codeService } from '../../core/services';
 
 const CodeEditor = () => {
-  const { setMetrics, updateSuggestions, code, setCode } = useBearStore();
+  const { updateSolution, code, setCode } = useBearStore();
   const handleChange = (e) => {
     const solutionCode = e.target.value;
-    const metrics = codeService.getMetrics(solutionCode);
+    if (solutionCode === '') {
+      setCode('');
+      return;
+    }
 
-    setCode(solutionCode);
-    setMetrics(metrics);
-    //updateSuggestions();
+    const metrics = codeService.getMetrics(solutionCode);
+    updateSolution(solutionCode, metrics);
   };
   return (
     <Card>

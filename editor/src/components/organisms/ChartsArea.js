@@ -96,7 +96,8 @@ const ChartsArea = () => {
       <Grid item mb={2}>
         <TitlePaper
           Icon={SupervisedUserCircleIcon}
-          content={'Métricas históricas de estudiantes y profesores'}
+          content={'Métricas históricas'}
+          showEditorButton
         />
       </Grid>
       <Grid container spacing={2}>

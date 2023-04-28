@@ -1,9 +1,14 @@
 \documentclass[letterpaper,12pt]{article}
 
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
 % VALORES A MODIFICAR POR USTED:
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
-
+\usepackage{multirow}
 % NOTE: Leer nota en el README sobre la font.
 
 \newcommand{\titulo}{Ishvel: un Framework para la Elaboración de Tareas en Cursos Introductorios de Programación}
@@ -181,11 +186,11 @@ Create assignments, framework, introductory programming course, education
 \secnumberlesssection{GLOSARIO}
 
 \begin{itemize}
-    \item DI: Departamento de Informática.
-    \item IWI-131: Sigla del curso de programación de la UTFSM.
-    \item LMS: Sistema de Gestión del Aprendizaje (por sus siglas en inglés, Learning Management System)
-    \item UTFSM: Universidad Técnica Federico Santa María.
-    \item S20XX-X: Semestre lectivo 20XX-X (Ejemplo: S2022-1 corresponde al primer semestre del 2022).
+  \item DI: Departamento de Informática.
+  \item IWI-131: Sigla del curso de programación de la UTFSM.
+  \item LMS: Sistema de Gestión del Aprendizaje (por sus siglas en inglés, Learning Management System)
+  \item UTFSM: Universidad Técnica Federico Santa María.
+  \item S20XX-X: Semestre lectivo 20XX-X (Ejemplo: S2022-1 corresponde al primer semestre del 2022).
 \end{itemize}
 
 \newpage
@@ -221,10 +226,10 @@ Los cursos introductorios de programación son, en general, el primer acercamien
 En la Universidad Técnica Federico Santa María (UTFSM), se dicta un curso introductorio de programación a lo largo de todos sus campus. Este recibe de forma masiva a todos los estudiantes de primer año de ingeniería, y se dicta de igual forma independiente del campus o carrera del estudiante. El curso, que se lleva a cabo de forma online, está dividido en Unidades Virtuales de Aprendizaje (UVA), las cuales estructuran las actividades de cada semana (ver Figura \ref{modeloiwi}), y su diseño se basa en el alineamiento constructivista \cite{book}. Este último plantea la necesidad de que las evaluaciones del curso reflejen los objetivos de aprendizaje del mismo y, que a su vez, sean estos los que definan las actividades y tareas a realizar. Esto brinda a las tareas un rol tanto formativo como sumativo de evaluar, y requiere que estas cumplan ciertos estándares para justificar que cumplen con los objetivos de aprendizaje \cite{book}.
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{uva.png}
-    \caption{Modelo Formativo IWI-131. Fuente: Reglas del curso de programación de la UTFSM (2021-2).}
-    \label{modeloiwi}
+  \centering
+  \includegraphics[width=1\textwidth]{uva.png}
+  \caption{Modelo Formativo IWI-131. Fuente: Reglas del curso de programación de la UTFSM (2021-2).}
+  \label{modeloiwi}
 \end{figure}
 
 Sin embargo, pese a que el curso cuenta con una gran cantidad de profesores, no son más de 5 los que se encargan de proponer tareas a la coordinación. Y, dado que cada semana se requiere una nueva tarea para la UVA en curso, se vuelve complicado elaborar tareas de calidad a tiempo, que cumplan con el alineamiento constructivista del curso, y que cuya resolución no requiera más tiempo que el estipulado en la UVA. Además, la elaboración de tareas se lleva a cabo sin métricas que permitan medir la calidad de cada una, o una metodología de elaboración de tareas que garantice la calidad de las mismas en el tiempo.
@@ -232,10 +237,10 @@ Sin embargo, pese a que el curso cuenta con una gran cantidad de profesores, no 
 Entre los problemas que puede conllevar el uso de tareas que no son de calidad, se encuentran:
 
 \begin{itemize}
-    \item Pérdida del interés en aprender a programar \cite{10.1145/1227504.1227466}, de modo tal que el estudiante deje de ver el ramo como un curso de aprendizaje, y su actitud hacia él sea nétamente para aprobar.
-    \item Frustración a lo largo del ramo, al punto en que el estudiante puede decidir desertar del curso y de la programación en general \cite{10.1145/2526968.2526982}.
-    \item Aumentar las probabilidades de que los estudiantes realicen actos que falten a la honestidad académica para resolverla \cite{10.1145/3013499.3013507}.
-    \item Complicar la elaboración de la rúbrica con la cual la tarea será evaluada, lo que puede conllevar a entregar un feedback menos valioso al estudiante
+  \item Pérdida del interés en aprender a programar \cite{10.1145/1227504.1227466}, de modo tal que el estudiante deje de ver el ramo como un curso de aprendizaje, y su actitud hacia él sea nétamente para aprobar.
+  \item Frustración a lo largo del ramo, al punto en que el estudiante puede decidir desertar del curso y de la programación en general \cite{10.1145/2526968.2526982}.
+  \item Aumentar las probabilidades de que los estudiantes realicen actos que falten a la honestidad académica para resolverla \cite{10.1145/3013499.3013507}.
+  \item Complicar la elaboración de la rúbrica con la cual la tarea será evaluada, lo que puede conllevar a entregar un feedback menos valioso al estudiante
 \end{itemize}
 
 Es por esto que se requiere de un marco de trabajo que permita elaborar tareas de calidad, el cual brinde tanto una metodología como herramientas que faciliten a los profesores esta labor, ahorrándoles tiempo y garantizando a los estudiantes del curso una mejor experiencia de aprendizaje.
@@ -249,17 +254,17 @@ El objetivo general de esta memoria consiste en desarrollar un framework para la
 Con el fin de lograr el objetivo general de esta memoria, se definen los siguientes como objetivos específicos de la misma:
 
 \begin{itemize}
-    \item Identificar y definir criterios que puedan ser usados para evaluar una tarea.
-    \item Definir una métrica que permita evaluar una tarea de acuerdo al cumplimiento de criterios.
-    \item Definir una metodología para la elaboración de tareas utilizando el framework Ishvel.
-    \item Validar cómo la aplicación de la metodología definida elabora mejores tareas.
+  \item Identificar y definir criterios que puedan ser usados para evaluar una tarea.
+  \item Definir una métrica que permita evaluar una tarea de acuerdo al cumplimiento de criterios.
+  \item Definir una metodología para la elaboración de tareas utilizando el framework Ishvel.
+  \item Validar cómo la aplicación de la metodología definida elabora mejores tareas.
 \end{itemize}
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{arbolito.png}
-    \caption{Árbol del Problema. Fuente: Elaboración propia.}
-    \label{arbolito}
+  \centering
+  \includegraphics[width=1\textwidth]{arbolito.png}
+  \caption{Árbol del Problema.} Fuente: Elaboración propia.
+  \label{arbolito}
 \end{figure}
 
 \newpage
@@ -284,19 +289,19 @@ En el contexto de apoyar la labor de enseñar, los frameworks de este dominio ap
 Por otro lado, al ser la enseñanza un dominio tan estudiado, existen muchos patrones que abordan diversas formas de resolver los problemas que ésta conlleva \cite{elearn}. Esta realidad ha impulsado enfoques que complementen los Sistemas de Gestión del Aprendizaje (LMS) con frameworks que recopilen patrones que apoyen la enseñanza, de este modo, si ya se cuenta con un curso cuya gestión es a través de un LMS como Moodle, entonces se puede implementar un framework sobre el LMS que permita integrar patrones adecuados para el desarrollo del curso (ver Figura \ref{patronlms}).
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{patronlms.png}
-    \caption{Implementación de los patrones de un framework en un LMS \cite{elearn}}
-    \label{patronlms}
+  \centering
+  \includegraphics[width=1\textwidth]{patronlms.png}
+  \caption{Implementación de los patrones de un framework en un LMS \cite{elearn}}
+  \label{patronlms}
 \end{figure}
 
 Sin embargo, también existen enfoques donde el framework permite al profesor adaptar un conjunto de patrones, los cuales son seleccionados en base a la metodología de trabajo que el framework propone, para luego así hacer uso de ellos en la organización de un curso de manera controlada, lo cual garantiza que la metodología validada del framework se lleve a cabo de la manera más prolija. Ejemplo de esto es la interfaz del manejador de patrones de la herramienta CEWebS \cite{Mangler04cewebs} (ver Figura \ref{ceweb}).
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{ceweb.png}
-    \caption{Pantalla principal de la interfaz de usuario de Patman (abreviación de \textit{pattern manager}) \cite{Mangler04cewebs}}
-    \label{ceweb}
+  \centering
+  \includegraphics[width=1\textwidth]{ceweb.png}
+  \caption{Pantalla principal de la interfaz de usuario de Patman (abreviación de \textit{pattern manager}) \cite{Mangler04cewebs}}
+  \label{ceweb}
 \end{figure}
 
 Este último es la clase de framework que se implementará a lo largo de esta memoria, adaptándolo para la implementación de patrones adecuados y una metodología para la elaboración de tareas, de modo tal que guíe al profesor durante su uso, y garantice que éste siga una metodología adecuada para la tarea que está elaborando en el curso. Brindándole métricas de utilidad a medida que redacta, como una validación de que los objetivos de aprendizaje esperados para esa tarea, se cumplan en base a diversas validaciones, como lo sería la revisión del código que resuelve el problema, entre otros.
@@ -312,9 +317,9 @@ Las tareas de programación son uno de los instrumentos con los cuales se evalú
 Diversos autores han abordado la elaboración y medición de tareas de calidad, enfocándose tanto en factores emocionales del estudiante \cite{10.1145/1839594.1839609, 10.1145/1227504.1227466, 10.5555/1968521.1968545, 10.1145/2526968.2526982}, como en aspectos particulares de cualquier tarea en sí \cite{texasU, 10.1145/2676723.2677276, 10.1145/1140124.1140167}. Y en general, siempre se destacan 3 aspectos principales:
 
 \begin{itemize}
-    \item Las tareas deben tener alguna aplicación real, o bien, resolver un problema real que le dé sentido al tiempo que el estudiante invertirá en resolverla.
-    \item Las tareas deben ser interesantes, un problema puede expresarse utilizando un contexto de la actualidad, de lo que los estudiantes en general considerarían interesante como lo son sus bandas, juegos, tendencias, etc.
-    \item Las tareas deben tener un nivel de dificultad adecuado, ni muy difíciles como para frustrar al estudiante, ni muy fáciles como para no cumplir con los objetivos de aprendizaje de la misma.
+  \item Las tareas deben tener alguna aplicación real, o bien, resolver un problema real que le dé sentido al tiempo que el estudiante invertirá en resolverla.
+  \item Las tareas deben ser interesantes, un problema puede expresarse utilizando un contexto de la actualidad, de lo que los estudiantes en general considerarían interesante como lo son sus bandas, juegos, tendencias, etc.
+  \item Las tareas deben tener un nivel de dificultad adecuado, ni muy difíciles como para frustrar al estudiante, ni muy fáciles como para no cumplir con los objetivos de aprendizaje de la misma.
 \end{itemize}
 
 \subsubsection{Factores de Importancia en una Tarea de Programación}
@@ -322,32 +327,32 @@ Diversos autores han abordado la elaboración y medición de tareas de calidad, 
 Un estudio acerca de los factores que despiertan el interés e impulsan la elección de un estudiante en el desarrollo de una tarea, indica que en el caso del interés, los factores que más interés generan de una tarea son (en orden decreciente de importancia):
 
 \begin{itemize}
-    \item Que tenga gráficos
-    \item Que tenga alguna utilidad en el mundo real
-    \item Que sea entretenida
-    \item Que sea desafiante
-    \item Que sea fácil
-    \item Que se relacione con algún hobby
+  \item Que tenga gráficos
+  \item Que tenga alguna utilidad en el mundo real
+  \item Que sea entretenida
+  \item Que sea desafiante
+  \item Que sea fácil
+  \item Que se relacione con algún hobby
 \end{itemize}
 
 Mientras que en los factores que llevarían a un estudiante a elegir desarrollar una tarea por sobre otra, se encuentran (en orden decreciente de importancia):
 
 \begin{itemize}
-    \item Que sea fácil
-    \item Que tenga alguna utilidad en el mundo real
-    \item Que sea entretenida
-    \item Que sea desafiante
-    \item Que se relacione con algún hobby
-    \item Que tenga gráficos
+  \item Que sea fácil
+  \item Que tenga alguna utilidad en el mundo real
+  \item Que sea entretenida
+  \item Que sea desafiante
+  \item Que se relacione con algún hobby
+  \item Que tenga gráficos
 \end{itemize}
 
 Estos factores se resumen en el siguiente gráfico (ver Figura \ref{elecciones})
 
 \begin{figure}[H]
-    \centering
-    \includegraphics[width=1\textwidth]{elecciones.png}
-    \caption{Nivel de importancia de los factores de una tarea, asignado por los mismos estudiantes según si les genera interés, o si les haría elegir desarrollar esa tarea por sobre otra \cite{10.5555/1968521.1968545}}
-    \label{elecciones}
+  \centering
+  \includegraphics[width=1\textwidth]{elecciones.png}
+  \caption{Nivel de importancia de los factores de una tarea, asignado por los mismos estudiantes según si les genera interés, o si les haría elegir desarrollar esa tarea por sobre otra \cite{10.5555/1968521.1968545}}
+  \label{elecciones}
 \end{figure}
 
 \subsubsection{Reutilización de Tareas de Programación}
@@ -358,9 +363,154 @@ Sin embargo, la idea de tener tareas base motiva a investigar acerca de si es bu
 
 \subsection{Métricas de Software}
 
-\subsubsection{Complejidad Ciclomática}
+Las métricas de software son valores computados con el objetivo de evaluar ciertas características del software desarrollado\cite{1702275}. Existen diversas métricas de software las cuales se concentran en distintos aspectos del mismo, a continuación se explican las más relevantes para esta investigación.
 
-\subsubsection{Métricas de Complejidad de Halstead}
+\subsection{Complejidad Ciclomática}
+
+La complejidad ciclomática es una métrica de software creada por Thomas McCabe, la cual mide el número de caminos linealmente independientes a través de una porción de código\cite{7725232}. Hoy en día es una de las métricas más utilizadas en la industria para determinar la complejidad de entender y mantener un código, así como también la probabilidad de que éste tenga defectos. Un alto valor de esta métrica implica una densidad de defectos a lo largo de él, así como también, da cuenta de la cantidad de decisiones distintas que el programa debe tomar, y por tanto, lo complejo que es entender el problema subyacente que se intenta resolver.
+
+La complejidad ciclomática de un programa se calcula mediante su grafo de ejecución, donde cada línea de código corresponde a un nodo del grafo, y cada nodo tendrá una arista hacia el nodo que sigue inmediatamente según la línea de ejecución del código. Una vez que está hecho el grafo de ejecución, la fórmula para la complejidad ciclomática es:
+
+\begin{equation}
+  CC = E - N + 2P
+\end{equation}
+
+Donde:
+
+\begin{itemize}
+  \item $CC$: Complejidad Ciclomática
+  \item $E$: Cantidad de aristas del grafo de ejecución
+  \item $N$: Cantidad de nodos del grafo de ejecución
+  \item $P$: Cantidad de componentes conexas del grafo
+\end{itemize}
+
+\subsection{Métricas de Halstead}
+
+Maurice H. Halstead propuso una serie de métricas de software en su libro ``Elements of Software Science'' \cite{10.5555/540137}, las cuales buscaban predecir de manera experimental como el hecho de escribir código también es una ciencia governada por leyes naturales. No obstante, en el futuro se realizaron experimentos que demuestran que el trabajo propuesto no representa realmente ninguna ley natural \cite{10.5555/800254.807762}, aún así, éstas métricas han sido ampliamente utilizadas en la industria para medir la mantenibilidad de su software.
+
+Halstead inicia su obra definidiendo los siguientes parámetros para la implementación en código de cualquier algoritmo:
+
+\begin{itemize}
+  \item $\eta_{1}$: Número de \textit{operadores} únicos que aparecen en la implementación
+  \item $\eta_{2}$: Número de \textit{operandos} únicos que aparecen en la implementación
+  \item $N_{1}$: Uso total de todos los \textit{operadores} que aparecen en la implementación
+  \item $N_{2}$: Uso total de todos los \textit{operandos} que aparecen en la implementación
+  \item $f_{1,j}$: Número de ocurrencias del $j$-ésimo \textit{operador} más frecuente en la implementación, donde $j = 1, 2, ..., \eta_{1}$
+  \item $f_{2,j}$: Número de ocurrencias del $j$-ésimo \textit{operando} más frecuente en la implementación, donde $j = 1, 2, ..., \eta_{2}$
+\end{itemize}
+
+De estos parámetros, se definen el vocabulario $\eta$ de la implementación como:
+\begin{equation*}
+  \eta = \eta_{1} + \eta_{2}
+\end{equation*}
+Y el largo $N$ de la implementación como:
+\begin{equation*}
+  N = N_{1} + N_{2}
+\end{equation*}
+Basado en esto, Halstead plantea las siguientes métricas:
+
+\subsubsection{Volumen de un Programa}
+
+Una característica importante de la implementación de cualquier algoritmo es su tamaño, sin embargo, a medida que la implementación de éste es traducida de un lenguaje de programación a otro, su tamaño cambia. Por lo tanto, una métrica de tamaño que sólo considere la cantidad de caracteres de la implementación, no será suficientemente objetiva dado la diferencia de caracteres que pueden tener operandos u operadores similares en lenguajes de programación distintos.
+
+Para abordar este problema, se debe notar que para cualquier implementación, existe un mínimo largo absoluto con el cual se puede representar el operador u operando más largo utilizado, éste mínimo es la representación en bits del mismo. El largo dependerá sólo de la cantidad de elementos en el vocabulacio del programa, es decir, $\eta$. Por ejemplo, para $\eta = 8$ se requieren sólo 3 bits con los cuales se puedan representar todos los elementos del vocabulario, y a modo general, se requieren $\log_{2}\eta$ bits para representar en su largo mínimo cualquiera de los elementos de un programa.
+
+Esta interpretación nos entrega una dimensión en bits del volumen de cualquier programa, y permite medir el tamaño de cualquier implementación para cualquier algoritmo definiendo el \textit{volumen} $V$ como:
+\begin{equation}
+  V = N\log_{2}\eta
+\end{equation}
+\subsubsection{Volumen Potencial}
+
+Dado que al traducir la implementación de un algoritmo de un lenguaje a otro, implicará un cambio en el volumen del programa, se requiere otra métrica que de cuenta de la mínima forma en la que se puede expresar un algoritmo. Por ejemplo, si un lenguaje de programación ya cuenta con la subrutina o procedimiento que implementa un algoritmo, sólo se requiere llamarla y entregarle los parámetros correspondientes.
+
+Para este caso, si se denotan los parámetros en su forma mínima absoluta, se puede definir que la mínima forma de implementación de cualquier algoritmo, nombrado de ahora en adelante como \textit{volumen potencial V*}, es:
+\begin{equation}
+  \label{eqn:potentialVolume}
+  V^{*} = (N_{1}^{*} + N_{2}^{*}) \cdot \log_{2}(\eta_{1}^{*} + \eta_{2}^{*})
+\end{equation}
+Donde:
+\begin{itemize}
+  \item $V^{*}$: Volumen potencial
+  \item $N_{1}^{*}$: Mínimo uso total de operadores de la implementación
+  \item $N_{2}^{*}$: Mínimo uso total de operandos de la implementación
+  \item $\eta_{1}^{*}$: Mínima cantidad de operadores únicos de la implementación
+  \item $\eta_{2}^{*}$: Mínima cantidad de operandos únicos de la implementación
+\end{itemize}
+Dado que en la forma mínima, no se requiere repetición de operandos ni operadores, entonces:
+\begin{equation*}
+  N_{1}^{*} = \eta_{1}^{*}
+\end{equation*}
+\begin{equation*}
+  N_{2}^{*} = \eta_{2}^{*}
+\end{equation*}
+Además, según lo planteado anteriormente, el mínimo número de operadores a utilizar serán sólo un operador para invocar a la subrutina o procedimiento, y otro para almacenar el resultado de la misma, por lo tanto:
+\begin{equation*}
+  \eta_{1}^{*} = 2
+\end{equation*}
+Con esto la ecuación \ref{eqn:potentialVolume} queda como:
+\begin{equation}
+  V^{*} = (2 + \eta_{2}^{*}) \cdot \log_{2}(2 + \eta_{2}^{*})
+\end{equation}
+Donde $\eta_{2}^{*}$ debería representar el número de distintos parámetros de input y output de la subrutina o procedimiento. Con esto, $V^{*}$ es independiente del lenguaje en cual se exprese cualquier algoritmo, por lo tanto a diferencia de $V$, $V^{*}$ no cambiará al traducir un algoritmo de un lenguaje a otro.
+
+\subsubsection{Nivel de un Programa} \label{sssec:programLevel}
+
+Existe de manera intuitiva una idea del ``nivel'' que un programa tiene, el cual es determinado en base a la opinión de un grupo de expertos, basándose en que el nivel de un programa tiene un impacto en el esfuerzo de escribirlo, cometer errores en él y la facilidad con que puede entenderse. Sin embargo, esta métrica no puede quedar como una opinión, y con el fin de llevarla a algo cuantitativo, se propone la siguiente definición para el \textit{nivel de un programa} $L$ como:
+\begin{equation}
+  \label{eqn:programLevel}
+  L = \frac{V^{*}}{V}
+\end{equation}
+Lo que indica que la versión mínima en la que se puede escribir un algoritmo tendrá un nivel de 1, otras implementaciones con un mayor volumen un nivel menor, lo que implica que $L \leq 1$. Es importante notar que si se aplica esta métrica para evaluar qué tan fácil o difícil es entender un programa, ocurre que para una persona con un alto entendimiento del lenguaje de programación utilizado, será muy sencillo entender un programa con un bajo volumen, lo que conllevaría a que tenga un alto nivel, por otro lado, para una persona menos fluída en el mismo lenguaje, será más sencillo entender un programa con un mayor volumen, lo que implicará un menor nivel de programa. Dicho esto, se plantea que la dificultad de entender un programa es inversamente proporcional al nivel del mismo.
+
+Sin embargo, dada la ausencia de un valor conocido para el volumen potencial de una implementación (debido a que no existe un lenguaje de programación que implemente todos los algoritmos como subrutinas o procedimientos), es preferible obtener un cálculo del nivel del programa directamente de la implementación, sin hacer referencia a una posible subrutina que permita implementar el algoritmo en su forma mínima. Esto puede lograrse notando como impactan por separado los operadores y operandos en el nivel del programa.
+
+El menor nivel de operadores que se puede utilizar es 2 (la invocación de una subrutina o procedimiento, y un operador para asignar su resultado en alguna variable), por otro lado, no hay un límite de la cantidad de operadores únicos que pueden haber, de aquí se desprende que:
+\begin{equation}
+  \label{eqn:programLevel1}
+  L \approx \frac{\eta_{1}^{*}}{\eta_{1}}
+\end{equation}
+Por otro lado, no existe un mínimo para los operandos, a su vez, el que se repita mucho un mismo operando apoya a que el nivel del programa sea bajo. Este efecto puede medirse en base al radio del uso total de operandos únicos en la implementación, de donide se obtiene la segunda proporcionalidad:
+\begin{equation}
+  \label{eqn:programLevel2}
+  L \approx \frac{\eta_{2}}{N_{2}}
+\end{equation}
+Combinando las ecuaciones \ref{eqn:programLevel1} y \ref{eqn:programLevel2}, se obtiene una versión alternativa para el cálculo del nivel de un programa.
+\begin{equation}
+  \label{eqn:programLevel3}
+  \hat{L} = \frac{\eta_{1}^{*}}{\eta_{1}} \cdot \frac{\eta_{2}}{N_{2}}
+\end{equation}
+Y sabiendo que $\eta_{1}^{*}$, la ecuación queda como:
+\begin{equation}
+  \label{eqn:programLevel4}
+  \hat{L} = \frac{2}{\eta_{1}} \cdot \frac{\eta_{2}}{N_{2}}
+\end{equation}
+La experimentación muestra que ambas ecuaciones son aceptables, sin embargo a lo largo de este documento se utilizará la ecuación \ref{eqn:programLevel4}.
+
+\subsubsection{Dificultad de un Programa}
+
+La dificultad de un programa según Halstead, es el inverso del nivel del mismo, entonces basándose en lo planteado en la sección \ref{sssec:programLevel}, se define la dificultad de un programa $D$ como:
+\begin{equation}
+  D = \frac{1}{\hat{L}} = \frac{\eta_{1}}{2} \cdot \frac{N_{2}}{\eta_{2}}
+\end{equation}
+
+\subsection{Esfuerzo de Programación}
+
+El esfuerzo de desarrollar un programa dado corresponde a la actividad mental requerida para escribirlo, ésta fórmula se desprende de la siguiente manera:
+
+\begin{enumerate}
+  \item Se debe asumir que cualquier implementación de cualquier algoritmo, consiste en realizar $N$ selecciones de un vocabulario de $\eta$ elementos.
+  \item El cerebro es eficiente a la hora de realizar búsquedas, por lo tanto, se puede decir que es equivalente a hacer una búsqueda binaria, lo que implica que el cerebro realiza $\log_{2}\eta$ comparaciones para la selección de cada uno de los elementos de la implementación.
+  \item En base a los puntos anteriores, se puede determinar que un programa es generado mediante la realización de $N \cdot \log_{2}\eta$ comparaciones mentales.
+  \item Recordando que el volumen de un programa se define como $V = N\log_{2}\eta$, se determina que el volumen de un programa es también un contador del número de comparaciones mentales requeridas para generar un programa.
+  \item Cada comparación mental requiere un número de discriminaciones mentales, es decir, de descartar algunos elementos del vocabulario que no corresponden a lo que se busca implementar durante la búsqueda binaria del elemento correcto. Este número de discriminaciones mentales equivale a la dificultad de la tarea a realizar, y refuerza la idea de que el nivel de programación $L$ es recíproco a la dificultad de programación.
+  \item Habiendo determinado que $V$ equivale a la cantidad de comparaciones mentales a realizar, y el recíproco del nivel de programación $\frac{1}{L}$ es una medida del promedio de discriminaciones mentales requeridas para cada comparación, es posible plantear que el número total de discriminaciones mentales $E$ requeridas para generar un programa es:
+        \begin{equation}
+          E = \frac{V}{L}
+        \end{equation}
+
+\end{enumerate}
+
+\subsection{Estimación de Confiabilidad Alfa de Krippendorff}
 
 \newpage
 
@@ -381,11 +531,325 @@ Sin embargo, la idea de tener tareas base motiva a investigar acerca de si es bu
 \subsubsection{Sistema de Software Autocontenido}
 
 \subsection{Framework}
+
+El marco de trabajo de Ishvel se propone con el fin de entregar una herramienta docente, la cual permite obtener una noción de la dificultad de una tarea antes de ésta ser entregada al estudiantado para su resolución, para ello, Ishvel se basa en el código que resuelve la tarea de manera correcta, extrayendo métricas del mismo y comparándolas con las métricas de tareas anteriores.
+
 \subsubsection{Metodología}
+
+
+
 \subsubsection{Redacción de una Tarea}
 \subsubsection{Cálculo de Métricas de una Solución}
+
+\subsubsection{Determinar la Diferencia de Dificultad entre Tareas}
+
+La diferencia de dificultad entre tareas, se calcula utilizando el promedio de los intervalos a los que pertenezca la diferencia porcentual de cada métrica, sin considerar la métrica de \textbf{tiempo de resolución}. Para determinar esto, se realiza el siguiente procedimiento para cada métrica entre 2 tareas:
+
+\begin{enumerate}
+  \item Se define un conjunto de \textbf{intervalos de comparación de dificultad}, éstos corresponden a 5 intervalos que categorizan la diferencia de dificultad entre 2 tareas, utilizando las diferencias porcentuales de las métricas de las mismas.
+  \item Se calcula la diferencia porcentual entre los valores de la métrica con la que se esté trabajando de ambas tareas.
+  \item Se determina el intervalo de comparación de dificultad al que pertenece la diferencia porcentual calculada
+\end{enumerate}
+
+Una vez que se obtiene el intervalo de comparación de dificultad al que pertenecen cada una de las métricas de ambas tareas, se promedian los resultados y se redondea al entero más cercano. El valor de este resultado indicará la diferencia de dificultad entre ambas tareas, según la siguiente clasificación:
+
+\begin{enumerate}
+  \item Mucho más fácil
+  \item Más fácil
+  \item Similar
+  \item Más difícil
+  \item Mucho más difícil
+\end{enumerate}
+
+Para entender mejor esta parte de la metodología, se presenta el siguiente ejemplo:
+
+Sean los intervalos de comparación de dificultad para las métricas consideradas:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|r|r|r|}
+    \hline
+    \textbf{Intervalo}    & \multicolumn{1}{l|}{\textbf{Complejidad Ciclomática}} & \multicolumn{1}{l|}{\textbf{Dificultad H.}} & \multicolumn{1}{l|}{\textbf{Esfuerzo}} & \multicolumn{1}{l|}{\textbf{Volumen}} \\ \hline
+    1 - mucho más fácil   & -inf\%, -50\%                                         & -inf\%, -25\%                               & -inf\%, -75\%                          & -inf\%, -35\%                         \\ \hline
+    2 - más fácil         & -49\%, -5\%                                           & -24\%, -15\%                                & -74\%, -25\%                           & -34\%, 5\%                            \\ \hline
+    3 - similar           & -4\%, 25\%                                            & -14\%, 5\%                                  & -24\%, 15\%                            & 6\%, 30\%                             \\ \hline
+    4 - más difícil       & 26\%, 70\%                                            & 6\%, 50\%                                   & 16\%, 65\%                             & 31\%, 55\%                            \\ \hline
+    5 - mucho más difícil & 71\%, inf\%                                           & 51\%, inf\%                                 & 66\%, inf\%                            & 56\%, inf\%                           \\ \hline
+  \end{tabular}
+  \caption{Ejemplo de intervalos de comparación de dificultad para todas las métricas, a excepción del tiempo estimado.} Fuente: elaboración propia
+  \label{tab:example-difficulty-interval}
+\end{table}
+
+Y las métricas de 2 tareas del mismo contenido, junto con sus respectivas diferencias porcentuales:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{l|r|r|r|r|}
+    \cline{2-5}
+                                                         & \multicolumn{1}{l|}{\textbf{Complejidad Ciclomática}} & \multicolumn{1}{l|}{\textbf{Dificultad H.}} & \multicolumn{1}{l|}{\textbf{Esfuerzo}} & \multicolumn{1}{l|}{\textbf{Volumen}} \\ \cline{2-5}
+                                                         & 16                                                    & 30                                          & 2255                                   & 730                                   \\ \cline{2-5}
+                                                         & 17                                                    & 44                                          & 1520                                   & 342                                   \\ \hline
+    \multicolumn{1}{|l|}{\textbf{Diferencia Porcentual}} & 6.25\%                                                & 46.66\%                                     & -32.59\%                               & -53.15                                \\ \hline
+  \end{tabular}
+  \caption{Ejemplo de métricas de dos tareas del mismo contenido.} Fuente: elaboración propia
+  \label{tab:example-metrics-two-homeworks}
+\end{table}
+
+Se determina a qué intervalo pertenece la diferencia porcentual de cada una de las métricas, obteniendo los siguientes valores:
+
+\begin{itemize}
+  \item Complejidad Ciclomática: \textbf{3 - similar}
+  \item Dificultad H.: \textbf{4 - más difícil}
+  \item Esfuerzo: \textbf{2 - más fácil}
+  \item Volumen: \textbf{1 - mucho más fácil}
+\end{itemize}
+
+Finalmente, se calcula la diferencia de dificultad entre ambas tareas como el promedio redondeado de las categorías de las métricas, es decir, 3. Por lo tanto, aplicando la metodología del framework Ishvel, ambas tareas tienen una dificultad similar, o dicho de otra manera, la resolución de la tarea que se está elaborando, tiene una dificultad similar a la de una tarea desarrollada previamente del mismo contenido.
+
+\subsubsection{Determinar los Intervalos de Comparación de Dificultad entre Tareas}
+
+Los intervalos de comparación de dificultad mencionados anteriormente, son los que se utilizan para poder extraer información sobre la diferencia porcentual de una métrica entre 2 tareas. Para determinarlos, se requiere primero plantear qué dificultades comparativas y métricas se utilizarán en el proceso:
+
+Sean las dificultades comparativas:
+
+\begin{enumerate}
+  \item Mucho más fácil
+  \item Más fácil
+  \item Similar
+  \item Más difícil
+  \item Mucho más difícil
+\end{enumerate}
+
+
+Y las métricas contempladas para determinar la dificultad entre 2 tareas:
+
+\begin{enumerate}
+  \item Complejidad ciclomática
+  \item Dificultad según Halstead (Dificultad H.)
+  \item Esfuerzo
+  \item Volumen
+\end{enumerate}
+
+Lo que se busca es definir:
+
+\begin{itemize}
+  \item $LI_{dm}$: Límite \textbf{inferior} de la dificultad comparativa $d$ asociado a la métrica $m$, con $d = \left\{1, 2, 3, 4, 5\right\}$ para cada dificultad comparativa respectivamente, y $m = \left\{1, 2, 3, 4\right\}$ para cada métrica, sin contar la métrica de tiempo estimado.
+  \item $LS_{dm}$: Límite \textbf{superior} de la dificultad comparativa $d$ asociado a la métrica $m$, con $d = \left\{1, 2, 3, 4, 5\right\}$ para cada dificultad comparativa respectivamente, y $m = \left\{1, 2, 3, 4\right\}$ para cada métrica, sin contar la métrica de tiempo estimado.
+\end{itemize}
+
+Para determinar los intervalos de comparación de dificultad, se requiere de una evaluación por un conjunto de expertos en programación, éstos pueden ser docentes, ayudantes docentes y personas con experiencia en el área de la informática. Una vez se cuenta con el conjunto de expertos, se les debe entregar 2 tareas que evalúen contenidos similares, pero que fueron desarrolladas durante periodos lectivos distintos. El panel de expertos tomará ambas tareas, y evaluará según su juicio la dificultad de una tarea en comparación con la otra, siendo las posibles respuestas:
+
+\begin{enumerate}
+  \item La segunda tarea es mucho más fácil que la primera tarea
+  \item La segunda tarea es más fácil que la primera tarea
+  \item La segunda tarea tiene una dificultad similar a la primera tarea
+  \item La segunda tarea es más difícil que la primera tarea
+  \item La segunda tarea es mucho más difícil que la primera tarea
+\end{enumerate}
+
+Una vez obtenidas las respuestas del conjunto de expertos, se debe determinar el porcentaje de fiabilidad de las respuestas utilizando el alfa de Krippendorff \cite{alpha-reliability-krippendorff}, en el caso de obtener un valor cercano a 1 o a 0, se debe repetir el experimento hasta obtener un buen nivel de fiabilidad de las respuestas.
+
+Logrado esto, se debe calcular la diferencia porcentual entre cada una de las métricas de ambas tareas, sin considerar la métrica de tiempo estimado, puesto que ésta es directamente proporcional a la métrica de esfuerzo. Se debe repetir el proceso con varias tareas para obtener la mayor información posible, especialmente con tareas cuya dificultad en comparación sea distinta a la de las otras tareas ya evaluadas. El objetivo de obtener esta información, es relacionar las diferencias porcentuales con los niveles de diferencias de dificultad entre tareas, de manera de tener para cada métrica distintos intervalos de diferencias porcentuales, entre los cuales determinar la dificultad de una tarea en comparación con otra.
+
+A continuación se muestra un ejemplo de la información resultante al término de este paso:
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|l|r|r|r|r|}
+    \hline
+    \textbf{Tareas} & \textbf{\begin{tabular}[c]{@{}l@{}}Comparación de \\ dificultad \end{tabular}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Complejidad \\ ciclomática (dif \%)\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Dificultad H.\\ (dif \%)\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Esfuerzo\\ (dif \%)\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Volumen\\ (dif \%)\end{tabular}}} \\ \hline
+    1 - 2           & 1 - mucho más fácil                                                            & 6,25\%                                                                                                    & 43,69\%                                                                                        & -32,61\%                                                                                  & -32,61\%                                                                                 \\ \hline
+    3 - 4           & 2 - más fácil                                                                  & -37,50\%                                                                                                  & -2,86\%                                                                                        & -32,65\%                                                                                  & -32,65\%                                                                                 \\ \hline
+    5 - 6           & 3 - similar                                                                    & -18,75\%                                                                                                  & -54,06\%                                                                                       & -76,65\%                                                                                  & -76,65\%                                                                                 \\ \hline
+    7 - 8           & 1 - mucho más fácil                                                            & 0,00\%                                                                                                    & -21,46\%                                                                                       & -35,27\%                                                                                  & -35,27\%                                                                                 \\ \hline
+    9 - 10          & 5 - mucho más difícil                                                          & 54,55\%                                                                                                   & 66,39\%                                                                                        & 250,00\%                                                                                  & 515,61\%                                                                                 \\ \hline
+    11 - 12         & 1 - mucho más fácil                                                            & 50,00\%                                                                                                   & 79,59\%                                                                                        & -2,34\%                                                                                   & -2,34\%                                                                                  \\ \hline
+    13 - 14         & 2 - más fácil                                                                  & 40,00\%                                                                                                   & 0,00\%                                                                                         & -15,12\%                                                                                  & -15,12\%                                                                                 \\ \hline
+    15 - 16         & 3 - similar                                                                    & 26,32\%                                                                                                   & 54,55\%                                                                                        & 3,46\%                                                                                    & 3,46\%                                                                                   \\ \hline
+    17 - 18         & 1 - mucho más fácil                                                            & 43,69\%                                                                                                   & 50,00\%                                                                                        & -32,61\%                                                                                  & 66,39\%                                                                                  \\ \hline
+    19 - 20         & 5 - mucho más difícil                                                          & -2,86\%                                                                                                   & 40,00\%                                                                                        & -32,65\%                                                                                  & 79,59\%                                                                                  \\ \hline
+    21 - 22         & 1 - mucho más fácil                                                            & -54,06\%                                                                                                  & 26,32\%                                                                                        & -76,65\%                                                                                  & 0,00\%                                                                                   \\ \hline
+    23 - 24         & 2 - más fácil                                                                  & -21,46\%                                                                                                  & 43,69\%                                                                                        & -35,27\%                                                                                  & 54,55\%                                                                                  \\ \hline
+    25 - 26         & 3 - similar                                                                    & 66,39\%                                                                                                   & -2,86\%                                                                                        & 515,61\%                                                                                  & 50,00\%                                                                                  \\ \hline
+    27 - 28         & 1 - mucho más fácil                                                            & 79,59\%                                                                                                   & -54,06\%                                                                                       & -2,34\%                                                                                   & 40,00\%                                                                                  \\ \hline
+    29 - 30         & 5 - mucho más difícil                                                          & 3,87\%                                                                                                    & -21,46\%                                                                                       & -15,12\%                                                                                  & 26,32\%                                                                                  \\ \hline
+  \end{tabular}
+  \caption{Ejemplo de la comparación de dificultad entre tareas, junto con las diferencias porcentuales de cada una de sus métricas.} Fuente: elaboración propia
+  \label{tab:example-tasks-comparision}
+\end{table}
+
+Ahora, lo que se busca es determinar 5 intervalos de diferencias porcentuales para cada métrica, donde cada intervalo corresponde a una de las 5 dificultades comparativas posibles, para así poder comparar las métricas de distintas tareas entre sí. Para ésto, se debe seguir el siguiente procedimiento para cada una de las métricas:
+
+\begin{enumerate}
+  \item Se crea una tabla con 5 filas y 5 columnas, donde las filas corresponden a los intervalos de las dificultades comparativas, y las columnas corresponden a las métricas asociadas a cada intervalo.
+        \begin{table}[H]
+          \centering
+          \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            Comparación de Dificultad              & Complejidad Ciclomática & Dificultad H. & Esfuerzo  & Volumen   \\ \hline
+            \multirow{2}{*}{1 - mucho más fácil}   & $LI_{11}$               & $LI_{12}$     & $LI_{13}$ & $LI_{14}$ \\ \cline{2-5}
+                                                   & $LS_{11}$               & $LS_{12}$     & $LS_{13}$ & $LS_{14}$ \\ \hline
+            \multirow{2}{*}{2 - más fácil}         & $LI_{21}$               & $LI_{22}$     & $LI_{23}$ & $LI_{24}$ \\ \cline{2-5}
+                                                   & $LS_{21}$               & $LS_{22}$     & $LS_{23}$ & $LS_{24}$ \\ \hline
+            \multirow{2}{*}{3 - similar}           & $LI_{31}$               & $LI_{32}$     & $LI_{33}$ & $LI_{34}$ \\ \cline{2-5}
+                                                   & $LS_{31}$               & $LS_{32}$     & $LS_{33}$ & $LS_{34}$ \\ \hline
+            \multirow{2}{*}{4 - más difícil}       & $LI_{41}$               & $LI_{42}$     & $LI_{43}$ & $LI_{44}$ \\ \cline{2-5}
+                                                   & $LS_{41}$               & $LS_{42}$     & $LS_{43}$ & $LS_{44}$ \\ \hline
+            \multirow{2}{*}{5 - mucho más difícil} & $LI_{51}$               & $LI_{52}$     & $LI_{53}$ & $LI_{54}$ \\ \cline{2-5}
+                                                   & $LS_{51}$               & $LS_{52}$     & $LS_{53}$ & $LS_{54}$ \\ \hline
+          \end{tabular}
+          \caption{Tabla base de intervalos por métrica para cada dificultad comparativa.} Fuente: elaboración propia
+          \label{tab:base-int-table}
+        \end{table}
+
+  \item En el primer y último intervalo de la métrica, colocar -inf\% e inf\% respectivamente.
+        \begin{table}[H]
+          \centering
+          \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            Comparación de Dificultad              & Complejidad Ciclomática & Dificultad H. & Esfuerzo & Volumen \\ \hline
+            \multirow{2}{*}{1 - mucho más fácil}   & -inf\%                  &               &          &         \\ \cline{2-5}
+                                                   &                         &               &          &         \\ \hline
+            \multirow{2}{*}{2 - más fácil}         &                         &               &          &         \\ \cline{2-5}
+                                                   &                         &               &          &         \\ \hline
+            \multirow{2}{*}{3 - similar}           &                         &               &          &         \\ \cline{2-5}
+                                                   &                         &               &          &         \\ \hline
+            \multirow{2}{*}{4 - más difícil}       &                         &               &          &         \\ \cline{2-5}
+                                                   &                         &               &          &         \\ \hline
+            \multirow{2}{*}{5 - mucho más difícil} &                         &               &          &         \\ \cline{2-5}
+                                                   & inf\%                   &               &          &         \\ \hline
+          \end{tabular}
+          \caption{Tabla base de intervalos por métrica para cada dificultad comparativa con los límites máximos y mínimos del primer y último intervalo listos.} Fuente: elaboración propia
+          \label{tab:base-int-table-infs}
+        \end{table}
+  \item A partir del intervalo de la primera dificultad comparativa ``mucho más fácil'', se calcula el límite superior restante como el mínimo entre la máxima diferencia porcentual de esa dificultad comparativa, y la mínima diferencia porcentual de la dificultad comparativa siguiente, en este caso -37.50\%.
+
+        \begin{table}[H]
+          \centering
+          \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            \textbf{Comparación de Dificultad}     & \textbf{Complejidad Ciclomática} & \textbf{Dificultad H.} & \textbf{Esfuerzo} & \textbf{Volumen} \\ \hline
+            \multirow{2}{*}{1 - mucho más fácil}   & -inf\%                           & -inf\%                 & -inf\%            & -inf\%           \\ \cline{2-5}
+                                                   & \multicolumn{1}{r|}{-37,50\%}    &                        &                   &                  \\ \hline
+            \multirow{2}{*}{2 - más fácil}         & \multicolumn{1}{r|}{}            &                        &                   &                  \\ \cline{2-5}
+                                                   & \multicolumn{1}{r|}{}            &                        &                   &                  \\ \hline
+            \multirow{2}{*}{3 - similar}           & \multicolumn{1}{r|}{}            &                        &                   &                  \\ \cline{2-5}
+                                                   & \multicolumn{1}{r|}{}            &                        &                   &                  \\ \hline
+            \multirow{2}{*}{4 - más difícil}       &                                  &                        &                   &                  \\ \cline{2-5}
+                                                   &                                  &                        &                   &                  \\ \hline
+            \multirow{2}{*}{5 - mucho más difícil} &                                  &                        &                   &                  \\ \cline{2-5}
+                                                   & inf\%                            & inf\%                  & inf\%             & inf\%            \\ \hline
+          \end{tabular}
+          \caption{Tabla base de intervalos por métrica para cada dificultad comparativa con el primer intervalo listo.} Fuente: elaboración propia
+          \label{tab:base-int-table-1}
+        \end{table}
+  \item Se continúa con el intervalo de la siguiente dificultad comparativa, donde su límite inferior se calcula como el límite superior anterior + 0.01\%, lo que en este caso resulta en -37.49\%.
+        \begin{table}[H]
+          \centering
+          \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            \textbf{Comparación de Dificultad}     & \textbf{Complejidad Ciclomática} & \textbf{Dificultad H.} & \textbf{Esfuerzo} & \textbf{Volumen} \\ \hline
+            \multirow{2}{*}{1 - mucho más fácil}   & -inf\%                           & -inf\%                 & -inf\%            & -inf\%           \\ \cline{2-5}
+                                                   & \multicolumn{1}{r|}{-37,50\%}    &                        &                   &                  \\ \hline
+            \multirow{2}{*}{2 - más fácil}         & \multicolumn{1}{r|}{-37,49\%}    &                        &                   &                  \\ \cline{2-5}
+                                                   & \multicolumn{1}{r|}{}            &                        &                   &                  \\ \hline
+            \multirow{2}{*}{3 - similar}           & \multicolumn{1}{r|}{}            &                        &                   &                  \\ \cline{2-5}
+                                                   & \multicolumn{1}{r|}{}            &                        &                   &                  \\ \hline
+            \multirow{2}{*}{4 - más difícil}       &                                  &                        &                   &                  \\ \cline{2-5}
+                                                   &                                  &                        &                   &                  \\ \hline
+            \multirow{2}{*}{5 - mucho más difícil} &                                  &                        &                   &                  \\ \cline{2-5}
+                                                   & inf\%                            & inf\%                  & inf\%             & inf\%            \\ \hline
+          \end{tabular}
+          \caption{Tabla base de intervalos por métrica para cada dificultad comparativa con el límite inferior del segundo intervalo.} Fuente: elaboración propia
+          \label{tab:base-int-table-2}
+        \end{table}
+  \item Se repiten los pasos 3 y 4 hacia los intervalos posteriores.
+        \begin{table}[H]
+          \centering
+          \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            \textbf{Comparación de Dificultad}     & \textbf{Complejidad Ciclomática} & \textbf{Dificultad H.} & \textbf{Esfuerzo} & \textbf{Volumen} \\ \hline
+            \multirow{2}{*}{1 - mucho más fácil}   & -inf\%                           & -inf\%                 & -inf\%            & -inf\%           \\ \cline{2-5}
+                                                   & \multicolumn{1}{r|}{-37,50\%}    &                        &                   &                  \\ \hline
+            \multirow{2}{*}{2 - más fácil}         & \multicolumn{1}{r|}{-37,49\%}    &                        &                   &                  \\ \cline{2-5}
+                                                   & \multicolumn{1}{r|}{-18,75\%}    &                        &                   &                  \\ \hline
+            \multirow{2}{*}{3 - similar}           & \multicolumn{1}{r|}{-18,74\%}    &                        &                   &                  \\ \cline{2-5}
+                                                   & \multicolumn{1}{r|}{66,39\%}     &                        &                   &                  \\ \hline
+            \multirow{2}{*}{4 - más difícil}       &                                  &                        &                   &                  \\ \cline{2-5}
+                                                   &                                  &                        &                   &                  \\ \hline
+            \multirow{2}{*}{5 - mucho más difícil} &                                  &                        &                   &                  \\ \cline{2-5}
+                                                   & inf\%                            & inf\%                  & inf\%             & inf\%            \\ \hline
+          \end{tabular}
+          \caption{Tabla base de intervalos por métrica para cada dificultad comparativa casi completa para una métrica.} Fuente: elaboración propia
+          \label{tab:base-int-table-3}
+        \end{table}
+  \item En caso de que falte información sobre alguna de las dificultades comparativas, posiblemente porque de la muestra de tareas para el conjunto de expertos, ningún par de tareas fue considerado dentro de alguna dificultad comparativa específica, se debe seguir el siguiente procedimiento:
+        \begin{itemize}
+          \item Si falta información para la dificultad comparativa 1:
+                \begin{itemize}
+                  \item Se utiliza el límite inferior de la dificultad comparativa 2 menos 0.01\%, es decir: $LI_{2m} - 0.01\%$, como límite superior. Si no está definido $LI_{2m}$, se considera la menor diferencia porcentual de la dificultad comparativa 2 menos 0.01\% como límite superior.
+                \end{itemize}
+          \item Si falta información para la dificultad comparativa 2:
+                \begin{itemize}
+                  \item Se calcula el límite inferior como el límite superior de la dificultad comparativa 1 más 0.01\%, y el límite superior como el límite superior de la dificultad comparativa 1 más 0.01\%, sumado a la distancia entre el límite inferior y superior de la dificultad comparativa 4, es decir:
+                        \begin{equation*}
+                          LI_{2m} = LS_{1m} + 0.01\%
+                        \end{equation*}
+                        \begin{equation*}
+                          LS_{2m} = LS_{1m} + 0.01\% + abs(LI_{4m} - LS_{4m})
+                        \end{equation*}
+                \end{itemize}
+          \item Si falta información para la dificultad comparativa 3:
+                \begin{itemize}
+                  \item Se utiliza el límite superior de la dificultad comparativa 2 más 0.01\%, es decir: $LS_{2m} + 0.01\%$, como límite inferior.
+                  \item Se utiliza el límite inferior de la dificultad comparativa 4 menos 0.01\%, es decir: $LI_{4m} - 0.01\%$, como límite superior.
+                \end{itemize}
+          \item Si falta información para la dificultad comparativa 4:
+                \begin{itemize}
+                  \item Se calcula el límite inferior como el límite superior de la dificultad comparativa 3 más 0.01\%, y el límite superior como el límite superior de la dificultad comparativa 3 más 0.01\%, sumado a la distancia entre el límite inferior y superior de la dificultad comparativa 2, es decir:
+                        \begin{equation*}
+                          LI_{4m} = LS_{3m} + 0.01\%
+                        \end{equation*}
+                        \begin{equation*}
+                          LS_{4m} = LS_{3m} + 0.01\% + abs(LI_{2m} - LS_{2m})
+                        \end{equation*}
+
+                \end{itemize}
+          \item Si falta información para la dificultad comparativa 5:
+                \begin{itemize}
+                  \item Se utiliza el límite superior de la dificultad comparativa 4 más 0.01\%, es decir: $LS_{4m} + 0.01\%$, como límite inferior. Si no está definido $LS_{4m}$, se considera la mayor diferencia porcentual más 0.01\% cómo límite inferior.
+                \end{itemize}
+          \item Si ya se definió el límite inferior de la dificultad comparatida $d$, pero no hay información para definir el superior:
+                \begin{itemize}
+                  \item Se toma 20 como el tamaño del intervalo, es decir, se calcula el límite superior como $LS_{dm} = LI_{dm} + 20$, dado que 20 sería el tamaño del intervalo si todos los intervalos fuesen iguales.
+                \end{itemize}
+          \item Si no hay información para definiar los límites de la dificultad comparativa $d$, se debe continuar aplicando la heurística al resto de dificultades comparativas, hasta que hayan suficientes límites definidos como para definir los de la dificultad comparativa $d$.
+        \end{itemize}
+  \item Se aplican los procedimientos del paso 6 para terminar de rellenar la tabla, y con esto entonces se obtiene la tabla de intervalos de comparación de dificultad para la métrica de complejidad ciclomática.
+        \begin{table}[H]
+          \centering
+          \begin{tabular}{|l|r|l|l|l|}
+            \hline
+            \textbf{Comparación de Dificultad}     & \multicolumn{1}{l|}{\textbf{Complejidad Ciclomática}} & \textbf{Dificultad H.} & \textbf{Esfuerzo} & \textbf{Volumen} \\ \hline
+            \multirow{2}{*}{1 - mucho más fácil}   & \multicolumn{1}{l|}{-inf\%}                           & -inf\%                 & -inf\%            & -inf\%           \\ \cline{2-5}
+                                                   & -37,50\%                                              &                        &                   &                  \\ \hline
+            \multirow{2}{*}{2 - más fácil}         & -37,49\%                                              &                        &                   &                  \\ \cline{2-5}
+                                                   & -18,75\%                                              &                        &                   &                  \\ \hline
+            \multirow{2}{*}{3 - similar}           & -18,74\%                                              &                        &                   &                  \\ \cline{2-5}
+                                                   & 66,39\%                                               &                        &                   &                  \\ \hline
+            \multirow{2}{*}{4 - más difícil}       & 66,40\%                                               &                        &                   &                  \\ \cline{2-5}
+                                                   & 85,14\%                                               &                        &                   &                  \\ \hline
+            \multirow{2}{*}{5 - mucho más difícil} & 85,15\%                                               &                        &                   &                  \\ \cline{2-5}
+                                                   & \multicolumn{1}{l|}{inf\%}                            & inf\%                  & inf\%             & inf\%            \\ \hline
+          \end{tabular}
+          \caption{Tabla base de intervalos por métrica para cada dificultad comparativa para la métrica de complejidad ciclomática.} Fuente: elaboración propia
+          \label{tab:base-int-table-4}
+        \end{table}
+\end{enumerate}
+
 \subsubsection{Sugerencias}
 \subsubsection{Actualización de Métricas Semestrales}
+\subsubsection{Actualización de Intervalos de Comparación de Dificultad}
 \subsubsection{Análisis de Métricas entre Semestres}
 \subsubsection{Comparación de Métricas entre Tareas de IWI-131}
 
@@ -408,21 +872,21 @@ Tradicionalmente es una etapa crítica, pues debe comprobarse por algún medio q
 Se colocó una tabla que se puede referenciar también desde el texto (Ver tabla \ref{table:coloquios}).
 
 \begin{table}[h]
-    \centering
-    \caption{\label{table:coloquios} Coloquios del Ciclo de Charlas Informática.} Fuente: Elaboración Propia.
-    \begin{tabular}{|p{7cm}|p{7cm}|}
-        \hline
-        Título Coloquio                                                                                                                            & Presentador, País                  \\
-        \hline
-        ``Sensible, invisible, sometimes tolerant, heterogeneous, decentralized and interoperable... and we still need to assure its quality...''' & Guilherme Horta Travassos, Brasil. \\
-        \hline
-        ``Dispersed Multiphase Flow Modeling: From Environmental to Industrial Applications'''                                                     & Orlando Ayala, EE.UU.              \\
-        \hline
-        ``Líneas de Producto Software Dinámicas para Sistemas atentos el Contexto'''                                                               & Rafael Capilla, España.            \\
-        \hline
-        ...                                                                                                                                        & ...                                \\
-        \hline
-    \end{tabular}
+  \centering
+  \caption{\label{table:coloquios} Coloquios del Ciclo de Charlas Informática.} Fuente: Elaboración Propia.
+  \begin{tabular}{|p{7cm}|p{7cm}|}
+    \hline
+    Título Coloquio                                                                                                                            & Presentador, País                  \\
+    \hline
+    ``Sensible, invisible, sometimes tolerant, heterogeneous, decentralized and interoperable... and we still need to assure its quality...''' & Guilherme Horta Travassos, Brasil. \\
+    \hline
+    ``Dispersed Multiphase Flow Modeling: From Environmental to Industrial Applications'''                                                     & Orlando Ayala, EE.UU.              \\
+    \hline
+    ``Líneas de Producto Software Dinámicas para Sistemas atentos el Contexto'''                                                               & Rafael Capilla, España.            \\
+    \hline
+    ...                                                                                                                                        & ...                                \\
+    \hline
+  \end{tabular}
 \end{table}
 
 \newpage
@@ -436,33 +900,6 @@ Las Conclusiones son, según algunos especialistas, el aspecto principal de una 
 \newpage
 
 \secnumberlesssection{ANEXOS}
-
-En los Anexos se incluye todo aquel material complementario que no es parte del contenido de los capítulos de la memoria, pero que permiten a un lector contar con un contenido adjunto relacionado con el tema.
-
-\section{Tiempos SCT}
-
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|l|c|}
-        \hline
-        \textbf{Actividad}      & \textbf{Tiempo [hrs]} \\
-        \hline
-        Planificación           & 3                     \\
-        \hline
-        Búsqueda de información & 10                    \\
-        \hline
-        Análisis                & 25                    \\
-        \hline
-        Desarrollo              & 20                    \\
-        \hline
-        Edición                 & 2                     \\
-        \hline
-        \textbf{Total}          & \textbf{60}           \\
-        \hline
-    \end{tabular}
-    \label{tab:actividades}
-    \caption{Tabla de Tiempos SCT.}
-\end{table}
 
 \newpage
 % Bibliografía estilo APA:
