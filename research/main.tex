@@ -2,6 +2,7 @@
 
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
+\usepackage[table,xcdraw]{xcolor}
 \renewcommand{\algorithmicrequire}{\textbf{Input:}}
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
 
@@ -263,7 +264,7 @@ Con el fin de lograr el objetivo general de esta memoria, se definen los siguien
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\textwidth]{arbolito.png}
-  \caption{Árbol del Problema.} Fuente: Elaboración propia.
+  \caption{Árbol del Problema.} Fuente: elaboración propia.
   \label{arbolito}
 \end{figure}
 
@@ -493,7 +494,7 @@ La dificultad de un programa según Halstead, es el inverso del nivel del mismo,
   D = \frac{1}{\hat{L}} = \frac{\eta_{1}}{2} \cdot \frac{N_{2}}{\eta_{2}}
 \end{equation}
 
-\subsection{Esfuerzo de Programación}
+\subsubsection{Esfuerzo de Programación}
 
 El esfuerzo de desarrollar un programa dado corresponde a la actividad mental requerida para escribirlo, ésta fórmula se desprende de la siguiente manera:
 
@@ -507,27 +508,86 @@ El esfuerzo de desarrollar un programa dado corresponde a la actividad mental re
         \begin{equation}
           E = \frac{V}{L}
         \end{equation}
-
+  \item Recordando de la ecuación \ref{eqn:programLevel}, se puede reemplazar $L$ por $\frac{V^{*}}{V}$, obteniendo así que la fórmula del esfuerzo de programación se puede ver como:
+        \begin{equation}
+          \label{eqn:programEffort}
+          E = \frac{V^{2}}{V^{*}}
+        \end{equation}
 \end{enumerate}
+Con esto se obtiene que el esfuerzo mental requerido para la implementación de cualquier algoritmo, está cuadráticamente relacionado con el volumen del mismo.
 
-\subsection{Estimación de Confiabilidad Alfa de Krippendorff}
+\subsubsection{Tiempo Estimado de Programación}
+
+Según el trabajo de John Stroud en su obra ``The Fine Structure of Psychological Time'' \cite{https://doi.org/10.1111/j.1749-6632.1967.tb55012.x}, existe una cantidad de tiempo requerido por el cerebro humano para realizar una discriminación de elementos, y que por lo tanto, existe una cantidad de discriminaciones que puede hacer por segundo. De aquí nace el número de Stroud $S$, el cual indica los límites para la cantidad de discriminaciones por segundo que puede hacer el cerebro humano, y está acotado por:
+\begin{equation}
+  5 \leq S \leq 20
+\end{equation}
+Dado que la cantidad de discriminaciones que el cerebro humano puede hacer, está limitada por los límites del número de Stroud, y que la ecuación \ref{eqn:programEffort} del esfuerzo de programación tiene dimensiones de dígitos binarios por cantidad de discriminaciones, es posible estimar el tiempo en que un ser humano tardaría en realizar la implementación de un algoritmo como:
+\begin{equation}
+  T = \frac{E}{S}
+\end{equation}
+Donde S será considerado 18 según los experimentos de Halstead.
 
 \newpage
 
 \secnumbersection{PROPUESTA DE SOLUCIÓN}
 
 \subsection{Historias de Usuario}
+
 \subsection{Herramientas y Tecnologías a Utilizar}
+
+El framework consiste de una serie de tecnologías y herramientas utilizadas tanto para la aplicación de la metodología, como para el desarrollo y funcionamiento de la aplicación para editar y evaluar tareas. Estas herramientas y tecnologías se listan a continuación:
+
 \subsubsection{WebAssembly}
+
+Es un formato binario de instrucciones para una máquina virtual basa en pilas, diseñado para ser un punto de compilación portable para distintos lenguajes de programación. Esta tecnología permite desplegar programas en diferentes lenguajes tanto en aplicaciones de cliente como de servidor \cite{WebAssemblyCoreSpecification2}.
+
+Gracias a WebAssembly, es posible ejecutar una biblioteca de Python en una aplicación en Javascript para ser utilizada en el navegador, sin tener que instalar programas extras ni realizar configuraciones tediosas en el navegador del usuario.
+
+\subsubsection{Python}
+
+Es un lenguaje de programación interpretado fácil de aprender, con eficientes estructuras de datos de alto nivel y un enfoque simple pero efectivo hacia la programación orientada a objetos \cite{PythonWebsite}. Consta de múltiples módulos y es ampliamente utilizado en la industria para el desarrollo de aplicaciones.
+
+Las tareas del curso IWI-131 de programación de la Universidad Técnica Federico Santa María deben ser resueltas en este lenguaje, y es a su vez el lenguaje principal que se estudia en el presente trabajo.
+
 \subsubsection{Javascript}
+
+Es un lenguaje de programación interpretado basado en prototipos, multiparadigma y de un único hilo. Es uno de los lenguajes de scripting más conocidos para el desarrollo web, pero también es utilizado ampliamente en la industria para otro tipo de aplicaciones y ambiantes \cite{MDNJavaScript}.
+
+Su uso en conjunto con WebAssembly permite el desarrollo de aplicaciones de navegador que utilizan distintos lenguajes de programación a la vez, como por ejemplo, Python con Javascript.
+
 \subsubsection{Markdown}
-\subsubsection{GitHub}
+
+Es una herramienta de conversión de texto plano a HTML para creadores de contenido web, éste permite crear textos en un formato sencillo de leer y escribir, para luego ser convertido en un código estructuradamente válido de HTML \cite{DFMarkdown}.
+
+Con Markdown es posible estructurar la redacción de distintos tipos de artículos, entre éstos, tareas de programación, lo que facilita su creación, distribución y estandarización a lo largo de las distintas personas que trabajan en la redacción de las mismas.
+
 \subsubsection{GitHub Pages}
-\subsubsection{Multimetrics}
+
+Es un ambiente provisto por Github$\texttrademark$ para desarrollar y publicar sitios web, haciendo posible alojar un sitio web estático de forma fácil, rápida y gratuita \cite{Utomo_2020}. Con esto, es posible delegar la responsabilidad de alojar una aplicación web a Github$\texttrademark$, y así no tener que contar con un servidor propio el cual deba ser manualmente mantenido.
+
+\subsubsection{Multimetric}
+
+Es una librería de Python para calcular métricas de código para programas en distintos lenguajes de programación \cite{privkweihmann_multimetric}. Entre las métricas que calcula esta librería se encuentran:
+
+\begin{itemize}
+  \item Complejidad ciclomática
+  \item Dificultad según Halstead
+  \item Esfuerzo según Halstead
+  \item Tiempo estimado de programación según Halstead
+  \item Volumen según Halstead
+\end{itemize}
+
 \subsubsection{Pyodide}
+
+Es una versión de Python y una colección de distintos módulos de python compilados a WebAssembly. Este proyecto ha llevado exitósamente el intérprete de Python a un módulo de WebAssembly, permitiendo así que un código de Python sea executado sin problemas en un navegador web \cite{huffman2023julia}. Multimetric es una de las librerías que puede ser ejecutada en un navegador gracias a este módulo.
+
 \subsubsection{React}
-\subsubsection{MaterialUI}
+
+Es un framework de Javascript, originalmente creado por Facebook$\texttrademark$ para resolver los problemas de desarrollar interfaces de usuario complejas con datos que cambian en el tiempo. React cambió la forma en que las aplicaciones eran creadas logrando enormes avances en como se lleva a cabo el desarrollo web \cite{Gackenheimer2015}.
+
 \subsection{Arquitectura de la Solución}
+
 \subsubsection{Sistema de Software Autocontenido}
 
 \subsection{Framework}
@@ -541,18 +601,17 @@ El marco de trabajo de Ishvel se propone con el fin de entregar una herramienta 
 \subsubsection{Redacción de una Tarea}
 \subsubsection{Cálculo de Métricas de una Solución}
 
+
+
 \subsubsection{Determinar la Diferencia de Dificultad entre Tareas}
 
 La diferencia de dificultad entre tareas, se calcula utilizando el promedio de los intervalos a los que pertenezca la diferencia porcentual de cada métrica, sin considerar la métrica de \textbf{tiempo de resolución}. Para determinar esto, se realiza el siguiente procedimiento para cada métrica entre 2 tareas:
-
 \begin{enumerate}
   \item Se define un conjunto de \textbf{intervalos de comparación de dificultad}, éstos corresponden a 5 intervalos que categorizan la diferencia de dificultad entre 2 tareas, utilizando las diferencias porcentuales de las métricas de las mismas.
   \item Se calcula la diferencia porcentual entre los valores de la métrica con la que se esté trabajando de ambas tareas.
   \item Se determina el intervalo de comparación de dificultad al que pertenece la diferencia porcentual calculada
 \end{enumerate}
-
 Una vez que se obtiene el intervalo de comparación de dificultad al que pertenecen cada una de las métricas de ambas tareas, se promedian los resultados y se redondea al entero más cercano. El valor de este resultado indicará la diferencia de dificultad entre ambas tareas, según la siguiente clasificación:
-
 \begin{enumerate}
   \item Mucho más fácil
   \item Más fácil
@@ -560,7 +619,6 @@ Una vez que se obtiene el intervalo de comparación de dificultad al que pertene
   \item Más difícil
   \item Mucho más difícil
 \end{enumerate}
-
 Para entender mejor esta parte de la metodología, se presenta el siguiente ejemplo:
 
 Sean los intervalos de comparación de dificultad para las métricas consideradas:
@@ -647,9 +705,7 @@ Para determinar los intervalos de comparación de dificultad, se requiere de una
   \item La segunda tarea es mucho más difícil que la primera tarea
 \end{enumerate}
 
-Una vez obtenidas las respuestas del conjunto de expertos, se debe determinar el porcentaje de fiabilidad de las respuestas utilizando el alfa de Krippendorff \cite{alpha-reliability-krippendorff}, en el caso de obtener un valor cercano a 1 o a 0, se debe repetir el experimento hasta obtener un buen nivel de fiabilidad de las respuestas.
-
-Logrado esto, se debe calcular la diferencia porcentual entre cada una de las métricas de ambas tareas, sin considerar la métrica de tiempo estimado, puesto que ésta es directamente proporcional a la métrica de esfuerzo. Se debe repetir el proceso con varias tareas para obtener la mayor información posible, especialmente con tareas cuya dificultad en comparación sea distinta a la de las otras tareas ya evaluadas. El objetivo de obtener esta información, es relacionar las diferencias porcentuales con los niveles de diferencias de dificultad entre tareas, de manera de tener para cada métrica distintos intervalos de diferencias porcentuales, entre los cuales determinar la dificultad de una tarea en comparación con otra.
+Una vez obtenidas las respuestas del conjunto de expertos, se debe calcular la diferencia porcentual entre cada una de las métricas de ambas tareas, sin considerar la métrica de tiempo estimado, puesto que ésta es directamente proporcional a la métrica de esfuerzo. Se debe repetir el proceso con varias tareas para obtener la mayor información posible, especialmente con tareas cuya dificultad en comparación sea distinta a la de las otras tareas ya evaluadas. El objetivo de obtener esta información, es relacionar las diferencias porcentuales con los niveles de diferencias de dificultad entre tareas, de manera de tener para cada métrica distintos intervalos de diferencias porcentuales, entre los cuales determinar la dificultad de una tarea en comparación con otra.
 
 A continuación se muestra un ejemplo de la información resultante al término de este paso:
 
@@ -857,37 +913,127 @@ Ahora, lo que se busca es determinar 5 intervalos de diferencias porcentuales pa
 
 \secnumbersection{VALIDACIÓN DE LA SOLUCIÓN}
 
-\subsection{Validación de la Plataforma}
 \subsection{Validación del Framework}
-\subsubsection{Redacción de una Tarea con sus Respectivas Métricas}
-\subsubsection{Cálculo de Métricas para Tareas de IWI-131 del S2022-1 y S2022-2}
-\subsubsection{Comparación de las Tareas de IWI-131 del S2022-1 y S2022-2}
 
-Se debe validar la solución propuesta. Esto significa probar o demostrar que la solución propuesta es válida para el entorno donde fue planteada.
 
-Tradicionalmente es una etapa crítica, pues debe comprobarse por algún medio que vuestra propuesta es básicamente válida. En el caso de un desarrollo de software es la construcción y sus pruebas; en el caso de propuestas de modelos, guías o metodologías podrían ser desde la aplicación a un caso real hasta encuestas o entrevistas con especialistas; en el caso de mejoras de procesos u optimizaciones, podría ser comparar la situación actual (previa a la memoria) con la situación final (cuando la memoria está ya implementada) en base a un conjunto cuantitativo de indicadores o criterios.
+\subsubsection{Cálculo de Métricas para Tareas del S2022-1 y S2022-2} \label{sssec:calcMetrics}
 
-\subsection{EJEMPLO DE COMO CITAR TABLAS}
+\subsubsection{Cálculo de los Intervalos de Dificultad}
 
-Se colocó una tabla que se puede referenciar también desde el texto (Ver tabla \ref{table:coloquios}).
-
-\begin{table}[h]
+Utilizando la herramienta Google Forms$\texttrademark$, se creó un formulario con el cual evaluar la diferencia de dificultad entre las tareas del S2022-1 y el S2022-2. El formulario constaba de una descripción de lo que hay que hacer, una entrada para ingresar un correo de contacto, una pregunta para determinar el grado de expertíz del encuestado, y en adelante, una pregunta de comparación de dificultad por cada uno de los contenidos evaluados en ambos semestres. Para esta validación, se utilizaron como contenidos:
+\begin{itemize}
+  \item Tarea 1: Programas secuenciales
+  \item Tarea 2: Condicionales
+  \item Tarea 3: Ciclos
+  \item Tarea 4: Funciones
+  \item Tarea 5: Strings
+  \item Tarea 6: Listas
+  \item Tarea 7: Diccionarios
+  \item Tarea 8: Archivos
+\end{itemize}
+Los cuales tuvieron su respectiva tarea en ambos semestres.
+\begin{figure}[H]
   \centering
-  \caption{\label{table:coloquios} Coloquios del Ciclo de Charlas Informática.} Fuente: Elaboración Propia.
-  \begin{tabular}{|p{7cm}|p{7cm}|}
+  \includegraphics[width=1\textwidth]{figures/formulario1.png}
+  \caption{Presentación del formulario para la diferencia de dificultad entre tareas.} Fuente: elaboración propia.
+  \label{formulario1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/formulario2.png}
+  \caption{Ejemplo de las preguntas para comparar la dificultad entre 2 tareas de distintos semestres.} Fuente: elaboración propia.
+  \label{formulario2}
+\end{figure}
+La encuesta fue respondida por 2 profesores con años de experiencia en el ramo IWI-131 de la UTFSM como docentes y como coordinadores, y por 3 ayudantes con años de experiencia apoyando el proceso docente del mismo. A continuación se resumen las respuestas:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|r|r|r|r|r|r|r|}
     \hline
-    Título Coloquio                                                                                                                            & Presentador, País                  \\
-    \hline
-    ``Sensible, invisible, sometimes tolerant, heterogeneous, decentralized and interoperable... and we still need to assure its quality...''' & Guilherme Horta Travassos, Brasil. \\
-    \hline
-    ``Dispersed Multiphase Flow Modeling: From Environmental to Industrial Applications'''                                                     & Orlando Ayala, EE.UU.              \\
-    \hline
-    ``Líneas de Producto Software Dinámicas para Sistemas atentos el Contexto'''                                                               & Rafael Capilla, España.            \\
-    \hline
-    ...                                                                                                                                        & ...                                \\
-    \hline
+    \textbf{Rol}      & \multicolumn{1}{l|}{\textbf{Tarea 1}} & \multicolumn{1}{l|}{\textbf{Tarea 2}} & \multicolumn{1}{l|}{\textbf{Tarea 3}} & \multicolumn{1}{l|}{\textbf{Tarea 4}} & \multicolumn{1}{l|}{\textbf{Tarea 5}} & \multicolumn{1}{l|}{\textbf{Tarea 6}} & \multicolumn{1}{l|}{\textbf{Tarea 7}} & \multicolumn{1}{l|}{\textbf{Tarea 8}} \\ \hline
+    Ayudante          & 1                                     & 4                                     & 2                                     & 2                                     & 3                                     & 4                                     & 1                                     & 2                                     \\ \hline
+    Ayudante          & 1                                     & 3                                     & 2                                     & 3                                     & 3                                     & 3                                     & 2                                     & 3                                     \\ \hline
+    Ayudante          & 2                                     & 4                                     & 4                                     & 3                                     & 2                                     & 4                                     & 2                                     & 2                                     \\ \hline
+    Docente           & 2                                     & 3                                     & 2                                     & 3                                     & 3                                     & 3                                     & 3                                     & 3                                     \\ \hline
+    Docente           & 2                                     & 3                                     & 2                                     & 2                                     & 2                                     & 2                                     & 3                                     & 2                                     \\ \hline
+    \rowcolor[HTML]{EFEFEF}
+    \textbf{Promedio} & 2                                     & 3                                     & 2                                     & 3                                     & 3                                     & 3                                     & 2                                     & 2                                     \\ \hline
   \end{tabular}
+  \caption{Resultado de la encuesta a expertos sobre la diferencia de dificultad entre tareas. }Fuente: Elaboración propia
+  \label{tab:encuesta1}
 \end{table}
+Luego, se calcula la diferencia porcentual entre las métricas de cada una de las tareas utilizando los datos calculados en \ref{sssec:calcMetrics}, obteniendo los siguientes resultados:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|l|r|r|r|r|}
+    \hline
+    \textbf{Tareas} & \textbf{\begin{tabular}[c]{@{}l@{}}Comparación de\\ dificultad\end{tabular}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Complejidad \\ ciclomática (dif \%)\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Dificultad H. \\ (dif \%)\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Esfuerzo \\ (dif \%)\end{tabular}}} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Volumen \\ (dif \%)\end{tabular}}} \\ \hline
+    Secuenciales    & 2 - más fácil                                                                & 0,00\%                                                                                                    & -21,46\%                                                                                        & -35,27\%                                                                                   & -17,58\%                                                                                  \\ \hline
+    Condicionales   & 3 - similar                                                                  & 26,32\%                                                                                                   & 12,12\%                                                                                         & 3,46\%                                                                                     & -7,72\%                                                                                   \\ \hline
+    Ciclos          & 2 - más fácil                                                                & -18,75\%                                                                                                  & -54,06\%                                                                                        & -76,65\%                                                                                   & -49,17\%                                                                                  \\ \hline
+    Funciones       & 3 - similar                                                                  & 50,00\%                                                                                                   & 79,59\%                                                                                         & -2,34\%                                                                                    & -45,62\%                                                                                  \\ \hline
+    Strings         & 3 - similar                                                                  & 40,00\%                                                                                                   & 3,87\%                                                                                          & -15,12\%                                                                                   & -18,28\%                                                                                  \\ \hline
+    Listas          & 3 - similar                                                                  & 54,55\%                                                                                                   & 66,39\%                                                                                         & 515,61\%                                                                                   & 269,97\%                                                                                  \\ \hline
+    Archivos        & 2 - más fácil                                                                & -37,50\%                                                                                                  & -2,86\%                                                                                         & -32,65\%                                                                                   & -30,67\%                                                                                  \\ \hline
+    Diccionarios    & 2 - más fácil                                                                & 6,25\%                                                                                                    & 43,69\%                                                                                         & -32,61\%                                                                                   & -53,10\%                                                                                  \\ \hline
+  \end{tabular}
+  \caption{Comparación de dificultad entre tareas, junto con las diferencias porcentuales de cada una de sus métricas} Fuente: elaboración propia
+  \label{tab:porcentualDif}
+\end{table}
+
+Finalmente, aplicando la heurística de \ref{sssec:calcMetrics}, se obtienen los siguientes intervalos de comparación de dificultad:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|r|r|r|}
+    \hline
+    \textbf{Comparación de Dificultad}     & \multicolumn{1}{l|}{\textbf{Complejidad Ciclomática}} & \multicolumn{1}{l|}{\textbf{Dificultad H.}} & \multicolumn{1}{l|}{\textbf{Esfuerzo}} & \multicolumn{1}{l|}{\textbf{Volumen}} \\ \hline
+    \multirow{2}{*}{1 - mucho más fácil}   & \multicolumn{1}{l|}{-inf\%}                           & \multicolumn{1}{l|}{-inf\%}                 & \multicolumn{1}{l|}{-inf\%}            & \multicolumn{1}{l|}{-inf\%}           \\ \cline{2-5}
+                                           & -37,51\%                                              & -54,07\%                                    & -76,66\%                               & -53,11\%                              \\ \hline
+    \multirow{2}{*}{2 - más fácil}         & -37,50\%                                              & -54,06\%                                    & -76,65\%                               & -53,10\%                              \\ \cline{2-5}
+                                           & 6,25\%                                                & 3,87\%                                      & -32,61\%                               & -45,62\%                              \\ \hline
+    \multirow{2}{*}{3 - similar}           & 6,26\%                                                & 3,88\%                                      & -32,60\%                               & -45,61\%                              \\ \cline{2-5}
+                                           & 26,26\%                                               & 23,88\%                                     & -12,60\%                               & -25,61\%                              \\ \hline
+    \multirow{2}{*}{4 - más difícil}       & 26,27\%                                               & 23,89\%                                     & -12,59\%                               & -25,60\%                              \\ \cline{2-5}
+                                           & 70,03\%                                               & 81,83\%                                     & 31,46\%                                & -18,11\%                              \\ \hline
+    \multirow{2}{*}{5 - mucho más difícil} & 70,04\%                                               & 81,84\%                                     & 31,47\%                                & -18,10\%                              \\ \cline{2-5}
+                                           & \multicolumn{1}{l|}{inf\%}                            & \multicolumn{1}{l|}{inf\%}                  & \multicolumn{1}{l|}{inf\%}             & \multicolumn{1}{l|}{inf\%}            \\ \hline
+  \end{tabular}
+  \caption{Intervalos de dificultad por métrica para cada dificultad comparativa.} Fuente: elaboración propia
+  \label{tab:compDif}
+\end{table}
+
+\subsubsection{Diferencia de Dificultad entre Tareas del S2022-1 y S2022-2}
+
+Utilizando la tabla \ref{tab:compDif}, se aplican estos intervalos a las diferencias porcentuales de la tabla \ref{tab:porcentualDif}, obteniendo los siguientes resultados por métrica para cada tarea:
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|l|r|r|r|r|r|}
+    \hline
+    \textbf{Tareas} & \multicolumn{1}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Complejidad \\ ciclomática\end{tabular}}} & \multicolumn{1}{l|}{\textbf{Dificultad H.}} & \multicolumn{1}{l|}{\textbf{Esfuerzo}} & \multicolumn{1}{l|}{\textbf{Volumen}} & \multicolumn{1}{l|}{\textbf{Promedio}} \\ \hline
+    Secuenciales    & 2                                                                                                & 4                                           & 2                                      & 2                                     & 3                                      \\ \hline
+    Condicionales   & 4                                                                                                & 2                                           & 2                                      & 3                                     & 3                                      \\ \hline
+    Ciclos          & 2                                                                                                & 2                                           & 2                                      & 2                                     & 2                                      \\ \hline
+    Funciones       & 2                                                                                                & 2                                           & 2                                      & 5                                     & 3                                      \\ \hline
+    Strings         & 4                                                                                                & 4                                           & 5                                      & 5                                     & 5                                      \\ \hline
+    Listas          & 4                                                                                                & 4                                           & 3                                      & 2                                     & 3                                      \\ \hline
+    Archivos        & 4                                                                                                & 2                                           & 3                                      & 4                                     & 3                                      \\ \hline
+    Diccionarios    & 4                                                                                                & 3                                           & 4                                      & 5                                     & 4                                      \\ \hline
+  \end{tabular}
+  \caption{}
+  \label{tab:difDifferences}
+\end{table}
+Al comparar los resultados con las respuestas de la tabla \ref{tab:encuesta1}, se determina que la heurística aplicada para determinar los intervalos de diferencias porcentuales, acertó correctamente a 3 pares de tareas: Ciclos, Funciones y Strings, mientras que para el resto de pareas de tareas, los resultados no estuvieron demasiado alejados de lo determinado por los expertos en la encuesta.
+
+\subsubsection{Actualización de Intervalos de Comparación de Dificultad}
+
+Para cargar la data de los intervalos de dificultad calculados, se modifica
+
+\subsubsection{Actualización de Métricas S2022-1 y S2022-2}
+
+Para cargar la data de las métricas calculadas, se modifica
+
+\subsubsection{Redacción de una Tarea con sus Respectivas Métricas}
+
+\subsubsection{Comparación de las Tareas de IWI-131 del S2022-1 y S2022-2}
 
 \newpage
 

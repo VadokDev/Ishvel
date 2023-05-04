@@ -1,6 +1,7 @@
 import os
 import shutil
 import subprocess
+from multimetricprog import calculator
 
 
 def move_assignments():

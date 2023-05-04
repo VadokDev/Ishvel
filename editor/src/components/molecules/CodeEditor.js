@@ -22,8 +22,8 @@ const CodeEditor = () => {
           multiline
           fullWidth
           hiddenLabel={true}
-          minRows={10}
-          maxRows={10}
+          minRows={9}
+          maxRows={9}
           value={code}
           onChange={handleChange}
         />

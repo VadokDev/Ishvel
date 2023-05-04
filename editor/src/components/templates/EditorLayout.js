@@ -28,35 +28,29 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 
 const EditorLayout = ({ Editor, Suggestions, Coding, Metrics, Config }) => {
   const showMetrics = useBearStore((state) => state.showMetrics);
-  const [open, setOpen] = useState(true);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
 
   return (
     <Grid container spacing={2} pl={2} mt={1}>
       <Grid item xs={7}>
         {showMetrics ? <ChartsArea /> : <Editor />}
       </Grid>
-      <Grid container item direction={'column'} spacing={2} xs={3}>
-        <Grid item>
-          <Coding />
-        </Grid>
-        <Grid item>
-          <Suggestions />
-        </Grid>
-      </Grid>
-      <Grid container item direction={'column'} xs={2} pr={2}>
-        <Grid item>
-          <Config />
-        </Grid>
-        <Grid item>
-          <Metrics />
+      <Grid container item direction={'column'} pr={2} xs={5}>
+        <Grid container item spacing={2}>
+          <Grid item xs={6}>
+            <Coding />
+          </Grid>
+          <Grid item xs={6}>
+            <Config />
+          </Grid>
+
+          <Grid container item direction={'column'}>
+            <Grid item>
+              <Metrics />
+            </Grid>
+            <Grid item>
+              <Suggestions />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
