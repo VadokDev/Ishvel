@@ -1,5 +1,4 @@
 import create from 'zustand';
-import suggestions from '../data/suggestions';
 import MetricsRepository from '../repositories/MetricsRepository';
 import { SuggestionsService } from './SuggestionsService';
 import { CodeService } from './CodeService';
@@ -9,7 +8,11 @@ import { ComplexityService } from './ComplexityService';
 const metricsRepository = MetricsRepository();
 const suggestionsService = SuggestionsService(metricsRepository);
 const complexityService = ComplexityService(metricsRepository);
-const actionsService = ActionsService(metricsRepository, complexityService);
+const actionsService = ActionsService(
+  metricsRepository,
+  complexityService,
+  suggestionsService
+);
 
 const codeService = CodeService();
 codeService.init();
@@ -48,22 +51,14 @@ const useBearStore = create((set) => ({
   setMetricsType: (metricsType) =>
     set(actionsService.updateWithComplexities('metricsType', metricsType)),
   setMetrics: (metrics) => set((state) => ({ ...state, metrics })),
-
-  updateSuggestions: () =>
-    set((state) => ({
-      suggestions: suggestionsService.getCodeSuggestions(
-        state.semester,
-        state.content,
-        state.metrics,
-        state.metricsType
-      ),
-    })),
+  updateSuggestions: () => set(actionsService.updateSuggestions()),
   removeSuggestion: (idx) =>
     set((state) => {
       const newState = {
         ...state,
-        suggestions: suggestions.filter(({ id }) => id === idx),
+        suggestions: state.suggestions.filter(({ id }) => id != idx),
       };
+      console.log(idx, newState.suggestions);
       return newState;
     }),
 }));

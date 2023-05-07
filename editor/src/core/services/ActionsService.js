@@ -1,6 +1,11 @@
-const ActionsService = (MetricsRepository, ComplexityService) => {
+const ActionsService = (
+  MetricsRepository,
+  ComplexityService,
+  SuggestionService
+) => {
   const metricsRepository = MetricsRepository;
   const complexityService = ComplexityService;
+  const suggestionService = SuggestionService;
 
   const updateWithComplexities = (attribute, value) => (state) => {
     if (state.code === '') {
@@ -39,7 +44,15 @@ const ActionsService = (MetricsRepository, ComplexityService) => {
     return { ...state, code, metrics, complexities };
   };
 
-  return { updateWithComplexities, updateSolution };
+  const updateSuggestions = () => (state) => {
+    const suggestions = suggestionService.getCodeSuggestions(
+      state.metrics,
+      state.complexities
+    );
+    return { ...state, suggestions };
+  };
+
+  return { updateWithComplexities, updateSolution, updateSuggestions };
 };
 
 export { ActionsService };

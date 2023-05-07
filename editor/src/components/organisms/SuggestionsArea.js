@@ -9,13 +9,19 @@ import TitlePaper from '../molecules/TitlePaper';
 const SuggestionsArea = () => {
   const suggestions = useBearStore((state) => state.suggestions);
   return (
-    <Grid container direction={'column'} spacing={2}>
+    <Grid container direction={'column'} spacing={2} mt={1}>
       <Grid item>
         <TitlePaper Icon={AddTaskIcon} content={'Sugerencias'} />
       </Grid>
-      {suggestions.map(({ title, message, type, link }, i) => (
+      {suggestions.map(({ id, title, message, type, link }, i) => (
         <Grid key={`suggestion-area-${i}`} item>
-          <Suggestion title={title} message={message} type={type} link={link} />
+          <Suggestion
+            id={id}
+            title={title}
+            message={message}
+            type={type}
+            link={link}
+          />
         </Grid>
       ))}
     </Grid>

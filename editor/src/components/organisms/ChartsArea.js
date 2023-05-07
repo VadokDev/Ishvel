@@ -15,6 +15,7 @@ const programmingMetricsArray = [
   { name: 'Esfuerzo', metric: 'hEffort', color: 'primary' },
   { name: 'Tiempo', metric: 'hTime', color: 'success' },
   { name: 'Volumen', metric: 'hVolume', color: 'warning' },
+  { name: 'Dificultad', metric: 'hDifficult', color: 'warning' },
 ];
 
 const ChartsArea = () => {

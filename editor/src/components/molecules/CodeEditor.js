@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import { useBearStore, codeService } from '../../core/services';
 
 const CodeEditor = () => {
-  const { updateSolution, code, setCode } = useBearStore();
+  const { updateSolution, updateSuggestions, code, setCode } = useBearStore();
   const handleChange = (e) => {
     const solutionCode = e.target.value;
     if (solutionCode === '') {
@@ -13,6 +13,7 @@ const CodeEditor = () => {
 
     const metrics = codeService.getMetrics(solutionCode);
     updateSolution(solutionCode, metrics);
+    updateSuggestions();
   };
   return (
     <Card>

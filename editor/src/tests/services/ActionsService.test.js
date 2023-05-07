@@ -25,7 +25,7 @@ describe('ActionsService Unit Test Suite', () => {
       complexities,
     };
 
-    const actionsService = ActionsService({}, {});
+    const actionsService = ActionsService({}, {}, {});
     const finalState = actionsService.updateWithComplexities(
       attribute,
       newValue
@@ -71,7 +71,8 @@ describe('ActionsService Unit Test Suite', () => {
 
     const actionsService = ActionsService(
       metricsRepositoryMock,
-      complexityServiceMock
+      complexityServiceMock,
+      {}
     );
     const finalState = actionsService.updateWithComplexities(
       attribute,
@@ -122,7 +123,8 @@ describe('ActionsService Unit Test Suite', () => {
 
     const actionsService = ActionsService(
       metricsRepositoryMock,
-      complexityServiceMock
+      complexityServiceMock,
+      {}
     );
     const finalState = actionsService.updateSolution(code, metrics)(stateMock);
     expect(finalState).toStrictEqual(expectedState);

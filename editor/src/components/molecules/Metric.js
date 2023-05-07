@@ -13,6 +13,7 @@ import WarningIcon from '@mui/icons-material/Warning';
 import DangerousIcon from '@mui/icons-material/Dangerous';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import { secondsToMins } from '../../core/utils/timeUtils';
 
 const iconByStatus = {
   1: DangerousIcon,
@@ -38,8 +39,9 @@ const complexityNames = {
   5: 'Mucho más difícil',
 };
 
-const Metric = ({ name, value, complexity, status }) => {
-  const Icon = iconByStatus[complexity || 3];
+const Metric = ({ name, value, complexity }) => {
+  const Icon =
+    iconByStatus[complexity ?? secondsToMins(value) > 60 ? '2' : '3'];
   return (
     <Grid item>
       <Card sx={{ boxShadow: 0 }}>
@@ -52,9 +54,14 @@ const Metric = ({ name, value, complexity, status }) => {
             flexWrap
             alignItems={'center'}
           >
-            <Icon color={colorByStatus[complexity]} />
+            <Icon
+              color={
+                colorByStatus[
+                  complexity ?? secondsToMins(value) > 60 ? '2' : '3'
+                ]
+              }
+            />
             <Typography pl={1}>{name}</Typography>
-            <Typography pl={1}>{value}</Typography>
           </Grid>
           <Grid item pr={2}>
             {complexity ? (
@@ -67,9 +74,9 @@ const Metric = ({ name, value, complexity, status }) => {
             ) : (
               <Chip
                 variant='outlined'
-                color={colorByStatus[complexity]}
+                color={secondsToMins(value) > 60 ? 'warning' : 'success'}
                 size='small'
-                label={value}
+                label={`${secondsToMins(value)}m`}
               />
             )}
           </Grid>

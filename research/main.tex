@@ -596,12 +596,36 @@ El marco de trabajo de Ishvel se propone con el fin de entregar una herramienta 
 
 \subsubsection{Metodología}
 
-
-
 \subsubsection{Redacción de una Tarea}
-\subsubsection{Cálculo de Métricas de una Solución}
+\subsubsection{Cálculo de Métricas} \label{sssec:metricsCalc}
 
+El framework trae consigo una herramienta llamada \textit{metrics-research}, la cual hace uso del módulo multimetricprog \cite{privkweihmann_multimetricprog} para calcular de manera programática las métricas de tanto 1 solución, como el promedio de métricas de varias soluciones al mismo tiempo.
 
+Para utilizar la herramienta, se debe navegar en una terminal hasta el directorio que la contiene, y luego ejecutar el programa \texttt{main.py} que se encuentra en utilizando alguno de los siguientes parámetros:
+
+\begin{itemize}
+  \item \textbf{-f FILE}: Indica en FILE la ruta del archivo cuyas métricas se desean calcular.
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figures/metricstool1.png}
+          \caption{Ejemplo de uso de la herramienta metrics-research con el parámetro -f.} Fuente: elaboración propia.
+          \label{metricstool1}
+        \end{figure}
+  \item \textbf{-d DIR}: Indica en DIR el directorio de la carpeta con las soluciones cuyo promedio de métricas se desea calcular.
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.8\textwidth]{figures/metricstool2.png}
+          \caption{Ejemplo de uso de la herramienta metrics-research con el parámetro -d.} Fuente: elaboración propia.
+          \label{metricstool2}
+        \end{figure}
+  \item \textbf{-h}: Se consulta la documentación de los parámetros del programa.
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figures/metricstool3.png}
+          \caption{Ejemplo de uso de la herramienta metrics-research con el parámetro -h.} Fuente: elaboración propia.
+          \label{metricstool3}
+        \end{figure}
+\end{itemize}
 
 \subsubsection{Determinar la Diferencia de Dificultad entre Tareas}
 
@@ -904,8 +928,101 @@ Ahora, lo que se busca es determinar 5 intervalos de diferencias porcentuales pa
 \end{enumerate}
 
 \subsubsection{Sugerencias}
+
+Dado que el framework da indicios de la dificultad de la tarea en base a su solución, a continuación se presentan estrategias para interpretar cada una de las métricas planteadas en este documento y tomar acciones para ajustarlas:
+
+\begin{itemize}
+  \item \textbf{Complejidad ciclomática}: La complejidad ciclomática en la práctica, es directamente proporcional a la cantidad de condiciones que debe evaluar el programa, es decir, cuando la solución de una tarea tiene una complejidad ciclomática demasiado alta, se sugiere modificar el enunciado de modo tal de remover las secciones que impliquen añadir más condiciones. Se pueden evaluar contenidos sin la necesidad de generar tantas condiciones específicas que lleven a bifurcaciones en el código, similarmente, en el caso de que la complejidad ciclomática sea demasiado baja, se pueden añadir casos específicos en el enunciado que requieran que el estudiante añada más bifurcaciones en su código a través de condiciones.
+  \item \textbf{Volumen}: El volumen de un programa es directamente proporcional a la cantidad de operadores y operandos utilizados, así como también, al logaritmo en base 2 de la cantidad de operadores y operandos únicos que la implementación requiere. Cuando el volumen de una implementación es demasiado alto, se recomienda modificar aspectos del enunciado que requieran de demasiadas operaciones aritméticas distintas, así como también, que hagan uso de demasiadas variables, pues esto aumenta el vocabulario de la implementación y así la dimensión del volumen de la implementación resultante, del mismo modo, reducir la cantidad de cosas que exige el enunciado para que el código requerido como solución sea más corto, y así reducir el volumen en general. Para el caso en que el volumen sea demasiado bajo, añadir párrafos en el enunciado que requieran de diferentes operaciones aritméticas, y más datos para almacenar y tener que crear más variables, favorecerá mucho el aumento en el valor de esta métrica en la implementación final.
+  \item \textbf{Esfuerzo}: El esfuerzo varía crece exponencialmente al aumentar el volumen, y disminuye cuando aumenta el volumen potencial. Por lo mismo, para ajustar el esfuerzo de una implementación según si es muy grande o muy pequeño, se pueden aplicar las sugerencias anteriores para manejar el valor del volumen, y para el caso del volumen potencial, se sugiere jugar en el enunciado con la cantidad de elementos únicos que se trabajan, es decir, la cantidad de valores distintos que se necesitan almacenar, principalmente las entradas del problema a resolver. A medida que los inputs del problema aumentan, el volumen potencial aumentará, y a medida que estos disminuyan, el volumen potencial también lo hará y por consiguiente el esfuerzo aumentará.
+  \item \textbf{Dificultad}: La dificultad de un programa se maneja según el vocabulario $\eta$ y el largo $N$ del mismo. Cuando la cantidad de operadores únicos aumenta, o cuando aumenta el total de operadores únicos utilizados, la dificultad del programa aumenta, mientras que cuando la cantidad de operandos únicos aumenta, la dificultad disminuye. Para ajustar el valor de la dificultad de una implementación según el enunciado de una tarea, sugiere incluír en los párrafos aspectos del enunciado que requieran cálculos con operadores aritméticos variados, o bien, hacer uso de distintos valores a considerar a la hora de realizar el programa, esto puede llevarse a cabo con distintos inputs, o bien, con distintos valores a considerar a la hora de realizar condiciones, poner límites, precios en el caso de programas que requieran tiendas, etc.
+  \item \textbf{Tiempo}: El tiempo estimado de una implementación es directamente proporcional al esfuerzo requerido por la misma, en este caso, lo ideal es que el tiempo estimado de resolución no pase de 1 hora, para ello en el caso de tener una tarea que requiera demasiado tiempo, se recomienda aplicar las sugerencias de la métrica de esfuerzo para hacer los ajustes necesarios.
+\end{itemize}
+
 \subsubsection{Actualización de Métricas Semestrales}
+
+En el editor del framework, se encuentra en el directorio \texttt{src/core/data} un conjunto de archivos encargados de mantener los datos con los que funciona el software.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/datafiles.png}
+  \caption{Archivos de datos del editor.} Fuente: elaboración propia.
+  \label{datafiles}
+\end{figure}
+En particular, los archivos \texttt{studentAssignments.json} y \texttt{teacherAssignments.json} contienen respectivamente, las métricas promedio de las soluciones de todos los estudiantes, y las métricas individuales de las soluciones de los profesores a las tareas de los semestres estudiados.
+
+Para actualizar las métricas semestrales, se debe primero calcular el promedio de métricas de las tareas de los estudiantes, así como también las métricas de las soluciones de los profesores a las mismas, siguiendo los pasos de la sección \ref{sssec:metricsCalc}. Luego se deben añadir estos datos al archivo respectivo para que sean desplegadas en las métricas históricas del editor.
+
+Ambos archivos comparten la siguiente estructura:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/metrics1.png}
+  \caption{Formato de los archivos de métricas del editor.} Fuente: elaboración propia.
+  \label{img:metrics1}
+\end{figure}
+
+La cual se compone de una lista de objetos con las siguientes propiedades
+\begin{itemize}
+  \item \textbf{semester}: Semestre al cual corresponden las métricas
+  \item \textbf{content}: Objeto cuyo nombre debe ser el contenido de la tarea, y que sus propiedades serán las métricas de la misma. Para trabajar con los 8 contenidos evaluados en los semestres 2022-1 y 2022-2, se utilizaron como contenidos:
+        \begin{itemize}
+          \item \textbf{dicts}: Diccionarios
+          \item \textbf{files}: Archivos
+          \item \textbf{lists}: Listas
+          \item \textbf{functions}: Funciones
+          \item \textbf{strings}: Strings
+          \item \textbf{loops}: Ciclos
+          \item \textbf{conditionals}: Condicionales
+          \item \textbf{sequential}: Secuenciales
+        \end{itemize}
+  \item \textbf{cyclomatic\_complexity}: Complejidad ciclomática de la tarea del contenido correspondiente
+  \item \textbf{halstead\_difficulty}: Dificultad según Halstead de la tarea del contenido correspondiente
+  \item \textbf{halstead\_effort}: Esfuerzo de la tarea del contenido correspondiente
+  \item \textbf{halstead\_timerequired}: Tiempo estimado requerido para desarrolllar la tarea del contenido correspondiente
+  \item \textbf{halstead\_volume}: Volumen de la tarea del contenido correspondiente
+\end{itemize}
+Para añadir las métricas de una nueva tarea, ya sea el promedio de las tareas de los estudiantes, o de la solución de los profesores, se debe añadir una nueva llave debajo de las métricas de la última tarea del semestre en curso, esta llave debe tener el nombre del contenido cuyas métricas fueron calculadas, y dentro de esta llave, debe pegarse el resultado de las métricas calculadas con la herramienta \textit{metrics-research}.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/metrics2.png}
+  \caption{Ejemplo de como añadir las métricas de la tarea de archivos del semestre 2022-2 en el archivo de métricas del editor.} Fuente: elaboración propia.
+  \label{img:metrics2}
+\end{figure}
+En el caso de necesitar añadir un nuevo semestre, se debe añadir un objeto nuevo a la lista, el cual siga el formato de la figura \ref{img:metrics1}, y entonces añadir allí las métricas según el contenido del que se disponga información
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/metrics3.png}
+  \caption{Ejemplo de como añadir las métricas de la tarea de archivos del semestre 2022-3 en el archivo de métricas del editor.} Fuente: elaboración propia.
+  \label{img:metrics3}
+\end{figure}
 \subsubsection{Actualización de Intervalos de Comparación de Dificultad}
+
+En el editor del framework se encuentra el directorio \texttt{src/core/data}, el cual contiene el archivo \texttt{comparisionIntervals.json} con el siguiente contenido:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/metrics4.png}
+  \caption{Contenido del archivo de intervalos de comparación de dificultad.} Fuente: elaboración propia.
+  \label{img:metrics4}
+\end{figure}
+Cuya estructura consta de:
+\begin{itemize}
+  \item \textbf{Métrica}: El nombre de la métrica que contendrá los intervalos de comparación de dificultad.
+        \begin{itemize}
+          \item \textbf{``1''}: Lista con el límite inferior y superior del ntervalo de comparación para la dificultad ``mucho más fácil''.
+          \item \textbf{``2''}: Lista con el límite inferior y superior del ntervalo de comparación para la dificultad ``más fácil''.
+          \item \textbf{``3''}: Lista con el límite inferior y superior del ntervalo de comparación para la dificultad ``similar''.
+          \item \textbf{``4''}: Lista con el límite inferior y superior del ntervalo de comparación para la dificultad ``mucho difícil''.
+          \item \textbf{``5''}: Lista con el límite inferior y superior del ntervalo de comparación para la dificultad ``mucho más difícil''.
+        \end{itemize}
+\end{itemize}
+Siendo los nombres de métricas válidas:
+\begin{itemize}
+  \item \textbf{cc}: Complejidad ciclomática.
+  \item \textbf{hDifficult}: Dificultad según Halstead.
+  \item \textbf{hEffort}: Esfuerzo.
+  \item \textbf{hVolume}: Volumen
+\end{itemize}
+Para modificar los intervalos de comparación de dificultad, basta con modificar los valores de los límites superiores e inferiores de las métricas.
+
 \subsubsection{Análisis de Métricas entre Semestres}
 \subsubsection{Comparación de Métricas entre Tareas de IWI-131}
 

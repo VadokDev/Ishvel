@@ -10,7 +10,9 @@ const CodeService = () => {
 
     await pyodide.loadPackage('micropip');
     const micropip = pyodide.pyimport('micropip');
-    await micropip.install('multimetricprog-VadokDev');
+    await micropip.install(
+      'https://files.pythonhosted.org/packages/90/0c/37e720b2e0707d0f5ef8ccb3a68c9487d281a2d211ad7c81c74161f0c739/multimetricprog-0.0.5-py3-none-any.whl'
+    );
     pyodide.runPython(`
       import json 
       from multimetricprog import calculator
@@ -34,7 +36,6 @@ ${JSON.parse(JSON.stringify(code))}
 ''')
 json.dumps(metrics, indent = 2) 
 `);
-
     const parsed = JSON.parse(raw)['overall'];
     const metrics = {
       cc: parsed.cyclomatic_complexity,
