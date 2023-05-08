@@ -23,6 +23,7 @@ const defaultMetrics = {
   hTime: 0,
   hVolume: 0,
   cc: 0,
+  average: 0,
 };
 
 const defaultContent = 'sequential';

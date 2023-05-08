@@ -15,7 +15,7 @@ En Pythonia existe un bazar que suele vender distintos productos, pero que siemp
 Recuerda que la fórmula de distancia es:
 
 \`\`\`KaTeX
-c = \\pm\\sqrt{a^2 + b^2}
+d = \\sqrt{(x_{2} - x_{1})^2 + (y_{2} - y_{1})^2}
 \`\`\`
 
 ## Instrucciones

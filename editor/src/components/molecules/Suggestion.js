@@ -22,7 +22,7 @@ const Suggestion = ({ id, title, message, type, link }) => {
           Cerrar
         </Button>
         {type === 'url' && (
-          <a href={link}>
+          <a href={link} target='_blank' rel='noreferrer'>
             <Button size='small'>Ver más</Button>
           </a>
         )}

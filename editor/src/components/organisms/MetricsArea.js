@@ -1,21 +1,20 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import Metric from '../molecules/Metric';
 import Card from '@mui/material/Card';
-import Button from '@mui/material/Button';
-import { CardActions, CardContent } from '@mui/material';
+import { CardContent } from '@mui/material';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import TitlePaper from '../molecules/TitlePaper';
 
 import { useBearStore } from '../../core/services';
 
 const programmingMetricsArray = [
-  { name: 'C. Ciclomática', metric: 'cc' },
+  { name: 'Complejidad Ciclomática', metric: 'cc' },
   { name: 'Esfuerzo', metric: 'hEffort' },
   { name: 'Dificultad', metric: 'hDifficult' },
   { name: 'Volumen', metric: 'hVolume' },
   { name: 'Tiempo', metric: 'hTime' },
+  { name: 'Promedio', metric: 'average' },
 ];
 
 const MetricsArea = () => {
