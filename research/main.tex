@@ -596,7 +596,73 @@ El marco de trabajo de Ishvel se propone con el fin de entregar una herramienta 
 
 \subsubsection{Metodología}
 
-\subsubsection{Redacción de una Tarea}
+Ishvel ofrece un acercamiento a entender la dificultad de una tarea en comparación a tareas anteriores, antes de publicar la misma a los estudiantes. Para esto, se la siguiente metodología de trabajo:
+
+\begin{itemize}
+  \item Desde el editor de Ishvel, seleccionar las configuraciones adecuadas para el contenido de la tarea que se va a desarrollar, y el semestre y tipo de soluciones con la cual compararla. Para esto, se ofrecen las siguientes opciones:
+        \begin{itemize}
+          \item \textbf{Contenido de la tarea}: Opción para determinar de qué contenido será la tarea a elaborar, lo que configura el editor para utilizar las métricas de tareas anteriores del contenido seleccionado
+          \item \textbf{Semestre a comparar}: Opción para determinar de qué semestre serán las tareas del contenido seleccionado las que se utilizarán para comparar
+          \item \textbf{Tareas a comparar}: Opción para determinar si las métricas de la tarea a elaborar se compararán con las métricas de las soluciones de los profesores o de los estudiantes, del semestre seleccionado previamente.
+        \end{itemize}
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.4\textwidth]{figures/ishvel1.png}
+          \caption{Opciones de configuración del editor de Ishvel.} Fuente: elaboración propia.
+          \label{img:ishvel1}
+        \end{figure}
+  \item Una vez configurado el editor, iniciar por el título de la tarea, añadir alguna imagen representativa, y proceder a seguir el formato de ejemplo del editor:
+        \begin{itemize}
+          \item \textbf{Contexto}: Contextualización corta reapecto al problema que se está enfrentando, buscando que sea real, concisa e interesante. En caso de necesitar ideas para contextualizar el problema, se puede ver la \textit{sugerencia por defecto} que el framework ofrece, la cual invita al docente a abrir Google Trends $\texttrademark$ y ver situaciones de actualidad que pueden ser interesantes para el contexto de un problema.
+                \begin{figure}[H]
+                  \centering
+                  \includegraphics[width=0.8\textwidth]{figures/ishvel2.png}
+                  \caption{Sugerencia inicial del editor de Ishvel.} Fuente: elaboración propia.
+                  \label{img:ishvel2}
+                \end{figure}
+          \item \textbf{Instrucciones}: Sección con la lista de instrucciones de lo que el estudiante debe realizar, concentrándose en que éste pueda relacionar lo que el texto dice con lo que él debe escribir en su programa. La idea de separar la sección de instrucciones de la sección de contextualización, es poder tener un espacio centrado nétamente en cómo el estudiante traducirá instrucciones en lenguaje humano a lenguaje máquina, sin tener distractores o tener que pasar por algún proceso cognitivo previo del cual desprender lo que se debe hacer, como lo sería por ejemplo mezclando el contexto con las instrucciones en un sólo texto.
+          \item \textbf{Ejemplos}: Sección con ejemplos de la salida completa del programa, de esta manera, el estudiante tiene una guía visual de cómo debería ser su programa, y no tiene que imaginar por completo los detalles visuales de la salida del programa, para así concentrarse en programar.
+          \item \textbf{Recomendaciones}: Sección extra con las recomendaciones que se pueden dar al estudiante para que realice un mejor trabajo, así como también, restricciones al mismo con las cuales el estudiante evite utilizar herramientas o librerías que no están consideradas como parte de lo que se busca evaluar en la tarea.
+        \end{itemize}
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figures/ishvel8.png}
+          \caption{Formato de ejemplo de una tarea en el editor de Ishvel.} Fuente: elaboración propia.
+          \label{img:ishvel3}
+        \end{figure}
+  \item Una vez redactada la tarea, ésta se debe resolver en cualquier editor de código. Luego, la solución desarrollada debe copiarse y pegarse en el recuadro de \texttt{Resolver Tarea}. Una vez ingresada la solución, el editor automáticamente calculará las métricas de esa solución, y las comparará con la solución configurada previamente. Después de este paso, se mostrará en la sección \texttt{Métricas} cual es la dificultad de esta solución en comparación a la tarea configurada por cada una de las métricas, así como también el tiempo estimado de resolución, y la dificultad promedio en comparación a la tarea configurada. Por último
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figures/ishvel4.png}
+          \caption{Métricas de una solución según Ishvel.} Fuente: elaboración propia.
+          \label{img:ishvel4}
+        \end{figure}
+  \item Por último, para iterar sobre el enunciado y poder abordar así las métricas de la tarea que se está elaborando, se muestran en la sección \texttt{Sugerencias} una serie de sugerencias que se pueden aplicar, para mejorar la diferencia de dificultad entre la tarea que se está elaborando y la tarea seleccionada para comparar.
+
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figures/ishvel5.png}
+          \caption{Sugerencias para una tarea según Ishvel.} Fuente: elaboración propia.
+          \label{img:ishvel5}
+        \end{figure}
+  \item Para descargar la tarea en PDF, se presiona el botón \texttt{Descargar Tarea}
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=1\textwidth]{figures/ishvel6.png}
+          \caption{Botón de descargar tarea en el editor de Ishvel.} Fuente: elaboración propia.
+          \label{img:ishvel6}
+        \end{figure}
+\end{itemize}
+
+Realizados estos pasos, se puede elaborar una tarea de un curso introductorio de programación teniendo una idea sobre su dificultad antes de publicarla a los estudiantes. Por otro lado, el framework busca también ofrecer métricas históricas para analizar el comportamiento de las tareas en el tiempo, para ésto, se presiona el botón \texttt{Métricas Históricas} al lado del botón \texttt{Descargar Tarea} como se ve en la imagen \ref{img:ishvel6}, lo que desplegará las métricas históricas que el framework tiene cargadas.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/ishvel7.png}
+  \caption{Sección de métricas históricas del framework Ishvel.} Fuente: elaboración propia.
+  \label{img:ishvel7}
+\end{figure}
+
 \subsubsection{Cálculo de Métricas} \label{sssec:metricsCalc}
 
 El framework trae consigo una herramienta llamada \textit{metrics-research}, la cual hace uso del módulo multimetricprog \cite{privkweihmann_multimetricprog} para calcular de manera programática las métricas de tanto 1 solución, como el promedio de métricas de varias soluciones al mismo tiempo.
@@ -934,12 +1000,12 @@ Dado que el framework da indicios de la dificultad de la tarea en base a su solu
 \begin{itemize}
   \item \textbf{Complejidad ciclomática}: La complejidad ciclomática en la práctica, es directamente proporcional a la cantidad de condiciones que debe evaluar el programa, es decir, cuando la solución de una tarea tiene una complejidad ciclomática demasiado alta, se sugiere modificar el enunciado de modo tal de remover las secciones que impliquen añadir más condiciones. Se pueden evaluar contenidos sin la necesidad de generar tantas condiciones específicas que lleven a bifurcaciones en el código, similarmente, en el caso de que la complejidad ciclomática sea demasiado baja, se pueden añadir casos específicos en el enunciado que requieran que el estudiante añada más bifurcaciones en su código a través de condiciones.
   \item \textbf{Volumen}: El volumen de un programa es directamente proporcional a la cantidad de operadores y operandos utilizados, así como también, al logaritmo en base 2 de la cantidad de operadores y operandos únicos que la implementación requiere. Cuando el volumen de una implementación es demasiado alto, se recomienda modificar aspectos del enunciado que requieran de demasiadas operaciones aritméticas distintas, así como también, que hagan uso de demasiadas variables, pues esto aumenta el vocabulario de la implementación y así la dimensión del volumen de la implementación resultante, del mismo modo, reducir la cantidad de cosas que exige el enunciado para que el código requerido como solución sea más corto, y así reducir el volumen en general. Para el caso en que el volumen sea demasiado bajo, añadir párrafos en el enunciado que requieran de diferentes operaciones aritméticas, y más datos para almacenar y tener que crear más variables, favorecerá mucho el aumento en el valor de esta métrica en la implementación final.
-  \item \textbf{Esfuerzo}: El esfuerzo varía crece exponencialmente al aumentar el volumen, y disminuye cuando aumenta el volumen potencial. Por lo mismo, para ajustar el esfuerzo de una implementación según si es muy grande o muy pequeño, se pueden aplicar las sugerencias anteriores para manejar el valor del volumen, y para el caso del volumen potencial, se sugiere jugar en el enunciado con la cantidad de elementos únicos que se trabajan, es decir, la cantidad de valores distintos que se necesitan almacenar, principalmente las entradas del problema a resolver. A medida que los inputs del problema aumentan, el volumen potencial aumentará, y a medida que estos disminuyan, el volumen potencial también lo hará y por consiguiente el esfuerzo aumentará.
+  \item \textbf{Esfuerzo}: El esfuerzo crece exponencialmente al aumentar el volumen, y disminuye cuando aumenta el volumen potencial. Por lo mismo, para ajustar el esfuerzo de una implementación según si es muy grande o muy pequeño, se pueden aplicar las sugerencias anteriores para manejar el valor del volumen, y para el caso del volumen potencial, se sugiere jugar en el enunciado con la cantidad de elementos únicos que se trabajan, es decir, la cantidad de valores distintos que se necesitan almacenar, principalmente las entradas del problema a resolver. A medida que los inputs del problema aumentan, el volumen potencial aumentará, y a medida que estos disminuyan, el volumen potencial también lo hará y por consiguiente el esfuerzo aumentará.
   \item \textbf{Dificultad}: La dificultad de un programa se maneja según el vocabulario $\eta$ y el largo $N$ del mismo. Cuando la cantidad de operadores únicos aumenta, o cuando aumenta el total de operadores únicos utilizados, la dificultad del programa aumenta, mientras que cuando la cantidad de operandos únicos aumenta, la dificultad disminuye. Para ajustar el valor de la dificultad de una implementación según el enunciado de una tarea, sugiere incluír en los párrafos aspectos del enunciado que requieran cálculos con operadores aritméticos variados, o bien, hacer uso de distintos valores a considerar a la hora de realizar el programa, esto puede llevarse a cabo con distintos inputs, o bien, con distintos valores a considerar a la hora de realizar condiciones, poner límites, precios en el caso de programas que requieran tiendas, etc.
   \item \textbf{Tiempo}: El tiempo estimado de una implementación es directamente proporcional al esfuerzo requerido por la misma, en este caso, lo ideal es que el tiempo estimado de resolución no pase de 1 hora, para ello en el caso de tener una tarea que requiera demasiado tiempo, se recomienda aplicar las sugerencias de la métrica de esfuerzo para hacer los ajustes necesarios.
 \end{itemize}
 
-\subsubsection{Actualización de Métricas Semestrales}
+\subsubsection{Actualización de Métricas Semestrales} \label{sssec:metricsUpdate}
 
 En el editor del framework, se encuentra en el directorio \texttt{src/core/data} un conjunto de archivos encargados de mantener los datos con los que funciona el software.
 \begin{figure}[H]
@@ -994,7 +1060,7 @@ En el caso de necesitar añadir un nuevo semestre, se debe añadir un objeto nue
   \caption{Ejemplo de como añadir las métricas de la tarea de archivos del semestre 2022-3 en el archivo de métricas del editor.} Fuente: elaboración propia.
   \label{img:metrics3}
 \end{figure}
-\subsubsection{Actualización de Intervalos de Comparación de Dificultad}
+\subsubsection{Actualización de Intervalos de Comparación de Dificultad} \label{sssec:comparisionIntMod}
 
 En el editor del framework se encuentra el directorio \texttt{src/core/data}, el cual contiene el archivo \texttt{comparisionIntervals.json} con el siguiente contenido:
 \begin{figure}[H]
@@ -1024,7 +1090,14 @@ Siendo los nombres de métricas válidas:
 Para modificar los intervalos de comparación de dificultad, basta con modificar los valores de los límites superiores e inferiores de las métricas.
 
 \subsubsection{Análisis de Métricas entre Semestres}
-\subsubsection{Comparación de Métricas entre Tareas de IWI-131}
+
+Para analizar cómo han ido variando las métricas a los largo de los semestres, el framework cuenta con la sección \texttt{Métricas Históricas}, donde se pueden ver gráficos que comparan las métricas de complejidad ciclomática, dificultad, tiempo, esfuerzo y volumen a lo largo de los semestres.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/ishvel7.png}
+  \caption{Sección de métricas históricas del framework Ishvel.} Fuente: elaboración propia.
+  \label{img:ishvel7}
+\end{figure}
 
 \newpage
 
@@ -1135,22 +1208,53 @@ Utilizando la tabla \ref{tab:compDif}, se aplican estos intervalos a las diferen
     Archivos        & 4                                                                                                & 2                                           & 3                                      & 4                                     & 3                                      \\ \hline
     Diccionarios    & 4                                                                                                & 3                                           & 4                                      & 5                                     & 4                                      \\ \hline
   \end{tabular}
-  \caption{}
+  \caption{Dificultad de las tareas según los intervalos de comparación} Fuente: elaboración propia
   \label{tab:difDifferences}
 \end{table}
 Al comparar los resultados con las respuestas de la tabla \ref{tab:encuesta1}, se determina que la heurística aplicada para determinar los intervalos de diferencias porcentuales, acertó correctamente a 3 pares de tareas: Ciclos, Funciones y Strings, mientras que para el resto de pareas de tareas, los resultados no estuvieron demasiado alejados de lo determinado por los expertos en la encuesta.
 
 \subsubsection{Actualización de Intervalos de Comparación de Dificultad}
 
-Para cargar la data de los intervalos de dificultad calculados, se modifica
+Para cargar la data de los intervalos de dificultad previamente calculados en el framework, se modifica el archivo \texttt{comparisionIntervals.json} según lo que indica la sección \ref{sssec:comparisionIntMod}, resultando:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/intervals5.png}
+  \caption{Intervalos de comparación de dificultad cargados en el framework.} Fuente: elaboración propia.
+  \label{img:intervals5}
+\end{figure}
 
 \subsubsection{Actualización de Métricas S2022-1 y S2022-2}
 
-Para cargar la data de las métricas calculadas, se modifica
+Para cargar la data de las métricas previamente calculados en el framework, se modifican los archivos \texttt{studentAssignments.json} y \texttt{teacherAssignments.json} según lo que indica la sección \ref{sssec:metricsUpdate}, resultando:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/studentsMetrics1.png}
+  \caption{Métricas por semestre de las soluciones de los estudiantes cargados en el framework.} (algunas métricas fueron ocultas para efectos de espacio) Fuente: elaboración propia.
+  \label{img:studentsMetrics1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{figures/teacherMetrics1.png}
+  \caption{Métricas por semestre de las soluciones de los profesores cargados en el framework.} (algunas métricas fueron ocultas para efectos de espacio) Fuente: elaboración propia.
+  \label{img:teacherMetrics1}
+\end{figure}
 
 \subsubsection{Redacción de una Tarea con sus Respectivas Métricas}
 
+Siguiendo los pasos de la metodología, se redacta la tarea utilizando el editor de Ishvel:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/ishvel3.png}
+  \caption{Tarea elaborada en el editor de Ishvel.} Fuente: elaboración propia.
+  \label{img:ishvel8}
+\end{figure}
+
 \subsubsection{Comparación de las Tareas de IWI-131 del S2022-1 y S2022-2}
+
 
 \newpage
 

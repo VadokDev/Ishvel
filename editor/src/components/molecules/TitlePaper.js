@@ -13,6 +13,7 @@ const TitlePaper = ({
   showDownloadButton,
   showMetricsButton,
   showEditorButton,
+  downloadButtonHandler,
 }) => {
   const setShowMetrics = useBearStore((state) => state.setShowMetrics);
 
@@ -38,6 +39,7 @@ const TitlePaper = ({
               variant='outlined'
               startIcon={<DownloadIcon />}
               color='success'
+              onClick={downloadButtonHandler}
             >
               Descargar tarea
             </Button>
