@@ -19,27 +19,29 @@
 \newcommand{\nombreprofesor}{Federico Meza}
 \newcommand{\nombrecorreferente}{Andrea Vásquez}
 % Mes y año del examen
-\newcommand{\mesexamen}{Agosto}
-\newcommand{\anioexamen}{2022}
+\newcommand{\mesexamen}{Junio}
+\newcommand{\anioexamen}{2023}
 % Dedicatoria y agradecimientos
-\newcommand{\dedicatoria}{
+\newcommand{\dedicatoria}{Dedico este trabajo a mi madre, padre y hermano, quienes siempre han estado allí en los mejores y peores momentos, nunca me abandonaron cuando más los necesité, y ahora que vivo sólo, quiero dedicar el fruto de mis esfuerzos a ellos como.}
+\newcommand{\agradecimientos}{Agradezco a mi profesor guía y al equipo de coordinación de IWI-131 en la UTFSM, quienes me dieron la oportunidad de trabajar como ayudante coordinador del ramo durante todos estos años, y me han apoyado enormemente en desarrollar mi lado docente tanto en los talleres OCILabs, como en distintas otras instancias.
 
-}
-\newcommand{\agradecimientos}{
-
-}
+Agradezco también a mis amigas y amigos, quienes son y han sido pilares fundamentales a lo largo de mi vida desde que los conocí, siemre han estado allí y el que esté escribiendo estas últimas palabras en este documento son prueba irrefutable de que sin su apoyo no habría llegado tan lejos.}
 \newcommand{\resumen}{
+El curso de programación IWI-131 de la UTFSM es para muchos estudiantes, el primer acercamiento al mundo de la programación, y por lo mismo, es importante llevarlo a cabo de la mejor manera posible. Con el fin de lograr esto, se desarrolló el framework Ishvel, con el cual se busca apoyar el proceso de elaboración de las tareas de este curso, de modo tal de poder hacer de un instrumento formativo evaluativo tan importante como lo son las tareas, uno de calidad para los estudiantes.
 
+En base a esto, se proponen métricas de software con las cuales analizar la dificultad de una tarea en base a su solución, y se elaboró un editor de tareas el cual integra un sistema para comparar qué tan difícil es una tarea en base a su solución, con respecto a una tarea anterior llevada a cabo en el ramo.
+
+Con este editor se pudo llevar a cabo el análisis de dos tareas en dos semestres distintos, determinando gracias a la información que entrega el mismo, cuales fueron los aspectos en que estas fallaron, cómo se podrían mejorar, y qué acciones se pudieron haber tomado de haber contado con la metodología de este framework a la hora de haber sido elaboradas.
 }
 \newcommand{\resumeningles}{
+  The programming course IWI-131 of the UTFSM is for many students, the first approach to the world of programming, and therefore, it is important to carry it out in the best possible way. In order to achieve this, the Ishvel framework was developed, which seeks to support the process of developing the tasks of this course, so as to make an evaluative training tool as important as the tasks, one of quality for students.
 
+  Based on this, software metrics are proposed with which to analyze the difficulty of a task based on its solution, and a task editor was developed which integrates a system to compare how difficult a task is based on its solution, with respect to a previous task carried out in the course.
+  
+  With this editor it was possible to analyze two tasks in two different semesters, determining, thanks to the information it provides, which were the aspects in which they failed, how they could be improved, and what actions could have been taken if the methodology of this framework had been used at the time they were elaborated.
 }
-\newcommand{\palabrasclave}{
-Elaborar tareas, framework, curso introductorio de programación, educación
-}
-\newcommand{\palabrasclaveingles}{
-Create assignments, framework, introductory programming course, education
-}
+\newcommand{\palabrasclave}{Elaborar tareas, framework, curso introductorio de programación, educación}
+\newcommand{\palabrasclaveingles}{Create assignments, framework, introductory programming course, education}
 % @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>
 
 % Paquete para importar imágenes
@@ -214,13 +216,21 @@ Create assignments, framework, introductory programming course, education
 
 \secnumberlesssection{INTRODUCCIÓN}
 
-Debe proporcionar a un lector los antecedentes suficientes para poder contextualizar en general la situación tratada, a través de una descripción breve del área de trabajo y del tema particular abordado, siendo bueno especificar la naturaleza y alcance del problema; así como describir el tipo de propuesta de solución que se realiza, esbozar la metodología a ser empleada e introducir a la estructura del documento mismo de la memoria.
+En la UTFSM se dicta el curso de introducción a la programación IWI-131 para todos los estudiantes de ingeniería en su primer año, éste es un momento crucial para su proceso de aprendizaje dado que para muchos, es el primer acercamiento que tienen con el mundo de la programación, y dependiendo de la experiencia educativa que tengan a lo largo del semestre, su motivación se verá directamente impactada de cara a adentrarse más en este mundo. Por lo mismo, es importante afinar todos los detalles posibles para hacer de su estadía por este ramo una experiencia amena y disfrutable.
 
-En el fondo, que el lector al leer la Introducción pueda tener una síntesis de cómo fue desarrollada la memoria, a diferencia del Resumen dónde se explicita más qué se hizo, no cómo se hizo.
+Durante este primer acercamiento hacia el mundo de la computación, los estudiantes experimentarán diversas formas de aprender y ser evaluados, en particular, siguiendo la metodología de enseñanza del curso IWI-131 que se imparte desde el 2020, la cual separa los contenidos de las asignaturas en pequeñas unidades de aprendizaje llamadas UVAs, y donde cada una de estas contempla una tarea con un rol tanto formativo como evaluador.
+
+Las tareas forman una parte muy importante del proceso de aprendizaje y enseñanza, no sólo por el rol que toman sino que también por su utilidad para efectos prácticos del curso, como lo son el poder medir el nivel de aprendizaje general de los estudiantes, y brindarles a estos una retroalimentación significativa y en el momento adecuado. Por lo mismo, es necesario que las tareas sean redactadas de la mejor manera posible, de modo tal que se centren en evaluar los contenidos de modo tal que el estudiante se motive a aprender, y que no generen efectos adversos en el mismo como lo pueden ser la frustración, falta de ganas de aprender y en el peor de los casos, la deserción.
+
+Este es el contexto en que se desenvuelve esta memoria, buscando brindar al equipo docente del ramo de programación un framework que les ayude a elaborar sus tareas, para así entregarle una mejor experiencia formativa a sus estudiantes. Para lograr esto, se plantea por una parte una metodología para la elaboración de tareas en cursos introductorios de programación, la cual viene acompañada de un editor de tareas el cual entrega métricas y sugerencias a los profesores respecto de la tarea que están elaborando.
+
+Toda la investigación en este documento se centra en el uso de métricas de software para el análisis y la comparación de tareas de programación en base al código de sus soluciones, estas métricas tienen un amplio uso en la industria para ver aspectos sobre la mantenibilidad de su software empresarial, sin embargo este trabajo presenta uno de sus primeros usos como índices sobre la dificultad de lo que se busca evaluar para el estudiante. Gracias a esto, se permite hacer un acercamiento hacia cómo poder determinar la dificultad de una tarea en base a su solución y en comparación a otras tareas previas desarrolladas en el ramo. Para así lograr el objetivo de elaborar mejores tareas con la ayuda del framework Ishvel.
+
+Este documento se separa en 5 capítulos: Definición del Problema (1), Marco Conceptual (2), Propuesta de Solución (3), Valudación de la Solución (4) y Conclusiones (5).
 
 \newpage
 
-\secnumbersection{DEFINICIÓN DEL PROBLEMA}
+\secnumbersection{DEFINICIÓN DEL PROBLEMA} \label{sec:problema}
 
 Los cursos introductorios de programación son, en general, el primer acercamiento de un estudiante a los conceptos fundamentales de la computación \cite{10.7717/peerj-cs.647}, y por lo tanto, se debe velar porque se desarrollen de la manera más prolija posible, considerando entre otras cosas, la elaboración y uso de tareas de calidad. Las tareas son parte importante del proceso de aprendizaje y enseñanza \cite{texasU}, pues permiten medir el aprendizaje de los estudiantes y proporcionarles una retroalimentación significativa \cite{NAP12636}. Además, los cursos introductorios de programación, son la principal actividad en donde los estudiantes ponen en práctica lo que han aprendido sobre programación, lo que hace que las tareas jueguen un rol importante en su interés por aprender, pudiendo llevar al estudiante tanto a querer sobresalir resolviendo las evaluaciones del curso, como a desertar debido a su percepción de la programación por tareas de mala calidad \cite{10.5555/1968521.1968545, 10.1145/2526968.2526982}, entre otros efectos como los mencionados en el Árbol del Problema (ver Figura \ref{arbolito}).
 
@@ -258,7 +268,6 @@ Con el fin de lograr el objetivo general de esta memoria, se definen los siguien
   \item Identificar y definir criterios que puedan ser usados para evaluar una tarea.
   \item Definir una métrica que permita evaluar una tarea de acuerdo al cumplimiento de criterios.
   \item Definir una metodología para la elaboración de tareas utilizando el framework Ishvel.
-  \item Validar cómo la aplicación de la metodología definida elabora mejores tareas.
 \end{itemize}
 
 \begin{figure}[H]
@@ -270,18 +279,11 @@ Con el fin de lograr el objetivo general de esta memoria, se definen los siguien
 
 \newpage
 
-\secnumbersection{MARCO CONCEPTUAL}
+\secnumbersection{MARCO CONCEPTUAL} \label{sec:marco}
 
 \subsection{Framework}
 
 Un framework es un marco de trabajo \cite{la2012aprendizaje}, que plantea una metodología validada y un conjunto de herramientas, las cuales están diseñadas para la correcta aplicación de dicha metodología. Un framework se concibe en base a la acumulación de experiencia, buenas prácticas, patrones y soluciones validadas sobre el dominio de un problema recurrente, el cual ha sido abordado a través del tiempo y sus maneras de resolverse, han sido bien documentadas y mantenidas \cite{10.5555/326112}. A modo de ejemplo, en el área de la ingeniería de software, un framework brinda al desarrollador un esqueleto base para el desarrollo de algún software, el cual tiene como base la aplicación de distintos patrones arquitectónicos que permiten resolver de forma eficiente algún problema en particular \cite{elearn}.
-
-\subsection{Sistemas de Gestión del Aprendizaje}
-
-
-\subsection{Dominio de un Problema}
-
-El dominio de un problema es un término de ingeniería para referirse a toda la información que define el problema, las restricciones de su solución, los objetivos que se desean lograr a la hora de abordarlo, el contexto donde el problema existe, y todas las reglas que definen la esencia del mismo. Este representa el entorno donde tanto el problema como sus soluciones propuestas se desenvuelven \cite{ProblemDomain}
 
 \subsection{Frameworks en el Apoyo a la Enseñanza}
 
@@ -313,7 +315,7 @@ Un cursos introductorio de programación es, en general, el primer acercamiento 
 
 \subsection{Tarea de Programación}
 
-Las tareas de programación son uno de los instrumentos con los cuales se evalúa, tanto los aprendizajes adquiridos de los estudiantes a lo largo del curso, como la puesta en práctica de los mismos. Generalmente constan de programar, sin embargo existen diversas adaptaciones según la forma en la que esté organizado el curso \cite{cs1}. Estas son el principal objeto de estudio de esta memoria, pues se busca lograr la elaboración de las mejores tareas posibles, en base al entendimiento del impacto que estas pueden tener en el estudiante, y en los indicadores de si una tarea es apropiada o no para llevarse a cabo en un curso introductorio de programación.
+Las tareas de programación son uno de los instrumentos con los cuales se evalúa, tanto los aprendizajes adquiridos de los estudiantes a lo largo del curso, como la puesta en práctica de los mismos. Generalmente constan de programar, sin embargo existen diversas adaptaciones según la forma en la que esté organizado el curso \cite{cs1}. Estas son el principal objeto de estudio de esta memoria, pues se busca lograr la elaboración de las mejores tareas posibles, en base al entendimiento del impacto que estas pueden tener en el estudiante, y en los indicadores de si una tarea es apropiada o no para llevarse a cabo en un curso introductorio de programación, dado también su carácter formativo a lo largo de la experiencia educativa del estudiante.
 
 Diversos autores han abordado la elaboración y medición de tareas de calidad, enfocándose tanto en factores emocionales del estudiante \cite{10.1145/1839594.1839609, 10.1145/1227504.1227466, 10.5555/1968521.1968545, 10.1145/2526968.2526982}, como en aspectos particulares de cualquier tarea en sí \cite{texasU, 10.1145/2676723.2677276, 10.1145/1140124.1140167}. Y en general, siempre se destacan 3 aspectos principales:
 
@@ -323,9 +325,13 @@ Diversos autores han abordado la elaboración y medición de tareas de calidad, 
   \item Las tareas deben tener un nivel de dificultad adecuado, ni muy difíciles como para frustrar al estudiante, ni muy fáciles como para no cumplir con los objetivos de aprendizaje de la misma.
 \end{itemize}
 
+\subsubsection{Dominio de un Problema en una Tarea}
+
+El dominio de un problema es un término de ingeniería para referirse a toda la información que define el problema, las restricciones de su solución, los objetivos que se desean lograr a la hora de abordarlo, el contexto donde el problema existe, y todas las reglas que definen la esencia del mismo. Este representa el entorno donde tanto el problema como sus soluciones propuestas se desenvuelven \cite{ProblemDomain}, y por lo tanto, engloba todo lo que se busca que el estudiante resuelva a lo largo del desarrollo de una tarea.
+
 \subsubsection{Factores de Importancia en una Tarea de Programación}
 
-Un estudio acerca de los factores que despiertan el interés e impulsan la elección de un estudiante en el desarrollo de una tarea, indica que en el caso del interés, los factores que más interés generan de una tarea son (en orden decreciente de importancia):
+Un estudio acerca de los factores que despiertan el interés e impulsan la elección de un estudiante en el desarrollo de una tarea \cite{10.5555/1968521.1968545}, indica que en el caso del interés, los factores que más interés generan de una tarea son (en orden decreciente de importancia):
 
 \begin{itemize}
   \item Que tenga gráficos
@@ -358,7 +364,7 @@ Estos factores se resumen en el siguiente gráfico (ver Figura \ref{elecciones})
 
 \subsubsection{Reutilización de Tareas de Programación}
 
-La imperante necesidad de tener tareas nuevas cada semestre para un curso (pese a los cambios que la pandemia ha conllevado en algunos \cite{10.1145/3456565.3461439}), ha impulsado la investigación respecto a como reutilizar de forma eficiente las tareas de semestres anteriores \cite{10.1145/3477429}, sin embargo, proyectos como Moulinog \cite{10.1145/3414080.3414100} han sido muy limitados en lograr esto, pues están limitados a, en base a 1 tarea, generar múltiples tareas que son en esencia lo mismo con la salvedad de cambiar ciertos valores y palabras, que no garantizan que 1 misma solución no sea esencialmente capaz de resolver 2 tareas distintas de las generadas.
+La imperante necesidad de tener tareas nuevas cada semestre para un curso (pese a los cambios que la pandemia ha conllevado en algunos \cite{10.1145/3456565.3461439}), ha impulsado la investigación respecto a como reutilizar de forma eficiente las tareas de semestres anteriores \cite{10.1145/3477429}, sin embargo, proyectos como Moulinog \cite{10.1145/3414080.3414100} han sido muy limitados en lograr esto, pues están limitados a, en base a una tarea, generar múltiples tareas que son en esencia lo mismo con la salvedad de cambiar ciertos valores y palabras, que no garantizan que una misma solución no sea esencialmente capaz de resolver dos tareas distintas de las generadas.
 
 Sin embargo, la idea de tener tareas base motiva a investigar acerca de si es buena idea re-utilizar tareas, generando un pequeño banco de tareas de calidad, pero teniendo en cuenta que éstas deben ser del tipo \textit{Tweakable assignments} \cite{10.1145/3477429}, es decir, la mayoría de sus partes pueden re-utilizarse, a excepción de algunas que, en base a ciertas especificaciones, deben modificarse en la nueva tarea de modo tal que una solución a la tarea original, simplemente no funcione con la tarea nueva que se está elaborando, manteniendo así la calidad de la tarea original, y evitando llegar a aumentar las probabilidades de actos fraudulentos por parte de los estudiantes, quienes pueden hacerse de las soluciones de tareas anteriores \cite{10.1145/3013499.3013507}.
 
@@ -530,9 +536,7 @@ Donde S será considerado 18 según los experimentos de Halstead.
 
 \newpage
 
-\secnumbersection{PROPUESTA DE SOLUCIÓN}
-
-\subsection{Historias de Usuario}
+\secnumbersection{PROPUESTA DE SOLUCIÓN} \label{sec:propuesta}
 
 \subsection{Herramientas y Tecnologías a Utilizar}
 
@@ -588,7 +592,23 @@ Es un framework de Javascript, originalmente creado por Facebook$\texttrademark$
 
 \subsection{Arquitectura de la Solución}
 
-\subsubsection{Sistema de Software Autocontenido}
+El framework cuenta con un editor el cual tiene como objetivo permitir al profesor llevar a cabo el proceso de elaboración de una tarea de inicio a fin, aplicando la metodología de Ishvel. Este editor se encuentra funcionando es \url{https://vadokdev.github.io/Ishvel/}, y cuenta con la siguiente arquitectura:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\textwidth]{figures/architecture.png}
+  \caption{Arquitectura del editor de Ishvel.} Fuente: elaboración propia.
+  \label{img:architecture}
+\end{figure}
+El software en sí está diseñado para funcionar perfectamente sin la necesidad de tener un servidor externo, es decir, la aplicación corre completamente en el navegador del usuario. Para lograr esto, hace uso de WebAssembly y Github Pages $\texttrademark$, donde el primero permite ejecutar código nativo de Python desde el navegador del usuario, y el segundo permite al usuario acceder al sitio web desde cualquier dispositivo con acceso a internet.
+
+Con respecto a los módulos del editor, éste se compone de 4 capas:
+
+\begin{itemize}
+  \item \textbf{Cálculo de métricas}: Esta capa consiste en una implementación en Python gracias a WebAssembly que permite hacer uso del módulo multimetrics\cite{privkweihmann_multimetricprog}, de manera tal que al entregarle un código en texto plano, éste es capaz de calcular sus métricas y entregarlas al resto de capas de la aplicación
+  \item \textbf{Servicios}: La capa de servicios es la encargada de llevar a cabo toda la lógica de la aplicación, orquestando las solicitudes de la interfaz para entregarle la información que ésta necesita para renderizar en la vista del cliente.
+  \item \textbf{Capa de Persistencia}: Esta capa se encarga de almacenar los datos de las métricas históricas e intervalos de comparación de dificultades, con el fin de servirlos a la capa de servicios y que ésta haga su trabajo de cara a las solicitudes de la interfaz.
+  \item \textbf{Interfaz}: Esta es toda la capa visual del software, la cual se encarga de tomar la información que obtiene desde la capa de servicios y mostrarla en el sitio web para ser visualizada por el usuario.
+\end{itemize}
 
 \subsection{Framework}
 
@@ -660,12 +680,12 @@ Realizados estos pasos, se puede elaborar una tarea de un curso introductorio de
   \centering
   \includegraphics[width=1\textwidth]{figures/ishvel7.png}
   \caption{Sección de métricas históricas del framework Ishvel.} Fuente: elaboración propia.
-  \label{img:ishvel7}
+  \label{img:ishvel71}
 \end{figure}
 
 \subsubsection{Cálculo de Métricas} \label{sssec:metricsCalc}
 
-El framework trae consigo una herramienta llamada \textit{metrics-research}, la cual hace uso del módulo multimetricprog \cite{privkweihmann_multimetricprog} para calcular de manera programática las métricas de tanto 1 solución, como el promedio de métricas de varias soluciones al mismo tiempo.
+El framework trae consigo una herramienta llamada \textit{metrics-research}, la cual hace uso del módulo multimetricprog \cite{privkweihmann_multimetricprog} para calcular de manera programática las métricas de tanto una solución, como el promedio de métricas de varias soluciones al mismo tiempo.
 
 Para utilizar la herramienta, se debe navegar en una terminal hasta el directorio que la contiene, y luego ejecutar el programa \texttt{main.py} que se encuentra en utilizando alguno de los siguientes parámetros:
 
@@ -1002,7 +1022,7 @@ Dado que el framework da indicios de la dificultad de la tarea en base a su solu
   \item \textbf{Volumen}: El volumen de un programa es directamente proporcional a la cantidad de operadores y operandos utilizados, así como también, al logaritmo en base 2 de la cantidad de operadores y operandos únicos que la implementación requiere. Cuando el volumen de una implementación es demasiado alto, se recomienda modificar aspectos del enunciado que requieran de demasiadas operaciones aritméticas distintas, así como también, que hagan uso de demasiadas variables, pues esto aumenta el vocabulario de la implementación y así la dimensión del volumen de la implementación resultante, del mismo modo, reducir la cantidad de cosas que exige el enunciado para que el código requerido como solución sea más corto, y así reducir el volumen en general. Para el caso en que el volumen sea demasiado bajo, añadir párrafos en el enunciado que requieran de diferentes operaciones aritméticas, y más datos para almacenar y tener que crear más variables, favorecerá mucho el aumento en el valor de esta métrica en la implementación final.
   \item \textbf{Esfuerzo}: El esfuerzo crece exponencialmente al aumentar el volumen, y disminuye cuando aumenta el volumen potencial. Por lo mismo, para ajustar el esfuerzo de una implementación según si es muy grande o muy pequeño, se pueden aplicar las sugerencias anteriores para manejar el valor del volumen, y para el caso del volumen potencial, se sugiere jugar en el enunciado con la cantidad de elementos únicos que se trabajan, es decir, la cantidad de valores distintos que se necesitan almacenar, principalmente las entradas del problema a resolver. A medida que los inputs del problema aumentan, el volumen potencial aumentará, y a medida que estos disminuyan, el volumen potencial también lo hará y por consiguiente el esfuerzo aumentará.
   \item \textbf{Dificultad}: La dificultad de un programa se maneja según el vocabulario $\eta$ y el largo $N$ del mismo. Cuando la cantidad de operadores únicos aumenta, o cuando aumenta el total de operadores únicos utilizados, la dificultad del programa aumenta, mientras que cuando la cantidad de operandos únicos aumenta, la dificultad disminuye. Para ajustar el valor de la dificultad de una implementación según el enunciado de una tarea, sugiere incluír en los párrafos aspectos del enunciado que requieran cálculos con operadores aritméticos variados, o bien, hacer uso de distintos valores a considerar a la hora de realizar el programa, esto puede llevarse a cabo con distintos inputs, o bien, con distintos valores a considerar a la hora de realizar condiciones, poner límites, precios en el caso de programas que requieran tiendas, etc.
-  \item \textbf{Tiempo}: El tiempo estimado de una implementación es directamente proporcional al esfuerzo requerido por la misma, en este caso, lo ideal es que el tiempo estimado de resolución no pase de 1 hora, para ello en el caso de tener una tarea que requiera demasiado tiempo, se recomienda aplicar las sugerencias de la métrica de esfuerzo para hacer los ajustes necesarios.
+  \item \textbf{Tiempo}: El tiempo estimado de una implementación es directamente proporcional al esfuerzo requerido por la misma, en este caso, lo ideal es que el tiempo estimado de resolución no pase de una hora, para ello en el caso de tener una tarea que requiera demasiado tiempo, se recomienda aplicar las sugerencias de la métrica de esfuerzo para hacer los ajustes necesarios.
 \end{itemize}
 
 \subsubsection{Actualización de Métricas Semestrales} \label{sssec:metricsUpdate}
@@ -1101,12 +1121,18 @@ Para analizar cómo han ido variando las métricas a los largo de los semestres,
 
 \newpage
 
-\secnumbersection{VALIDACIÓN DE LA SOLUCIÓN}
+\secnumbersection{VALIDACIÓN DE LA SOLUCIÓN} \label{sec:validacion}
 
 \subsection{Validación del Framework}
 
 
 \subsubsection{Cálculo de Métricas para Tareas del S2022-1 y S2022-2} \label{sssec:calcMetrics}
+
+Con el fin de recopilar las métricas de las soluciones entregadas a las tareas del S2022-1 y S2022-2, se recopilaron las soluciones desarrolladas por los profesores, así como el conglomerado de soluciones de los estudiantes para cada una de las tareas.
+
+Luego, utilizando la herramienta \textit{metrics-research}, se calcularon las métricas para cada una de las soluciones propuestas por los profesores, para esto se hizo uso del parámetro \texttt{-f} dado que las métricas se calcularon de manera individual.
+
+En cambio, para los estudiantes, se agruparon las soluciones en carpetas por tarea y semestre, de modo tal de ejecutar la herramienta \textit{metrics-research} con el parámetro \texttt{-d}, para así obtener el promedio de las métricas de todas las soluciones correspondientes a una tarea.
 
 \subsubsection{Cálculo de los Intervalos de Dificultad}
 
@@ -1148,7 +1174,7 @@ La encuesta fue respondida por 2 profesores con años de experiencia en el ramo 
     \rowcolor[HTML]{EFEFEF}
     \textbf{Promedio} & 2                                     & 3                                     & 2                                     & 3                                     & 3                                     & 3                                     & 2                                     & 2                                     \\ \hline
   \end{tabular}
-  \caption{Resultado de la encuesta a expertos sobre la diferencia de dificultad entre tareas. }Fuente: Elaboración propia
+  \caption{Resultado de la encuesta a expertos sobre la diferencia de dificultad entre tareas. }Fuente: elaboración propia
   \label{tab:encuesta1}
 \end{table}
 Luego, se calcula la diferencia porcentual entre las métricas de cada una de las tareas utilizando los datos calculados en \ref{sssec:calcMetrics}, obteniendo los siguientes resultados:
@@ -1212,61 +1238,139 @@ Utilizando la tabla \ref{tab:compDif}, se aplican estos intervalos a las diferen
   \label{tab:difDifferences}
 \end{table}
 Al comparar los resultados con las respuestas de la tabla \ref{tab:encuesta1}, se determina que la heurística aplicada para determinar los intervalos de diferencias porcentuales, acertó correctamente a 3 pares de tareas: Ciclos, Funciones y Strings, mientras que para el resto de pareas de tareas, los resultados no estuvieron demasiado alejados de lo determinado por los expertos en la encuesta.
-
 \subsubsection{Actualización de Intervalos de Comparación de Dificultad}
-
 Para cargar la data de los intervalos de dificultad previamente calculados en el framework, se modifica el archivo \texttt{comparisionIntervals.json} según lo que indica la sección \ref{sssec:comparisionIntMod}, resultando:
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{figures/intervals5.png}
   \caption{Intervalos de comparación de dificultad cargados en el framework.} Fuente: elaboración propia.
   \label{img:intervals5}
 \end{figure}
-
 \subsubsection{Actualización de Métricas S2022-1 y S2022-2}
-
 Para cargar la data de las métricas previamente calculados en el framework, se modifican los archivos \texttt{studentAssignments.json} y \texttt{teacherAssignments.json} según lo que indica la sección \ref{sssec:metricsUpdate}, resultando:
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{figures/studentsMetrics1.png}
   \caption{Métricas por semestre de las soluciones de los estudiantes cargados en el framework.} (algunas métricas fueron ocultas para efectos de espacio) Fuente: elaboración propia.
   \label{img:studentsMetrics1}
 \end{figure}
-
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.4\textwidth]{figures/teacherMetrics1.png}
   \caption{Métricas por semestre de las soluciones de los profesores cargados en el framework.} (algunas métricas fueron ocultas para efectos de espacio) Fuente: elaboración propia.
   \label{img:teacherMetrics1}
 \end{figure}
-
 \subsubsection{Redacción de una Tarea con sus Respectivas Métricas}
-
-Siguiendo los pasos de la metodología, se redacta la tarea utilizando el editor de Ishvel:
-
+Siguiendo los pasos de la metodología, se abre el editor de ishvel desde \url{https://vadokdev.github.io/Ishvel/} y se configuran las opciones de comparación, para este caso, se utilizarán las tareas de los estudiantes para el contenido de Strings del semestre 2022-2.
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\textwidth]{figures/ishvel3.png}
+  \includegraphics[width=0.7\textwidth]{figures/redact4.png}
+  \caption{Editor de Ishvel.} Fuente: elaboración propia.
+  \label{img:redact1}
+\end{figure}
+Se redacta la tarea
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/redact2.png}
   \caption{Tarea elaborada en el editor de Ishvel.} Fuente: elaboración propia.
-  \label{img:ishvel8}
+  \label{img:redact2}
+\end{figure}
+Una vez redactada la tarea, se resuelve el código y se revisan las métricas resultantes y la dificultad en comparación con la configuración del editor.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/redact5.png}
+  \caption{Métricas y sugerencias para una solución en base a una tarea redactada en el editor de Ishvel.} Fuente: elaboración propia.
+  \label{img:redact5}
+\end{figure}
+Según el editor, se presume entonces que la tarea elaborada es mucho más fácil que la tarea de strings del S2022-2, en base a las soluciones de los estudiantes, además, el editor presenta sugerencias que se pueden aplicar para abordar este resultado.
+
+Por otro lado, el editor estima que la solución a esta tarea se podría desarrollar en 10 minutos, lo cual es bueno dado que se busca que las tareas no requieran más de una hora para ser resueltas por los estudiantes. Luego de utilizar estos consejos, se logra llegar a una tarea cuya dificultad en base a las métricas es en promedio similar a la de la tarea del S2022-2, por lo que con esto se tiene una tarea cuya dificultad no escapa a la de semestres anteriores, sin embargo, esta practicamente duplica el tiempo requerido para desarrollarse en comparación a lo esperado, pero en términos de dificultad la tarea ya es aceptable.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{figures/redact6.png}
+  \caption{Métricas de una solución en base a una tarea redactada en el editor de Ishvel.} Fuente: elaboración propia.
+  \label{img:redact6}
 \end{figure}
 
-\subsubsection{Comparación de las Tareas de IWI-131 del S2022-1 y S2022-2}
+\subsubsection{Comparación de las Tareas de Listas de IWI-131 del S2022-1 y S2022-2}
 
+Utilizando el editor del framework Ishvel, se visita la sección de métricas históricas y se configura el editor para observar las métricas de la tarea de listas, siendo estos los resultados por métrica:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{figures/metricstList.png}
+  \caption{Métricas históricas del S2022-1 y S2022-2 para la tarea de listas en el editor de Ishvel} Fuente: elaboración propia.
+  \label{img:metricstList}
+\end{figure}
+Al analizar en detalle la situación, es posible notar que en la tarea de listas del S2022-1, las soluciones de los estudiantes se acercaron demasiado a las soluciones propuestas por los profesores, entre los distintos aspectos que pudieron llevar a este resultado, se destacan los siguientes:
+
+\begin{itemize}
+  \item La tarea del S2022-1 constaba de 2 partes, una donde se realizaba la contextualización del problema y luego se resolvía un cuestionario en AULA, y otra en la que se debía programar, ésta introducción previa al problema debió ayudar a los estudiantes a tener un buen entendimiento de lo que se necesitaba hacer, así como también, familiarizarse con el contexto del problema el cual representaba situación cercana a la realidad, que además es interesante, lo que cumple con los requisitos de una buena tarea planteados al inicio de este documento.
+  \item El formato de la tarea del S2022-1 es bastante cercano al propuesto por la metodología de este framework, es decir, el hecho de comenzar con una contextualización interesante y útil, seguir con una serie de instrucciones en una lista ordenada, entregar ejemplos y una lista de recomendaciones, ayudó a que los estudiantes tuviesen muy claro qué tenían que hacer y cómo llevarlo a cabo. Especialmente en la parte de la complejidad ciclomática, donde se puede notar que la cantidad de bifurcaciones en el código que los estudiantes utilizaron para desarrollar sus tareas, es practicamente igual a la de los profesores, lo que significa que estaba claro qué casos había que evaluar en base a lo que el enunciado entregaba.
+  \item Los contenidos evaluados se limitaban a lo enseñado en la UVA, y al separar el desarrollo de la tarea del S2022-1 en 2 semanas de aprendizaje contínuo sobre listas, le permitieron al estudiante mentener los contenidos frescos para el posterior desarrollo de su tarea.
+  \item El tiempo estimado requerido para desarrollar esta tarea según la solución de los profesores se encontraba por debajo de una hora, lo que significa que era posible saber de antemano que la tarea podía resolverse en menos de una hora. Además, las soluciones de los estudiantes reflejan esto, dado que sólo están aproximadamente 7 minutos por sobre el tiempo de resolución de los profesores. El hecho de elaborar tareas que requieran menos de una hora para su resolución, apoya enormemente a los estudiantes con la gestión de sus horarios académicos y les facilita llevar a cabo sus responsabilidades con otros ramos dado que se respeta la exigencia horaria de IWI-131.
+\end{itemize}
+
+En el caso de la tarea de listas del S2022-2, las métricas de las soluciones de los estudiantes difieren significativamente de las de los profesores en comparación con las métricas de la tarea del S2022-1, lo cual puede deberse a diversos factores, entre estos:
+
+\begin{itemize}
+  \item La tarea del S2022-2 tiene un tiempo estimado de resolución de cinco horas, lo cual de antemano entrega indicios de que el tiempo que los estudiantes debieron dedicarle al desarrollo de su solución, fue más que el esperado y por tanto el añadir la complejidad de gestionar sus horarios académicos y el tiempo que consumían otros ramos, la situación en la que desarrollaron la tarea pudo no ser la más amena.
+  \item A excepción de la métrica de complejidad ciclomática, todas las métricas promedio de las soluciones de los estudiantes están considerablemente por debajo de las métricas de las soluciones de los profesores. El hecho de que la complejidad ciclomática estuviese en promedio por sobre la de los profesores, indica que la forma en que el enunciado entregaba a los estudiantes las instrucciones, no fue suficientemente claro como para que éstos tuviesen claro los casos a evaluar, a diferencia de la tarea del S2022-1 que seguía en gran parte el formato de la metodología de Ishvel, la tarea del S2022-2 no lo sigue y como resultado los estudiantes desarrollaron programas que evaluaban más casos bordes que los que el enunciado solicitaba en realidad.
+  \item Según el análisis de dificultad en base a métricas del editor de Ishvel, la tarea del S2022-2 es \textbf{mucho más difícil} que la tarea del S2022-1.
+        \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.7\textwidth]{figures/metricstList2.png}
+          \caption{Comparación de dificultad de la solución de la tarea de listas del S2022-2 en el editor de Ishvel} Fuente: elaboración propia.
+          \label{img:metricsList2}
+        \end{figure}
+\end{itemize}
+
+\subsubsection{Comparación de las Tareas de Archivos de IWI-131 del S2022-1 y S2022-2}
+Utilizando el editor del framework Ishvel, se visita la sección de métricas históricas y se configura el editor para observar las métricas de la tarea de archivos, siendo estos los resultados por métrica:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.9\textwidth]{figures/metricsList3.png}
+  \caption{Comparación de dificultad de la solución de la tarea de archivos del S2022-2 en el editor de Ishvel} Fuente: elaboración propia.
+  \label{img:metricsList3}
+\end{figure}
+
+Para el caso de la tarea de archivos en ambos semestres, ocurre un fenómeno poco usual en el S2022-1, las soluciones de los estudiantes se acercan significativamente a las solucionse entregadas por los profesores en casi todas las métricas, excepto en la métrica de complejidad ciclomática. Hay diversos factores que impactan en esta situación:
+
+\begin{itemize}
+  \item En la solución propuesta de los profesores, se hace uso de funciones utilitarias, las cuales aumentan la complejidad ciclomática del programa en sí dado que son bloques de código independiente, sin embargo los estudiantes en general no hicieron uso de funciones así, dado que no fueron solicitadas explícitamente en el enunciado a diferencia de la tarea de archivos del S2022-2, y por lo tanto resolvieron sus programas sin hacer reutilización de código mediante funciones, lo que explica por qué el volumen de sus soluciones es mayor al volumen de la solución de los profesores.
+  \item Dado que la tarea de archivos es de las últimas tareas del semestre, existe un incentivo menor a desarrollarla dado que su impacto en la nota final puede no ser demasiado relevante para los alumnos, en particular, en el S2022-1 de 1341 estudiantes, 784 no hicieron entrega de su tarea de archivos, mientras que en el S2022-2 de un total de 1149 estudiantes, 696 no hicieron entrega de esta tarea. Esta falta de incentivo lleva también a algunos estudiantes a enviar un programa incompleto o que saben que no funcionará correctamente, con un vocabulario de implementación menor que hace que la dificultad de sus soluciones sea menor a la solución de los profesores en el S2022-1.
+  \item El enunciado de la tarea del S2022-1 sigue de forma similar el formato planteado por la metodología del framework, es además corto dado que la mayoría de su contenido son ejemplos, y muy conciso a la hora de explicar todas las condiciones que se tienen que trabajar, no hay que inferir condiciones del texto, lo que facilita el entendimiento de lo que hay que hacer para los estudiantes, y apoya el hecho de que éstos generaran programas similares al que los profesores entregaron como solución de la tarea.
+\end{itemize}
+
+Por otro lado, para el caso de la tarea de archivos del S2022-2, se puede apreciar que pese a que las métricas de la solución de los profesores, son similares a las de la solución de los profesore del S2022-1, éstas difieren significativamente de las métricas de las soluciones entregadas por los estudiantes, además que la complejidad ciclomática promedio de las soluciones de los estudiantes, es mucho mayor a la complejidad ciclomática de la tarea de los profesores. Entre los factores que pueden explicar esta situación, además del hecho de que la tarea de archivos es de las últimas del semestre, se encuentran:
+
+\begin{itemize}
+  \item El enunciado de la tarea requiere inferir ciertas condiciones que se deben implementar en el código, en particular, con respecto a cómo extraer información de un archivo cuyo formato no es constante. La carga cognitiva añadida de tener que descifrar exactamente cómo llevar a cabo esto, lleva a los estudiantes a añadir un montón de condiciones en su código para poder resolver esta problemática, las cuales podrían llevarse a cabo de una manera más estructurada si las instrucciones dijeran explícitamente qué es lo que se debe traducir de lenguaje humano a código.
+  \item En las exigencias de la tarea se encuentran no sólo el manejo de archivos, si no también la elaboración de diccionarios con cierta estructura en base a la lectura de un archivo. Al mezclar estos 2 contenidos de esta forma, se aglomeran los contenidos que los estudiantes deben utilizar, llevándoles a elaborar programas con un mayor volumen, lo que lleva a una mayor dificultad y un mayor esfuerzo en las métricas de sus soluciones. Se entiende que el objetivo de las UVAs en el ramo es que sea un aprendizaje incremental, y que cada UVA puede hacer uso de los contenidos de la UVA anterior, sin embargo, en este caso lo que más complicó a los estudiantes fue el desarrollo de la función \texttt{procesar\_planilla} solicitada, pues la mayoría del código se concentra aquí, para lograr generar el diccionario con la estructura deseada. De haber concentrado la tarea en los contenidos de archivos, la métrica de volumen disminuiría y consigo disminuirían todas las demás, acercándose a la solución propuesta por los profesores.
+\end{itemize}
+
+En ambos casos las soluciones de los profesores tienen un tiempo estimado de solución mayor a una hora, lo cual al impactar negativamente en el manejo del horario académico de los estudiantes, refuerza también la idea de que entreguen tareas a medio hacer o derechamente no entreguen, y que las métricas de sus soluciones difieran mucho más a las métricas de las soluciones de los profesores, de lo que podrían haber sido en el caso de haber tenido un tiempo estimado de resolución de una hora.
 
 \newpage
 
-\secnumbersection{CONCLUSIONES}
+\secnumbersection{CONCLUSIONES} \label{sec:conclusiones}
 
-Las Conclusiones son, según algunos especialistas, el aspecto principal de una memoria, ya que reflejan el aprendizaje final del autor del documento. En ellas se tiende a considerar los alcances y limitaciones de la propuesta de solución, establecer de forma simple y directa los resultados, discutir respecto a la validez de los objetivos formulados, identificar las principales contribuciones y aplicaciones del trabajo realizado, así como su impacto o aporte a la organización o a los actores involucrados. Otro aspecto que tiende a incluirse son recomendaciones para quienes se sientan motivados por el tema y deseen profundizarlo, o lineamientos de una futura ampliación del trabajo.
+El curso de programación IWI131 de la Universidad Técnica Federico Santa María está muy bien estructurado y hace un gran trabajo con la enseñanza a través de UVAs, sin embargo, luego del estudio llevado a cabo en este documento, es posible concluír que hay muchas mejoras que se pueden llevar a cabo en un instrumento formativo y evaluador tan importante como son las tareas. Las recomendaciones y párrafos respecto a qué es una buena tarea planteadas en este documento, servirán como una gran guía para la elaboración de tareas de programación a futuro, pues se trabajaron distintos aspectos desde qué genera interés en los estudiantes, hasta qué causa frustración en ellos a la hora de desarrollar sus tareas.
 
-\underline{Todo esto debe sintetizarse en al menos 5 páginas.}
+Por otro lado, la aplicación de métricas de software como herramienta de medición para la dificultad de una tarea, y para el estudio de la experiencia de los estudiantes a la hora de de desarrollarla, fue de gran ayuda para poder entender ciertos aspectos en los que debemos prestar más atención a la hora de elaborar una tarea, y cómo la solución de la misma nos entrega información importante al respecto.
 
-\newpage
+Si bien las métricas de Halstead son de hace más de 50 años, aún así es posible extraer información valiosa de ellas, especialmente cuando son aplicadas a las soluciones de una tarea de programación. Este estudio demuestra el potencial que tienen para analizar la dificultad de una tarea antes de ser publicada, sin embargo, se requiere una mayor cantidad de datos respecto a más semestres de tareas y el cálculo de sus métricas, para poder así extraer mejores conclusiones. Del mismo modo, la métrica de complejidad ciclomática nos da una interesante aproximación respecto de cómo se traduce el enunciado de una tarea a la cantidad de condiciones que el estudiante tendrá que programar, y cómo éstas complicarán su proceso de desarrollo de su tarea impactando en otras métricas.
 
-\secnumberlesssection{ANEXOS}
+El editor de Ishvel es una gran herramienta para aplicar la metodología del framework, éste entrega de antemano una tarea de ejemplo con la cual es posible iniciar la elaboración de una tarea para cualquier contenido, sin embargo, la información que éste puede aportar con respecto a la dificultad de una tarea en comparación a tareas anteriores, está limitado por la eficacia de la heurística planteada en este documento para determinar los intervalos de comparación de dificultad. Dado que ésta no tiene suficiente afinación todavía, se requiere de mayor trabajo en ella para lograr una heurística cada vez mejor.
+
+Del mismo modo, el uso de tecnologías web que permitan ejecutar el editor de Ishvel en cualquier navegador, sin la necesidad de un servidor externo el cual se necesite mantener, o una base de datos externa en la cual cargar la data de las métricas de cada semestre, facilita mucho la distribución y el uso del framework a gran escala, pues todo queda en manos de Github Pages $\texttrademark$. Por esta misma razón, es que el framework quedó de código abierto, de manera tal que cualquier profesor en cualquier universidad puede descargarlo, añadir las métricas de los contenidos de sus propias tareas, y hacer un análisis sobre el desarrollo de su curso de programación a lo largo del semestre en su propia versión del editor. Con una arquitectura así, se podrá distribuír el framework mucho más fácilmente y no sólo limitarlo a cursos de la Universidad Técnica Federico Santa María.
+
+Por lo demás, en base a la validación del framework, es posible determinar que fue posible cumplir con el objetivo de crear un framework capaz de apoyar en la elaboración de tareas para cursos introductorios de programación, en base a una metodología y la definición de métricas que entreguen información respecto a la dificultad de las mismas.
+
+\subsection{Trabajo a Futuro}
+
+A futuro es necesario determinar una mejor heurística para la creación de intervalos de comparación de dificultad, ya que la propuesta en este documento no está lo suficientemente afinada, y requiere de mayor información. Del mismo modo, se debe continuar analizando las tareas de los próximos semestres en el curso de programación, para así acumular más material de estudio, más métricas con las cuales poder hacer un análisis estadístico más concreto, y más respuestas sobre la comparación de dificultad entre tareas por un conjunto mayor de expertos que el que participó de este trabajo. Con esta información, se puede determinar cómo es la distribución de las métricas de las tareas y relacionar los intervalos de confianza de la misma con los intervalos de comparación de dificultad, lo que daría un respaldo estadístico mayor a las mismas, y afinaría mucho más la metodología del framework para el análisis de dificultad de las tareas.
+
+También es posible hacer un análisis de experiencia de usuario con respecto al editor, probarlo en un laboratorio y obtener datos sobre la experiencia de un profesor elaborando una tarea en él, para así corregir aspectos de la interfaz, ver qué otras opciones podrían añadirse al editor, y hacer mejoras en la metodología.
 
 \newpage
 % Bibliografía estilo APA:

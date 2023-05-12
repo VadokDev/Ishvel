@@ -14,9 +14,7 @@
     "@uiw/react-md-editor": "^3.19.8",
     "apexcharts": "^3.36.3",
     "html2pdf.js": "^0.10.1",
-    "jspdf": "^2.5.1",
     "katex": "^0.16.4",
-    "pspdfkit": "^2023.2.0",
     "react": "^17.0.2",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^17.0.2",
@@ -58,5 +56,10 @@
   },
   "devDependencies": {
     "gh-pages": "^4.0.0"
+  },
+  "browser": {
+    "jsdom": false,
+    "xmldom": false,
+    "canvas": false
   }
 }
